@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AX YOUR BODY — 라이브 운동 플레이어</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#e60023',
+        'on-primary': '#ffffff',
+        'primary-pressed': '#cc001f',
+        'ink': '#000000',
+        'ink-soft': '#211922',
+        'body': '#33332e',
+        'charcoal': '#262622',
+        'mute': '#62625b',
+        'ash': '#91918c',
+        'stone': '#c8c8c1',
+        'hairline': '#dadad3',
+        'hairline-soft': '#e5e5e0',
+        'on-secondary': '#000000',
+        'secondary-bg': '#e5e5e0',
+        'secondary-pressed': '#c8c8c1',
+        'canvas': '#ffffff',
+        'surface-soft': '#fbfbf9',
+        'surface-card': '#f6f6f3',
+        'surface-elevated': '#ffffff',
+        'on-dark': '#ffffff',
+        'on-dark-mute': 'rgba(255,255,255,0.7)',
+        'surface-dark': '#262622',
+        'focus-outer': '#435ee5',
+        'focus-inner': '#ffffff',
+        'accent-pressed-blue': '#617bff',
+        'accent-purple': '#7e238b',
+        'accent-purple-deep': '#6845ab',
+        'success-deep': '#103c25',
+        'success-pale': '#c7f0da',
+        'error': '#9e0a0a',
+        'error-deep': '#cc001f',
+      },
+      borderRadius: {
+        'none': '0px',
+        'sm': '8px',
+        'md': '16px',
+        'lg': '32px',
+        'full': '9999px',
+      },
+      spacing: {
+        'xxs': '4px',
+        'xs': '8px',
+        'sm': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'xxl': '32px',
+        'section': '64px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'heading': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'caption': ['"Inter"', 'sans-serif'],
+        'link': ['"Inter"', 'sans-serif'],
+        'button': ['"Inter"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-xl': ['70px', { lineHeight: '1.1', letterSpacing: '-1.2px', fontWeight: '600' }],
+        'display-xl-mobile': ['32px', { lineHeight: '1.15', letterSpacing: '-0.6px', fontWeight: '600' }],
+        'display-lg': ['44px', { lineHeight: '1.15', letterSpacing: '-0.8px', fontWeight: '700' }],
+        'display-lg-mobile': ['30px', { lineHeight: '1.2', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'heading-xl': ['28px', { lineHeight: '1.2', letterSpacing: '-1.2px', fontWeight: '700' }],
+        'heading-lg': ['22px', { lineHeight: '1.25', letterSpacing: '0', fontWeight: '600' }],
+        'heading-md': ['18px', { lineHeight: '1.3', letterSpacing: '0', fontWeight: '600' }],
+        'body-md': ['16px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' }],
+        'body-strong': ['16px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '600' }],
+        'body-sm': ['14px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' }],
+        'body-sm-strong': ['14px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '700' }],
+        'caption-md': ['12px', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '500' }],
+        'caption-sm': ['12px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' }],
+        'link-md': ['16px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '600' }],
+        'button-md': ['14px', { lineHeight: '1', letterSpacing: '0', fontWeight: '700' }],
+        'button-sm': ['12px', { lineHeight: '1', letterSpacing: '0', fontWeight: '700' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'press-scale': '120ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'press-scale': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      display: inline-block; width: 1em; height: 1em; line-height: 1 !important;
+      box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-canvas text-body font-body antialiased" data-page="player">
+<div class="min-h-[884px] flex flex-col bg-canvas" data-stitch-vh="min-h-[884px]===min-h-screen">
+<!-- Player Header (Task Flow) -->
+<header class="px-lg py-md flex items-center justify-between border-b border-hairline">
+<button aria-label="운동 종료" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-surface-card text-ink transition-transform duration-press-scale active:scale-95" type="button">
+<span aria-hidden="true" class="material-symbols-outlined text-heading-md">close</span>
+</button>
+<span class="font-body text-body-sm-strong text-ink" data-design-text-token="body-sm-strong">목·어깨 풀기 20분</span>
+<button class="bg-surface-card text-ink font-button text-button-sm rounded-full px-md py-xs" id="sound-toggle" type="button">
+<span data-design-text-token="button-sm">음성 ON</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col justify-between gap-lg px-lg py-lg pb-xxl">
+<!-- Full-bleed Pin Media (32px radius) -->
+<section class="flex flex-col gap-md">
+<div class="relative rounded-lg overflow-hidden bg-surface-card">
+<img alt="목 앞쪽 스트레칭 자세 가이드" class="w-full aspect-[3/4] object-cover block" src="https://lh3.googleusercontent.com/aida/ALJJyrApQ9vZ-Nsuir_ui-P8-TVjech81oFJej9OMaRuquIJ99mLxAV1kPdo0_cp3Q5JkaIPlRiZM3M3vR1FNtplsZfu_Vm_NzaYGTw5sSYvtFI-BJxsDshXh8qb53VY7-anoR5Fui4qTOjMQ7PHPuZL1bkUC_-etd5S7UE4BwFYAxX4ADV6fF1_PnZUtb_7dqVzbFBnbeXCbBc2bYjUJQpRQxfZ4Nrp4gwdqcp92io3euFmwhJn_B3TiWr5jyAA9ETp"/>
+<span class="absolute top-lg left-lg bg-canvas text-ink font-button text-button-sm rounded-full px-md py-xs tabular-nums" data-design-text-token="button-sm">2 / 5 동작</span>
+<span class="absolute top-lg right-lg bg-ink text-on-dark font-button text-button-sm rounded-full px-md py-xs tabular-nums" data-design-text-token="button-sm">14:20 남음</span>
+</div>
+<!-- Step Title & Posture Cue -->
+<div class="flex flex-col gap-xs">
+<div class="flex items-baseline justify-between">
+<h1 class="font-heading text-heading-xl text-ink" data-design-text-token="heading-xl">흉쇄유돌근 이완</h1>
+<span class="font-heading text-heading-lg text-ink tabular-nums" data-design-text-token="heading-lg">00:38</span>
+</div>
+<p class="font-body text-body-md text-body text-pretty" data-design-text-token="body-md">
+            턱을 살짝 당긴 상태에서 오른쪽 귀를 어깨 쪽으로 지그시 내려 줘요. 숨을 길게 내쉬며 20초 유지합니다.
+          </p>
+</div>
+<!-- Progress Strip (Monochrome) -->
+<div aria-label="동작 진행률" class="grid grid-cols-5 gap-xxs pt-xs">
+<span class="h-1.5 rounded-full bg-ink"></span>
+<span class="h-1.5 rounded-full bg-ink"></span>
+<span class="h-1.5 rounded-full bg-hairline"></span>
+<span class="h-1.5 rounded-full bg-hairline"></span>
+<span class="h-1.5 rounded-full bg-hairline"></span>
+</div>
+</section>
+<!-- Playback Controls -->
+<section class="flex flex-col gap-sm">
+<div class="grid grid-cols-3 gap-sm">
+<button class="inline-flex items-center justify-center bg-secondary-bg active:bg-secondary-pressed text-on-secondary font-button text-button-md rounded-md py-md transition-transform duration-press-scale active:scale-95" type="button">
+<span data-design-text-token="button-md">이전</span>
+</button>
+<button class="inline-flex items-center justify-center bg-primary active:bg-primary-pressed text-on-primary font-button text-button-md rounded-md py-md transition-transform duration-press-scale active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-outer" id="play-pause-btn" type="button">
+<span data-design-text-token="button-md">일시정지</span>
+</button>
+<button class="inline-flex items-center justify-center bg-secondary-bg active:bg-secondary-pressed text-on-secondary font-button text-button-md rounded-md py-md transition-transform duration-press-scale active:scale-95" type="button">
+<span data-design-text-token="button-md">다음</span>
+</button>
+</div>
+<div class="bg-surface-card rounded-md px-lg py-md flex items-center justify-between">
+<span class="font-body text-body-sm text-mute" data-design-text-token="body-sm">다음 동작</span>
+<span class="font-body text-body-sm-strong text-ink" data-design-text-token="body-sm-strong">어깨 뒤로 돌리기 · 45초</span>
+</div>
+</section>
+</main>
+</div>
+<script>
+    (function () {
+      const btn = document.getElementById('play-pause-btn');
+      let paused = false;
+      btn.addEventListener('click', () => {
+        paused = !paused;
+        btn.querySelector('span').textContent = paused ? '계속하기' : '일시정지';
+      });
+      const soundBtn = document.getElementById('sound-toggle');
+      let soundOn = true;
+      soundBtn.addEventListener('click', () => {
+        soundOn = !soundOn;
+        soundBtn.querySelector('span').textContent = soundOn ? '음성 ON' : '음성 OFF';
+      });
+    })();
+  </script>
+<script src="prototype.js"></script></body></html>

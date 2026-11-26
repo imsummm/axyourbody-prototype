@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AX YOUR BODY — 운동 · 이번 주 운동</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#e60023',
+        'on-primary': '#ffffff',
+        'primary-pressed': '#cc001f',
+        'ink': '#000000',
+        'ink-soft': '#211922',
+        'body': '#33332e',
+        'charcoal': '#262622',
+        'mute': '#62625b',
+        'ash': '#91918c',
+        'stone': '#c8c8c1',
+        'hairline': '#dadad3',
+        'hairline-soft': '#e5e5e0',
+        'on-secondary': '#000000',
+        'secondary-bg': '#e5e5e0',
+        'secondary-pressed': '#c8c8c1',
+        'canvas': '#ffffff',
+        'surface-soft': '#fbfbf9',
+        'surface-card': '#f6f6f3',
+        'surface-elevated': '#ffffff',
+        'on-dark': '#ffffff',
+        'on-dark-mute': 'rgba(255,255,255,0.7)',
+        'surface-dark': '#262622',
+        'focus-outer': '#435ee5',
+        'focus-inner': '#ffffff',
+        'accent-pressed-blue': '#617bff',
+        'accent-purple': '#7e238b',
+        'accent-purple-deep': '#6845ab',
+        'success-deep': '#103c25',
+        'success-pale': '#c7f0da',
+        'error': '#9e0a0a',
+        'error-deep': '#cc001f',
+      },
+      borderRadius: {
+        'none': '0px',
+        'sm': '8px',
+        'md': '16px',
+        'lg': '32px',
+        'full': '9999px',
+      },
+      spacing: {
+        'xxs': '4px',
+        'xs': '8px',
+        'sm': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'xxl': '32px',
+        'section': '64px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'heading': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'caption': ['"Inter"', 'sans-serif'],
+        'link': ['"Inter"', 'sans-serif'],
+        'button': ['"Inter"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-xl': ['70px', { lineHeight: '1.1', letterSpacing: '-1.2px', fontWeight: '600' }],
+        'display-xl-mobile': ['32px', { lineHeight: '1.15', letterSpacing: '-0.6px', fontWeight: '600' }],
+        'display-lg': ['44px', { lineHeight: '1.15', letterSpacing: '-0.8px', fontWeight: '700' }],
+        'display-lg-mobile': ['30px', { lineHeight: '1.2', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'heading-xl': ['28px', { lineHeight: '1.2', letterSpacing: '-1.2px', fontWeight: '700' }],
+        'heading-lg': ['22px', { lineHeight: '1.25', letterSpacing: '0', fontWeight: '600' }],
+        'heading-md': ['18px', { lineHeight: '1.3', letterSpacing: '0', fontWeight: '600' }],
+        'body-md': ['16px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' }],
+        'body-strong': ['16px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '600' }],
+        'body-sm': ['14px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' }],
+        'body-sm-strong': ['14px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '700' }],
+        'caption-md': ['12px', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '500' }],
+        'caption-sm': ['12px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' }],
+        'link-md': ['16px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '600' }],
+        'button-md': ['14px', { lineHeight: '1', letterSpacing: '0', fontWeight: '700' }],
+        'button-sm': ['12px', { lineHeight: '1', letterSpacing: '0', fontWeight: '700' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'press-scale': '120ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'press-scale': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      display: inline-block; width: 1em; height: 1em; line-height: 1 !important;
+      box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-canvas text-body font-body antialiased" data-page="weekly">
+<div class="min-h-[884px] flex flex-col bg-canvas" data-stitch-vh="min-h-[884px]===min-h-screen">
+<!-- Top Header -->
+<header class="sticky top-0 z-20 bg-canvas border-b border-hairline px-lg py-md flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span aria-hidden="true" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-on-primary font-button text-button-sm">AX</span>
+<span class="font-body text-body-strong text-ink" data-design-text-token="body-strong">AX YOUR BODY</span>
+</div>
+<span class="font-body text-body-sm text-mute" data-design-text-token="body-sm">김민지</span>
+</header>
+<main class="flex-1 flex flex-col gap-xl px-lg py-lg pb-xxl">
+<!-- Pill Sub-Tabs -->
+<div aria-label="운동 하위 탭" class="flex items-center gap-xs" role="tablist">
+<button aria-selected="true" class="bg-ink text-on-dark font-button text-button-md rounded-full px-lg py-sm" role="tab" type="button">
+<span data-design-text-token="button-md">이번 주 운동</span>
+</button>
+<button aria-selected="false" class="bg-surface-card text-ink font-button text-button-md rounded-full px-lg py-sm" role="tab" type="button">
+<span data-design-text-token="button-md">따라 할 운동</span>
+</button>
+</div>
+<!-- Weekly Summary & Mon-Sun Dot Strip -->
+<section class="flex flex-col gap-lg">
+<h1 class="font-heading text-heading-xl text-ink tabular-nums" data-design-text-token="heading-xl">이번 주 2번 했어요</h1>
+<div class="bg-surface-card rounded-md p-lg grid grid-cols-7 gap-xs text-center">
+<div class="flex flex-col items-center gap-xs">
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">월</span>
+<span aria-label="월요일 기록 없음" class="w-4 h-4 rounded-full border border-hairline bg-canvas"></span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">화</span>
+<span aria-label="화요일 기록 없음" class="w-4 h-4 rounded-full border border-hairline bg-canvas"></span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-caption text-caption-md text-ink" data-design-text-token="caption-md">수</span>
+<span aria-label="수요일 완료" class="w-4 h-4 rounded-full bg-ink"></span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">목</span>
+<span aria-label="목요일 기록 없음" class="w-4 h-4 rounded-full border border-hairline bg-canvas"></span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">금</span>
+<span aria-label="금요일 예정" class="w-4 h-4 rounded-full bg-stone"></span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">토</span>
+<span aria-label="토요일 기록 없음" class="w-4 h-4 rounded-full border border-hairline bg-canvas"></span>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-caption text-caption-md text-ink" data-design-text-token="caption-md">일</span>
+<span aria-label="일요일 완료" class="w-4 h-4 rounded-full bg-ink"></span>
+</div>
+</div>
+</section>
+<!-- Weekly Workout Rows -->
+<section class="flex flex-col gap-sm">
+<div class="bg-surface-card rounded-md p-lg flex items-center justify-between gap-sm">
+<div class="flex flex-col gap-xxs">
+<span class="font-body text-body-strong text-ink tabular-nums" data-design-text-token="body-strong">10/28 수 · 스트레칭 20분</span>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">목·어깨 풀기</span>
+</div>
+<span class="bg-ink text-on-dark font-button text-button-sm rounded-full px-md py-xs shrink-0" data-design-text-token="button-sm">했어요</span>
+</div>
+<div class="bg-canvas border border-hairline rounded-md p-lg flex items-center justify-between gap-sm">
+<div class="flex flex-col gap-xxs">
+<span class="font-body text-body-strong text-ink tabular-nums" data-design-text-token="body-strong">10/30 금 · 코어·자세 20분</span>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">퇴근 후 루틴</span>
+</div>
+<span class="bg-secondary-bg text-on-secondary font-button text-button-sm rounded-full px-md py-xs shrink-0" data-design-text-token="button-sm">예정</span>
+</div>
+<div class="bg-surface-card rounded-md p-lg flex items-center justify-between gap-sm">
+<div class="flex flex-col gap-xxs">
+<span class="font-body text-body-strong text-ink tabular-nums" data-design-text-token="body-strong">11/1 일 · 코어·자세 25분</span>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">주말 리셋</span>
+</div>
+<span class="bg-ink text-on-dark font-button text-button-sm rounded-full px-md py-xs shrink-0" data-design-text-token="button-sm">했어요</span>
+</div>
+<div class="pt-sm">
+<button class="w-full inline-flex items-center justify-center bg-secondary-bg active:bg-secondary-pressed text-on-secondary font-button text-button-md rounded-md py-md transition-transform duration-press-scale active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-outer" type="button">
+<span data-design-text-token="button-md">+ 할 운동 추가</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Tab Bar: 오늘 · 운동 (active) · 먹은 것 · 몸 변화 -->
+<nav aria-label="하단 내비게이션" class="mt-auto bg-canvas border-t border-hairline px-md py-sm grid grid-cols-4 gap-xs">
+<a class="flex flex-col items-center gap-xxs text-mute" href="index.html">
+<span aria-hidden="true" class="w-5 h-0.5 rounded-full bg-transparent"></span>
+<span aria-hidden="true" class="material-symbols-outlined text-heading-md">home</span>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">오늘</span>
+</a>
+<a aria-current="page" class="flex flex-col items-center gap-xxs text-ink" href="weekly.html">
+<span aria-hidden="true" class="w-5 h-0.5 rounded-full bg-primary"></span>
+<span aria-hidden="true" class="material-symbols-outlined text-heading-md text-primary">fitness_center</span>
+<span class="font-caption text-caption-md text-ink" data-design-text-token="caption-md">운동</span>
+</a>
+<a class="flex flex-col items-center gap-xxs text-mute" href="food.html">
+<span aria-hidden="true" class="w-5 h-0.5 rounded-full bg-transparent"></span>
+<span aria-hidden="true" class="material-symbols-outlined text-heading-md">restaurant</span>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">먹은 것</span>
+</a>
+<a class="flex flex-col items-center gap-xxs text-mute" href="body.html">
+<span aria-hidden="true" class="w-5 h-0.5 rounded-full bg-transparent"></span>
+<span aria-hidden="true" class="material-symbols-outlined text-heading-md">monitoring</span>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">몸 변화</span>
+</a>
+</nav>
+</div>
+<script src="prototype.js"></script></body></html>

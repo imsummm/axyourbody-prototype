@@ -1,0 +1,18 @@
+(()=>{
+const page=document.body.dataset.page, $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], txt=e=>e.textContent.trim(), go=p=>location.href=p+'.html';
+const put=(k,v)=>{try{localStorage.setItem('ax-'+k,JSON.stringify(v))}catch(e){}}, get=(k,d)=>{try{return JSON.parse(localStorage.getItem('ax-'+k))??d}catch(e){return d}};
+const bind=(label,fn)=>$$('button').filter(b=>txt(b)===label).forEach(b=>b.addEventListener('click',fn));
+const toast=t=>{let e=document.createElement('div');e.textContent=t;e.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#222;color:white;padding:12px 20px;border-radius:20px;z-index:9999;white-space:nowrap';document.body.append(e);setTimeout(()=>e.remove(),2200)};
+const launch=(name)=>{put('routine',name);put('return',page);go('player')};
+const selected=()=>$$('[aria-pressed=true],button.bg-ink').map(txt);
+if(page==='index'){bind('시작하기',()=>{let a=$('.pin-select[aria-pressed=true]')||$('.pin-select');if(txt(a).includes('직접 고르기'))go('library');else launch(txt(a).replace('오늘 할 운동','').replace('짧게','').trim())});bind('+ 먹은 것',()=>go('food'));}
+if(page==='sunday'){bind('시작하기',()=>launch('목·어깨 풀기 20분'));bind('나중에',()=>go('index'));let b=$$('button');[b.slice(2,6),b.slice(6,11)].forEach(group=>group.forEach(x=>x.onclick=()=>{group.forEach(y=>{y.classList.remove('bg-ink','text-on-dark');y.classList.add('bg-canvas','text-ink')});x.classList.remove('bg-canvas','text-ink');x.classList.add('bg-ink','text-on-dark');put('sunday-check',selected())}));}
+if(['weekly','library'].includes(page)){bind('이번 주 운동',()=>go('weekly'));bind('따라 할 운동',()=>go('library'));bind('+ 할 운동 추가',()=>go('library'));}
+if(page==='library'){$$('article').forEach(a=>{a.tabIndex=0;a.style.cursor='pointer';a.onclick=()=>launch(txt(a).replace('지금 추천','').trim());a.onkeydown=e=>{if(e.key==='Enter')a.click()}});}
+if(page==='food'){bind('close',()=>go('index'));bind('저장',()=>{put('food',{choices:selected(),menu:$('input')?.value,date:new Date().toISOString()});go('index')});}
+if(page==='body'){bind('오늘 몸 상태 자세히 남기기',()=>go('condition'));bind('+ 몸무게 남기기',()=>{let v=prompt('몸무게 (kg) · 언제 쟀나요 (아침 공복 · 저녁)',get('memo',''));if(v!==null){put('memo',v);toast('몸무게를 남겼어요')}});}
+if(page==='condition'){bind('arrow_back',()=>go('body'));bind('저장하고 운동 고르기',()=>{put('condition',selected());go('library')});}
+if(page==='player'){let paused=false, step=1, sec=38;let timer=$$('*').find(e=>e.children.length===0&&txt(e)==='00:38');let count=$$('*').find(e=>e.children.length===0&&txt(e)==='2 / 5 동작');let title=$$('*').find(e=>e.children.length===0&&txt(e)==='목·어깨 풀기 20분');if(title)title.textContent=get('routine','목·어깨 풀기 20분');const render=()=>{if(timer)timer.textContent=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');if(count)count.textContent=(step+1)+' / 5 동작'};const next=()=>{if(step===4){put('completed',new Date().toISOString());go('weekly');return}step++;sec=45;render()};bind('이전',()=>{step=Math.max(0,step-1);sec=45;render()});bind('다음',next);bind('일시정지',()=>paused=!paused);bind('close',()=>go(get('return','index')));setInterval(()=>{if(!paused){if(sec>0){sec--;render()}else next()}},1000);}
+// Demo-only scenario switch, outside original app controls.
+const link=document.createElement('a');link.href=page==='sunday'?'index.html':'sunday.html';link.textContent=page==='sunday'?'평일 화면':'일요일 화면';link.style.cssText='position:fixed;top:4px;right:4px;z-index:9999;background:#fff;color:#555;font:11px sans-serif;padding:3px 6px;border:1px solid #ddd;border-radius:8px';if(['index','sunday'].includes(page))document.body.append(link);
+})();

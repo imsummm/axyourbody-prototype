@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AX YOUR BODY — 오늘 (일요일 재시작)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#e60023',
+        'on-primary': '#ffffff',
+        'primary-pressed': '#cc001f',
+        'ink': '#000000',
+        'ink-soft': '#211922',
+        'body': '#33332e',
+        'charcoal': '#262622',
+        'mute': '#62625b',
+        'ash': '#91918c',
+        'stone': '#c8c8c1',
+        'hairline': '#dadad3',
+        'hairline-soft': '#e5e5e0',
+        'on-secondary': '#000000',
+        'secondary-bg': '#e5e5e0',
+        'secondary-pressed': '#c8c8c1',
+        'canvas': '#ffffff',
+        'surface-soft': '#fbfbf9',
+        'surface-card': '#f6f6f3',
+        'surface-elevated': '#ffffff',
+        'on-dark': '#ffffff',
+        'on-dark-mute': 'rgba(255,255,255,0.7)',
+        'surface-dark': '#262622',
+        'focus-outer': '#435ee5',
+        'focus-inner': '#ffffff',
+        'accent-pressed-blue': '#617bff',
+        'accent-purple': '#7e238b',
+        'accent-purple-deep': '#6845ab',
+        'success-deep': '#103c25',
+        'success-pale': '#c7f0da',
+        'error': '#9e0a0a',
+        'error-deep': '#cc001f',
+      },
+      borderRadius: {
+        'none': '0px',
+        'sm': '8px',
+        'md': '16px',
+        'lg': '32px',
+        'full': '9999px',
+      },
+      spacing: {
+        'xxs': '4px',
+        'xs': '8px',
+        'sm': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+        'xxl': '32px',
+        'section': '64px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'heading': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'caption': ['"Inter"', 'sans-serif'],
+        'link': ['"Inter"', 'sans-serif'],
+        'button': ['"Inter"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-xl': ['70px', { lineHeight: '1.1', letterSpacing: '-1.2px', fontWeight: '600' }],
+        'display-xl-mobile': ['32px', { lineHeight: '1.15', letterSpacing: '-0.6px', fontWeight: '600' }],
+        'display-lg': ['44px', { lineHeight: '1.15', letterSpacing: '-0.8px', fontWeight: '700' }],
+        'display-lg-mobile': ['30px', { lineHeight: '1.2', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'heading-xl': ['28px', { lineHeight: '1.2', letterSpacing: '-1.2px', fontWeight: '700' }],
+        'heading-lg': ['22px', { lineHeight: '1.25', letterSpacing: '0', fontWeight: '600' }],
+        'heading-md': ['18px', { lineHeight: '1.3', letterSpacing: '0', fontWeight: '600' }],
+        'body-md': ['16px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' }],
+        'body-strong': ['16px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '600' }],
+        'body-sm': ['14px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' }],
+        'body-sm-strong': ['14px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '700' }],
+        'caption-md': ['12px', { lineHeight: '1.5', letterSpacing: '0', fontWeight: '500' }],
+        'caption-sm': ['12px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' }],
+        'link-md': ['16px', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '600' }],
+        'button-md': ['14px', { lineHeight: '1', letterSpacing: '0', fontWeight: '700' }],
+        'button-sm': ['12px', { lineHeight: '1', letterSpacing: '0', fontWeight: '700' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'press-scale': '120ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'press-scale': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      display: inline-block; width: 1em; height: 1em; line-height: 1 !important;
+      box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-canvas text-body font-body antialiased" data-page="sunday">
+<div class="min-h-[884px] flex flex-col bg-canvas" data-stitch-vh="min-h-[884px]===min-h-screen">
+<!-- Top Header -->
+<header class="sticky top-0 z-20 bg-canvas border-b border-hairline px-lg py-md flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span aria-hidden="true" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-on-primary font-button text-button-sm">AX</span>
+<span class="font-body text-body-strong text-ink" data-design-text-token="body-strong">AX YOUR BODY</span>
+</div>
+<span class="font-body text-body-sm text-mute" data-design-text-token="body-sm">김민지 · 일요일</span>
+</header>
+<main class="flex-1 flex flex-col gap-xl px-lg py-lg pb-xxl">
+<!-- Large 32px Pin Image -->
+<section class="flex flex-col gap-lg">
+<div class="relative rounded-lg overflow-hidden bg-surface-card">
+<img alt="목·어깨 풀기 스트레칭 20분" class="w-full aspect-[3/4] object-cover block" src="https://lh3.googleusercontent.com/aida/ALJJyrApQ9vZ-Nsuir_ui-P8-TVjech81oFJej9OMaRuquIJ99mLxAV1kPdo0_cp3Q5JkaIPlRiZM3M3vR1FNtplsZfu_Vm_NzaYGTw5sSYvtFI-BJxsDshXh8qb53VY7-anoR5Fui4qTOjMQ7PHPuZL1bkUC_-etd5S7UE4BwFYAxX4ADV6fF1_PnZUtb_7dqVzbFBnbeXCbBc2bYjUJQpRQxfZ4Nrp4gwdqcp92io3euFmwhJn_B3TiWr5jyAA9ETp"/>
+<span class="absolute top-lg left-lg bg-canvas text-ink font-button text-button-sm rounded-full px-md py-xs" data-design-text-token="button-sm">5일 쉬었어요</span>
+<span class="absolute bottom-lg left-lg bg-canvas text-ink font-button text-button-sm rounded-full px-md py-xs" data-design-text-token="button-sm">목·어깨 풀기 스트레칭 · 20분</span>
+</div>
+<!-- Text -->
+<div class="flex flex-col gap-xs">
+<h1 class="font-heading text-heading-xl text-ink text-balance" data-design-text-token="heading-xl">오늘은 가볍게 해 볼까요?</h1>
+<p class="font-body text-body-md text-body text-pretty" data-design-text-token="body-md">앉아서 굳은 목 앞쪽을 늘려 줘요</p>
+</div>
+<!-- Actions: Red 시작하기 + Gray 나중에 -->
+<div class="grid grid-cols-2 gap-sm">
+<button class="inline-flex items-center justify-center bg-primary active:bg-primary-pressed text-on-primary font-button text-button-md rounded-md py-md transition-transform duration-press-scale active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-outer" type="button">
+<span data-design-text-token="button-md">시작하기</span>
+</button>
+<button class="inline-flex items-center justify-center bg-secondary-bg active:bg-secondary-pressed text-on-secondary font-button text-button-md rounded-md py-md transition-transform duration-press-scale active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-focus-outer" type="button">
+<span data-design-text-token="button-md">나중에</span>
+</button>
+</div>
+<a class="inline-flex items-center text-ink-soft font-link text-link-md" href="weekly.html">
+<span data-design-text-token="link-md">다음 주 하루 고르기 →</span>
+</a>
+</section>
+<!-- Sleep / Condition Chip Card Below -->
+<section class="bg-surface-card rounded-md p-lg flex flex-col gap-lg">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center justify-between">
+<h2 class="font-body text-body-sm-strong text-ink" data-design-text-token="body-sm-strong">어젯밤 잠</h2>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">7시간</span>
+</div>
+<div aria-label="어젯밤 잠" class="flex flex-wrap gap-xs" role="group">
+<button class="bg-canvas text-ink font-button text-button-sm rounded-full px-md py-sm" type="button">
+<span data-design-text-token="button-sm">5시간 이하</span>
+</button>
+<button class="bg-canvas text-ink font-button text-button-sm rounded-full px-md py-sm" type="button">
+<span data-design-text-token="button-sm">6</span>
+</button>
+<button class="bg-ink text-on-dark font-button text-button-sm rounded-full px-md py-sm" type="button">
+<span data-design-text-token="button-sm">7</span>
+</button>
+<button class="bg-canvas text-ink font-button text-button-sm rounded-full px-md py-sm" type="button">
+<span data-design-text-token="button-sm">8시간 이상</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs border-t border-hairline pt-md">
+<div class="flex items-center justify-between">
+<h2 class="font-body text-body-sm-strong text-ink" data-design-text-token="body-sm-strong">오늘 몸 상태</h2>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">좋음 (4)</span>
+</div>
+<div aria-label="오늘 몸 상태" class="grid grid-cols-5 gap-xs" role="group">
+<button class="bg-canvas text-ink font-button text-button-sm rounded-full py-sm" type="button">
+<span data-design-text-token="button-sm">1</span>
+</button>
+<button class="bg-canvas text-ink font-button text-button-sm rounded-full py-sm" type="button">
+<span data-design-text-token="button-sm">2</span>
+</button>
+<button class="bg-canvas text-ink font-button text-button-sm rounded-full py-sm" type="button">
+<span data-design-text-token="button-sm">3</span>
+</button>
+<button class="bg-ink text-on-dark font-button text-button-sm rounded-full py-sm" type="button">
+<span data-design-text-token="button-sm">4</span>
+</button>
+<button class="bg-canvas text-ink font-button text-button-sm rounded-full py-sm" type="button">
+<span data-design-text-token="button-sm">5</span>
+</button>
+</div>
+<div class="flex items-center justify-between pt-xxs">
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">매우 나쁨</span>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">매우 좋음</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Tab Bar: 오늘 · 운동 · 먹은 것 · 몸 변화 -->
+<nav aria-label="하단 내비게이션" class="mt-auto bg-canvas border-t border-hairline px-md py-sm grid grid-cols-4 gap-xs">
+<a aria-current="page" class="flex flex-col items-center gap-xxs text-ink" href="index.html">
+<span aria-hidden="true" class="w-5 h-0.5 rounded-full bg-primary"></span>
+<span aria-hidden="true" class="material-symbols-outlined text-heading-md text-primary">home</span>
+<span class="font-caption text-caption-md text-ink" data-design-text-token="caption-md">오늘</span>
+</a>
+<a class="flex flex-col items-center gap-xxs text-mute" href="weekly.html">
+<span aria-hidden="true" class="w-5 h-0.5 rounded-full bg-transparent"></span>
+<span aria-hidden="true" class="material-symbols-outlined text-heading-md">fitness_center</span>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">운동</span>
+</a>
+<a class="flex flex-col items-center gap-xxs text-mute" href="food.html">
+<span aria-hidden="true" class="w-5 h-0.5 rounded-full bg-transparent"></span>
+<span aria-hidden="true" class="material-symbols-outlined text-heading-md">restaurant</span>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">먹은 것</span>
+</a>
+<a class="flex flex-col items-center gap-xxs text-mute" href="body.html">
+<span aria-hidden="true" class="w-5 h-0.5 rounded-full bg-transparent"></span>
+<span aria-hidden="true" class="material-symbols-outlined text-heading-md">monitoring</span>
+<span class="font-caption text-caption-sm text-mute" data-design-text-token="caption-sm">몸 변화</span>
+</a>
+</nav>
+</div>
+<script src="prototype.js"></script></body></html>

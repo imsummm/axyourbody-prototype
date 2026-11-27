@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"primary-container":"#e60023","on-tertiary":"#ffffff","on-surface-variant":"#5e3f3c","on-background":"#1a1c1b","surface-variant":"#e2e3e0","on-primary-container":"#fff7f6","primary-fixed-dim":"#ffb3ad","outline":"#936e6b","surface-container-lowest":"#ffffff","on-primary-fixed":"#410004","on-error-container":"#93000a","error-container":"#ffdad6","error":"#ba1a1a","on-secondary-container":"#63635d","tertiary-fixed":"#e3e3de","surface-container":"#eeeeeb","surface":"#f9f9f6","secondary-fixed-dim":"#c8c6bf","tertiary-container":"#72736f","on-surface":"#1a1c1b","tertiary":"#595b57","secondary":"#5f5f59","secondary-fixed":"#e5e2db","inverse-primary":"#ffb3ad","inverse-on-surface":"#f1f1ee","on-secondary-fixed":"#1c1c17","on-primary-fixed-variant":"#930012","surface-container-low":"#f4f4f1","secondary-container":"#e2e0d8","primary-fixed":"#ffdad7","outline-variant":"#e8bcb8","on-tertiary-fixed-variant":"#464744","primary":"#b7001a","inverse-surface":"#2f312f","surface-bright":"#f9f9f6","surface-dim":"#dadad7","on-tertiary-fixed":"#1a1c19","background":"#f9f9f6","on-error":"#ffffff","surface-container-highest":"#e2e3e0","tertiary-fixed-dim":"#c6c7c2","on-secondary":"#ffffff","on-secondary-fixed-variant":"#474742","on-primary":"#ffffff","surface-tint":"#c0001b","surface-container-high":"#e8e8e5","on-tertiary-container":"#fafaf4"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","gutter":"1rem","space-md":"1rem","margin":"1.25rem","space-sm":"0.5rem","margin-mobile":"1rem","space-lg":"1.5rem","gutter-mobile":"0.75rem","space-xl":"2rem"},"fontFamily":{"display-lg":["Inter"],"headline-md":["Inter"],"body-md":["Noto Sans"],"caption":["Noto Sans"],"body-lg":["Noto Sans"],"label-md":["Inter"],"display-lg-mobile":["Inter"],"label-lg":["Inter"],"body-sm":["Noto Sans"],"headline-sm":["Inter"],"label-sm":["Inter"],"headline-lg":["Inter"]},"fontSize":{"display-lg":["36px",{"lineHeight":"44px","fontWeight":"700"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"caption":["12px",{"lineHeight":"16px","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","fontWeight":"600"}],"display-lg-mobile":["28px",{"lineHeight":"36px","fontWeight":"700"}],"label-lg":["16px",{"lineHeight":"22px","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-sm":["18px",{"lineHeight":"26px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"600"}],"headline-lg":["24px",{"lineHeight":"32px","fontWeight":"700"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-lowest border-r border-[#dadad3] z-50 flex flex-col justify-between py-6 px-4"><div class="flex flex-col gap-8"><div class="flex items-center gap-1.5 px-3 py-2"><span class="font-headline-md text-headline-md tracking-tight font-bold text-on-surface">AX YOUR BODY</span><span class="w-2 h-2 rounded-full bg-primary-container inline-block"></span></div><nav class="flex flex-col gap-2" data-active-classes="bg-inverse-surface text-inverse-on-surface font-label-md text-label-md rounded-full px-4 py-3 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><a class="flex items-center justify-between px-4 py-3 rounded-full text-secondary hover:bg-surface-container-low hover:text-on-surface transition-all font-label-md text-label-md" data-path="today" href="#"><span>오늘</span></a><a class="flex items-center justify-between px-4 py-3 rounded-full text-secondary hover:bg-surface-container-low hover:text-on-surface transition-all font-label-md text-label-md" data-path="workout" href="#"><span>운동</span></a><a aria-current="page" class="transition-all bg-inverse-surface text-inverse-on-surface font-label-md text-label-md rounded-full px-4 py-3 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-path="nutrition" href="#"><span>먹은 것</span></a><a class="flex items-center justify-between px-4 py-3 rounded-full text-secondary hover:bg-surface-container-low hover:text-on-surface transition-all font-label-md text-label-md" data-path="body-evolution" href="#"><span>몸 변화</span></a></nav></div><div class="px-3"><div class="p-3 bg-surface-container-low rounded-xl flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-[20px]">self_improvement</span><span class="font-caption text-caption text-secondary">일상의 작은 쉼표</span></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-16 bg-surface/80 backdrop-blur-xl border-b border-[#dadad3] z-40 px-8 flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span><span class="font-headline-sm text-headline-sm text-on-surface">AX Sanctuary</span></div><div class="flex items-center gap-4"><a class="flex items-center gap-3 p-1.5 rounded-full hover:bg-surface-container-low transition-all" data-path="settings-notifications" href="#" title="설정 및 알림"><span class="font-label-sm text-label-sm text-secondary hidden sm:inline-block">설정·알림</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></a></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="max-w-5xl mx-auto px-8 py-8"><div class="flex flex-col w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- MAIN COLUMN (2/3 -> 8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Affirmation Card -->
+<div class="bg-surface-container-low rounded-xl p-6 relative overflow-hidden flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface text-[20px]">format_quote</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-secondary tracking-wide uppercase">오늘의 따뜻한 시선</span>
+<p class="font-headline-sm text-headline-sm text-on-surface">
+            나의 다짐: “야근한 날도 먹은 건 가볍게 남기기”
+          </p>
+</div>
+<div class="absolute right-4 -bottom-6 opacity-5 pointer-events-none select-none">
+<span class="material-symbols-outlined text-[100px] text-on-surface">restaurant</span>
+</div>
+</div>
+<!-- Date Navigator Header -->
+<div class="bg-surface-container-lowest rounded-xl p-4 flex items-center justify-between">
+<button aria-label="이전 날짜" class="w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-lg text-label-lg text-on-surface">오늘, 10월 24일 목요일</span>
+</div>
+<button aria-label="다음 날짜" class="w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<!-- Quick Add Meal CTA Button -->
+<button class="w-full py-4 px-6 rounded-xl bg-secondary-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-2 transition-all" id="openMealDrawerBtn" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary-container">add_circle</span>
+<span>+ 먹은 것 기록하기</span>
+</button>
+<!-- Meal Records List -->
+<div class="flex flex-col gap-3" id="mealListContainer">
+<!-- Record 1: 점심 -->
+<div class="group bg-surface-container-lowest rounded-xl p-5 flex items-center justify-between transition-all hover:bg-surface-container-low cursor-pointer meal-item" data-timing="점심" data-type="외식">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex flex-col items-center justify-center shrink-0">
+<span class="font-label-sm text-label-sm text-secondary">점심</span>
+<span class="font-caption text-caption text-secondary/70">12:30</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">김치찌개와 공깃밥</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm">외식</span>
+</div>
+<span class="font-caption text-caption text-secondary">동료들과 정갈하게 든든히 비운 한 그릇</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-transparent group-hover:bg-surface-container flex items-center justify-center text-secondary group-hover:text-on-surface transition-colors" title="수정하기">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</span>
+</div>
+</div>
+<!-- Record 2: 저녁 -->
+<div class="group bg-surface-container-lowest rounded-xl p-5 flex items-center justify-between transition-all hover:bg-surface-container-low cursor-pointer meal-item" data-timing="저녁" data-type="배달">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex flex-col items-center justify-center shrink-0">
+<span class="font-label-sm text-label-sm text-secondary">저녁</span>
+<span class="font-caption text-caption text-secondary/70">19:40</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">리코타 닭가슴살 샐러드</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm">배달</span>
+</div>
+<span class="font-caption text-caption text-secondary">퇴근길에 챙긴 신선한 채소와 산뜻한 치즈 향</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-transparent group-hover:bg-surface-container flex items-center justify-center text-secondary group-hover:text-on-surface transition-colors" title="수정하기">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</span>
+</div>
+</div>
+<!-- Record 3: 야식 -->
+<div class="group bg-surface-container-lowest rounded-xl p-5 flex items-center justify-between transition-all hover:bg-surface-container-low cursor-pointer meal-item" data-timing="야식" data-type="배달">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex flex-col items-center justify-center shrink-0">
+<span class="font-label-sm text-label-sm text-secondary">야식</span>
+<span class="font-caption text-caption text-secondary/70">23:10</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">국물 떡볶이</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm">배달</span>
+</div>
+<span class="font-caption text-caption text-secondary">긴 야근 후 지친 몸에 온기를 불어넣은 매콤한 위로</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-transparent group-hover:bg-surface-container flex items-center justify-center text-secondary group-hover:text-on-surface transition-colors" title="수정하기">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Calming Gentle Philosophy Banner Card -->
+<div class="bg-surface-container-high rounded-xl p-6 flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-[24px] shrink-0 mt-0.5">spa</span>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">먹는 행위는 나를 돌보는 소중한 쉼표입니다</span>
+<p class="font-body-md text-body-md text-secondary leading-relaxed">
+            칼로리 계산 대신 무엇을 편안하게 먹었는지만 가볍게 남겨요. 죄책감 없이 나를 있는 그대로 따뜻하게 받아들이는 공간입니다.
+          </p>
+</div>
+</div>
+</div>
+<!-- SIDE COLUMN (1/3 -> 4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Filters & Quick Search Panel -->
+<div class="bg-surface-container-lowest rounded-xl p-6 flex flex-col gap-6">
+<!-- Search Input -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-secondary" for="mealSearchInput">기록 검색</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-[18px]">search</span>
+<input class="w-full pl-9 pr-3 py-2.5 bg-surface-container-low rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-secondary outline-none focus:bg-surface-container transition-all" id="mealSearchInput" placeholder="메뉴 직접 입력 또는 검색" type="text"/>
+</div>
+</div>
+<!-- Filter 1: 먹은 때 필터 -->
+<div class="flex flex-col gap-2.5">
+<span class="font-label-sm text-label-sm text-secondary">먹은 때</span>
+<div class="flex flex-wrap gap-1.5" id="timingFilterGroup">
+<button class="timing-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-inverse-surface text-inverse-on-surface transition-all" data-filter="all" type="button">전체</button>
+<button class="timing-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:text-on-surface transition-all" data-filter="아침" type="button">아침</button>
+<button class="timing-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:text-on-surface transition-all" data-filter="점심" type="button">점심</button>
+<button class="timing-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:text-on-surface transition-all" data-filter="저녁" type="button">저녁</button>
+<button class="timing-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:text-on-surface transition-all" data-filter="간식" type="button">간식</button>
+<button class="timing-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:text-on-surface transition-all" data-filter="야식" type="button">야식</button>
+</div>
+</div>
+<!-- Filter 2: 어떻게 먹었나요 -->
+<div class="flex flex-col gap-2.5">
+<span class="font-label-sm text-label-sm text-secondary">어떻게 먹었나요</span>
+<div class="flex flex-wrap gap-1.5" id="typeFilterGroup">
+<button class="type-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-inverse-surface text-inverse-on-surface transition-all" data-filter="all" type="button">전체</button>
+<button class="type-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:text-on-surface transition-all" data-filter="집밥" type="button">집밥</button>
+<button class="type-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:text-on-surface transition-all" data-filter="외식" type="button">외식</button>
+<button class="type-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:text-on-surface transition-all" data-filter="배달" type="button">배달</button>
+</div>
+</div>
+</div>
+<!-- Hydration & Mind Balance Card -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">water_drop</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">마음 채움 노트</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+          오늘 하루도 수고 많았어요. 식사 전후 미지근한 물 한 잔으로 긴장된 위장을 부드럽게 감싸주세요. 작은 한 잔이 몸의 호흡을 고르게 만듭니다.
+        </p>
+<!-- Warm Visual Spark / SVG Level Ring -->
+<div class="flex items-center gap-3 bg-surface-container-lowest p-3 rounded-lg">
+<svg class="w-8 h-8 shrink-0 text-primary-container" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="75, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">따뜻한 수분 섭취 4잔째</span>
+<span class="font-caption text-caption text-secondary">여유롭게 채워가는 중</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Record Drawer Modal (Hidden by Default) -->
+<div aria-hidden="true" class="fixed inset-0 z-50 flex items-end justify-center pointer-events-none transition-opacity duration-300 opacity-0" id="quickMealDrawer">
+<div class="absolute inset-0 bg-black/50 transition-opacity" id="drawerBackdrop"></div>
+<div class="relative w-full max-w-lg bg-surface-container-lowest rounded-t-[32px] p-6 flex flex-col gap-6 pointer-events-auto transform translate-y-full transition-transform duration-300 ease-out z-10">
+<!-- Drawer Handle -->
+<div class="w-9 h-1 bg-surface-container-high rounded-full mx-auto -mt-2 mb-1"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface">먹은 것 빠른 기록</span>
+</div>
+<button class="text-secondary hover:text-on-surface" id="closeMealDrawerBtn" type="button">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+</div>
+<!-- Drawer Form -->
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-secondary">어떤 음식을 드셨나요?</label>
+<input class="w-full px-4 py-3 bg-surface-container-low rounded-xl font-body-md text-body-md text-on-surface placeholder:text-secondary outline-none focus:bg-surface-container transition-all" id="newMealInput" placeholder="예: 따뜻한 보리밥, 된장찌개" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-secondary">언제 드셨나요?</label>
+<div class="grid grid-cols-5 gap-2">
+<button class="drawer-timing-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container" type="button">아침</button>
+<button class="drawer-timing-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-inverse-surface text-inverse-on-surface" type="button">점심</button>
+<button class="drawer-timing-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container" type="button">저녁</button>
+<button class="drawer-timing-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container" type="button">간식</button>
+<button class="drawer-timing-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container" type="button">야식</button>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-secondary">식사 방식</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="drawer-type-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container" type="button">집밥</button>
+<button class="drawer-type-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-inverse-surface text-inverse-on-surface" type="button">외식</button>
+<button class="drawer-type-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container" type="button">배달</button>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-secondary">몸과 마음의 메모 (선택)</label>
+<input class="w-full px-4 py-3 bg-surface-container-low rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-secondary outline-none focus:bg-surface-container transition-all" placeholder="속이 편안했음, 맛있게 비움 등" type="text"/>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl bg-primary-container text-on-tertiary font-label-lg text-label-lg transition-transform active:scale-[0.98]" id="saveMealBtn" type="button">
+        포근하게 기록 남기기
+      </button>
+</div>
+</div>
+<script>
+    (function initMealPage() {
+      // Dynamic navigation state for sidebar
+      const navLinks = document.querySelectorAll('aside nav a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-path') === 'nutrition') {
+          link.className = 'bg-inverse-surface text-inverse-on-surface font-label-md text-label-md rounded-full px-4 py-3 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]';
+          if (!link.querySelector('.bg-primary-container')) {
+            const pip = document.createElement('span');
+            pip.className = 'w-2 h-2 rounded-full bg-primary-container shrink-0';
+            link.appendChild(pip);
+          }
+        }
+      });
+
+      // Drawer open/close logic
+      const openBtn = document.getElementById('openMealDrawerBtn');
+      const closeBtn = document.getElementById('closeMealDrawerBtn');
+      const drawer = document.getElementById('quickMealDrawer');
+      const drawerContent = drawer.querySelector('.pointer-events-auto');
+      const backdrop = document.getElementById('drawerBackdrop');
+      const saveBtn = document.getElementById('saveMealBtn');
+
+      function openDrawer() {
+        drawer.classList.remove('pointer-events-none', 'opacity-0');
+        drawer.classList.add('opacity-100');
+        drawerContent.classList.remove('translate-y-full');
+        drawerContent.classList.add('translate-y-0');
+      }
+
+      function closeDrawer() {
+        drawerContent.classList.remove('translate-y-0');
+        drawerContent.classList.add('translate-y-full');
+        drawer.classList.remove('opacity-100');
+        drawer.classList.add('opacity-0', 'pointer-events-none');
+      }
+
+      if (openBtn) openBtn.addEventListener('click', openDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      if (backdrop) backdrop.addEventListener('click', closeDrawer);
+      if (saveBtn) saveBtn.addEventListener('click', closeDrawer);
+
+      // Filtering interactions
+      const timingChips = document.querySelectorAll('.timing-chip');
+      const typeChips = document.querySelectorAll('.type-chip');
+      const mealItems = document.querySelectorAll('.meal-item');
+      const searchInput = document.getElementById('mealSearchInput');
+
+      let currentTiming = 'all';
+      let currentType = 'all';
+
+      function applyFilters() {
+        const query = (searchInput.value || '').trim().toLowerCase();
+        mealItems.forEach(item => {
+          const itemTiming = item.getAttribute('data-timing');
+          const itemType = item.getAttribute('data-type');
+          const itemText = item.textContent.toLowerCase();
+
+          const matchTiming = (currentTiming === 'all' || itemTiming === currentTiming);
+          const matchType = (currentType === 'all' || itemType === currentType);
+          const matchQuery = !query || itemText.includes(query);
+
+          if (matchTiming && matchType && matchQuery) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      }
+
+      timingChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          timingChips.forEach(c => {
+            c.className = 'timing-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:text-on-surface transition-all';
+          });
+          chip.className = 'timing-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-inverse-surface text-inverse-on-surface transition-all';
+          currentTiming = chip.getAttribute('data-filter');
+          applyFilters();
+        });
+      });
+
+      typeChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          typeChips.forEach(c => {
+            c.className = 'type-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:text-on-surface transition-all';
+          });
+          chip.className = 'type-chip px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-inverse-surface text-inverse-on-surface transition-all';
+          currentType = chip.getAttribute('data-filter');
+          applyFilters();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', applyFilters);
+      }
+
+      // Drawer Timing Toggle
+      const drawerTimingBtns = document.querySelectorAll('.drawer-timing-btn');
+      drawerTimingBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          drawerTimingBtns.forEach(b => b.className = 'drawer-timing-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container');
+          btn.className = 'drawer-timing-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-inverse-surface text-inverse-on-surface';
+        });
+      });
+
+      // Drawer Type Toggle
+      const drawerTypeBtns = document.querySelectorAll('.drawer-type-btn');
+      drawerTypeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          drawerTypeBtns.forEach(b => b.className = 'drawer-type-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container');
+          btn.className = 'drawer-type-btn py-2 rounded-xl text-center font-label-sm text-label-sm bg-inverse-surface text-inverse-on-surface';
+        });
+      });
+    })();
+  </script>
+</div></div></main></div></body></html>

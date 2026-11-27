@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-secondary-fixed":"#1c1c17","secondary-fixed":"#e5e2db","error-container":"#ffdad6","background":"#f9f9f6","surface-container-high":"#e8e8e5","inverse-surface":"#2f312f","on-secondary-container":"#63635d","primary-fixed-dim":"#ffb3ad","on-primary":"#ffffff","secondary-container":"#e2e0d8","on-error":"#ffffff","surface-container-low":"#f4f4f1","primary-fixed":"#ffdad7","surface-variant":"#e2e3e0","error":"#ba1a1a","on-primary-fixed":"#410004","outline-variant":"#e8bcb8","primary-container":"#e60023","secondary-fixed-dim":"#c8c6bf","tertiary":"#595b57","tertiary-fixed":"#e3e3de","surface-dim":"#dadad7","on-secondary-fixed-variant":"#474742","tertiary-container":"#72736f","tertiary-fixed-dim":"#c6c7c2","on-primary-fixed-variant":"#930012","surface-container-lowest":"#ffffff","outline":"#936e6b","on-surface":"#1a1c1b","on-background":"#1a1c1b","on-tertiary-fixed":"#1a1c19","secondary":"#5f5f59","inverse-primary":"#ffb3ad","inverse-on-surface":"#f1f1ee","surface":"#f9f9f6","on-secondary":"#ffffff","on-primary-container":"#fff7f6","surface-container-highest":"#e2e3e0","on-tertiary-container":"#fafaf4","primary":"#b7001a","on-tertiary-fixed-variant":"#464744","on-error-container":"#93000a","surface-container":"#eeeeeb","surface-tint":"#c0001b","on-surface-variant":"#5e3f3c","on-tertiary":"#ffffff","surface-bright":"#f9f9f6"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","space-lg":"1.5rem","gutter-mobile":"0.75rem","space-xs":"0.25rem","gutter":"1rem","margin-mobile":"1rem","space-md":"1rem","margin":"1.25rem","space-xl":"2rem"},"fontFamily":{"headline-lg":["Inter"],"caption":["Noto Sans"],"body-sm":["Noto Sans"],"headline-md":["Inter"],"body-lg":["Noto Sans"],"display-lg":["Inter"],"label-lg":["Inter"],"label-md":["Inter"],"display-lg-mobile":["Inter"],"label-sm":["Inter"],"headline-sm":["Inter"],"body-md":["Noto Sans"]},"fontSize":{"headline-lg":["24px",{"lineHeight":"32px","fontWeight":"700"}],"caption":["12px",{"lineHeight":"16px","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"display-lg":["36px",{"lineHeight":"44px","fontWeight":"700"}],"label-lg":["16px",{"lineHeight":"22px","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"20px","fontWeight":"600"}],"display-lg-mobile":["28px",{"lineHeight":"36px","fontWeight":"700"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"600"}],"headline-sm":["18px",{"lineHeight":"26px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-60 bg-surface-container-low z-50 flex flex-col justify-between p-margin select-none"><div class="flex flex-col gap-space-xl"><div class="flex items-center gap-space-sm pt-space-xs"><span class="w-2 h-2 rounded-full bg-primary-container inline-block"></span><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface uppercase">AX YOUR BODY</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-inverse-surface text-inverse-on-surface rounded-xl"><a aria-current="page" class="flex items-center justify-between px-space-md py-space-sm font-label-md transition-colors bg-inverse-surface text-inverse-on-surface rounded-xl" data-path="today" href="#"><span class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">calendar_today</span><span>오늘</span></span><span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="workouts" href="#"><span class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">fitness_center</span><span>운동</span></span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="nourishment" href="#"><span class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">restaurant</span><span>먹은 것</span></span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="body-evolution" href="#"><span class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">accessibility_new</span><span>몸 변화</span></span></a></nav></div><div class="pt-space-md"><a class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors" data-path="settings-notifications" href="#"><div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-secondary text-[18px]">person</span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-label-sm text-label-sm text-on-surface truncate">my-f-general</span><span class="font-caption text-caption text-secondary truncate">평온한 회복 일상</span></div><span class="material-symbols-outlined text-secondary text-[16px]">more_vert</span></a></div></aside><div class="pl-60 min-h-screen flex flex-col"><header class="fixed top-0 left-60 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 flex items-center justify-between px-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="flex items-center gap-space-sm"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span><span class="font-headline-sm text-headline-sm text-on-surface">AX YOUR BODY</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-secondary font-caption text-caption px-space-sm py-space-xs rounded-full bg-surface-container-low"><span class="material-symbols-outlined text-[14px]">eco</span><span>부담 없는 하루 15분</span></div><a class="w-8 h-8 rounded-full bg-primary flex items-center justify-center transition-opacity hover:opacity-90" data-path="settings-notifications" href="#" title="설정 및 알림"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></a></div></header><main class="w-full pt-16 flex-1 bg-surface"><div class="max-w-[1100px] mx-auto px-space-xl py-space-xl"><div class="flex flex-col w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg w-full items-start">
+<!-- MAIN COLUMN (Left 2/3: 8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- 1. Situation Card -->
+<section class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-sm flex flex-col gap-space-lg relative overflow-hidden">
+<!-- Gentle Accent Blur Backdrop -->
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-primary-fixed/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col gap-space-xs relative z-10">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-space-sm py-0.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm">
+              일요일의 편안한 시작
+            </span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span>
+<span class="font-caption text-caption text-secondary">마음 편한 재충전 루틴</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface tracking-tight mt-space-xs">
+            5일 쉬었어요. 오늘은 가볍게 해 볼까요?
+          </h2>
+<p class="font-body-md text-body-md text-secondary">
+            오랜만의 움직임은 몸을 가볍게 푸는 것만으로도 충분합니다.
+          </p>
+</div>
+<!-- Routine Highlight Visual Card -->
+<div class="relative w-full rounded-2xl overflow-hidden bg-surface-container-high group">
+<div class="w-full h-56 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A serene, minimalist home living room filled with gentle natural morning sunlight. A neutral beige yoga mat rests on light oak wooden floor, with soft shadows and a small green potted plant nearby. Calming Scandinavian aesthetic with clean warm tones, zero clutter, inviting peaceful movement." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDcywZJyjascowU1sdu-BYD-gj42PCfgcK0_99PDERvltY1ZcelZz4501m-Picq1ZTaHhOemCKGnBrCKhRnRr_hVipgRTptkIuhDnZTX3C71Sg65-hhZ_NEw3LzNFbkdaPcOqiRDaT1V8hyMUAboJ1HAVe0ReV6BKY3bCaMsw9G4BhOnBfbaq-ZDQaJzwo_xxZMAQ9NRHggxS3yOKNFXBDWIUsAtJiLLV_4R8FNXDg')">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-inverse-surface/30 to-transparent"></div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-space-lg flex flex-col gap-space-xs text-on-primary">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 px-space-sm py-1 rounded-full bg-surface-container-lowest/25 backdrop-blur-md font-label-sm text-label-sm text-on-primary">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 20분
+              </span>
+<span class="font-caption text-caption text-surface-container-highest tracking-wide uppercase">Warmup &amp; Stretch</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-primary font-semibold">
+              목·어깨 풀기 스트레칭 · 20분
+            </h3>
+<p class="font-body-sm text-body-sm text-surface-container-high">
+              앉아서 굳은 목 앞쪽을 늘려 줘요
+            </p>
+</div>
+</div>
+<!-- CTA Action Row -->
+<div class="flex items-center justify-between pt-space-xs flex-wrap gap-space-md">
+<div class="flex items-center gap-space-md">
+<a class="inline-flex items-center justify-center bg-primary-container text-on-primary px-space-xl py-3.5 rounded-xl font-label-lg text-label-lg transition-all hover:opacity-90 active:opacity-80 shadow-sm" data-path="workout-active" href="#">
+              시작하기
+            </a>
+<button class="px-space-md py-3.5 text-secondary font-label-md text-label-md hover:text-on-surface transition-colors" type="button">
+              나중에
+            </button>
+</div>
+<span class="font-caption text-caption text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">self_improvement</span>
+            언제든 멈춰도 괜찮아요
+          </span>
+</div>
+<!-- Next Week Day Selector Section -->
+<div class="bg-surface-container-low rounded-2xl p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">다음 주 하루 고르기 →</span>
+<span class="font-caption text-caption text-secondary">가장 여유로운 날에 알림을 드릴게요</span>
+</div>
+<div class="flex items-center gap-space-xs" id="weekday-selector">
+<button class="weekday-chip w-10 h-10 rounded-full font-label-md text-label-md transition-colors bg-surface-container-lowest text-on-surface hover:bg-surface-container-high" data-day="mon" type="button">월</button>
+<button class="weekday-chip w-10 h-10 rounded-full font-label-md text-label-md transition-colors bg-surface-container-lowest text-on-surface hover:bg-surface-container-high" data-day="tue" type="button">화</button>
+<button class="weekday-chip w-10 h-10 rounded-full font-label-md text-label-md transition-colors bg-inverse-surface text-inverse-on-surface font-semibold shadow-sm" data-day="wed" type="button">수</button>
+<button class="weekday-chip w-10 h-10 rounded-full font-label-md text-label-md transition-colors bg-surface-container-lowest text-on-surface hover:bg-surface-container-high" data-day="thu" type="button">목</button>
+<button class="weekday-chip w-10 h-10 rounded-full font-label-md text-label-md transition-colors bg-surface-container-lowest text-on-surface hover:bg-surface-container-high" data-day="fri" type="button">금</button>
+</div>
+</div>
+</section>
+<!-- 2. Body-check Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">tune</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">오늘의 컨디션 기록</h3>
+</div>
+<span class="font-caption text-caption text-secondary">판단 없이 편안하게</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md pt-space-xs">
+<!-- Sleep Check -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">어젯밤 잠</span>
+<span class="font-caption text-caption text-secondary">충분한 수면 시간</span>
+</div>
+<div class="grid grid-cols-4 gap-space-xs" id="sleep-chips">
+<button class="sleep-chip py-2 px-1 text-center rounded-lg font-caption text-caption transition-colors bg-surface-container-lowest text-secondary hover:text-on-surface" type="button">5시간 이하</button>
+<button class="sleep-chip py-2 px-1 text-center rounded-lg font-caption text-caption transition-colors bg-surface-container-lowest text-secondary hover:text-on-surface" type="button">6시간</button>
+<button class="sleep-chip py-2 px-1 text-center rounded-lg font-caption text-caption transition-colors bg-inverse-surface text-inverse-on-surface font-semibold" type="button">7시간</button>
+<button class="sleep-chip py-2 px-1 text-center rounded-lg font-caption text-caption transition-colors bg-surface-container-lowest text-secondary hover:text-on-surface" type="button">8시간 이상</button>
+</div>
+</div>
+<!-- Body Condition Check -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">오늘 몸 상태</span>
+<span class="font-caption text-caption text-secondary">가벼움 정도</span>
+</div>
+<div class="flex items-center justify-between gap-space-xs" id="condition-scales">
+<button class="condition-btn flex-1 py-2 rounded-lg font-label-md text-label-md transition-colors bg-surface-container-lowest text-secondary hover:text-on-surface" type="button">1</button>
+<button class="condition-btn flex-1 py-2 rounded-lg font-label-md text-label-md transition-colors bg-surface-container-lowest text-secondary hover:text-on-surface" type="button">2</button>
+<button class="condition-btn flex-1 py-2 rounded-lg font-label-md text-label-md transition-colors bg-surface-container-lowest text-secondary hover:text-on-surface" type="button">3</button>
+<button class="condition-btn flex-1 py-2 rounded-lg font-label-md text-label-md transition-colors bg-inverse-surface text-inverse-on-surface font-semibold shadow-sm" type="button">4</button>
+<button class="condition-btn flex-1 py-2 rounded-lg font-label-md text-label-md transition-colors bg-surface-container-lowest text-secondary hover:text-on-surface" type="button">5</button>
+</div>
+<div class="flex justify-between items-center px-1 font-caption text-caption text-secondary">
+<span>매우 나쁨</span>
+<span>보통</span>
+<span>매우 좋음</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Workout Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-secondary">오늘 할 운동</span>
+<span class="font-caption text-caption text-secondary">원할 때 언제든 교체 가능</span>
+</div>
+<a class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group" data-path="routine-detail" href="#">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center flex-shrink-0 group-hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-secondary text-[24px]">fitness_center</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors truncate">
+                코어·자세 루틴 · 25분
+              </span>
+<span class="font-body-sm text-body-sm text-secondary truncate">
+                오래 앉아 굳은 허리와 코어를 깨워요
+              </span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs text-secondary pl-space-sm flex-shrink-0">
+<span class="font-label-sm text-label-sm hidden sm:inline">상세 보기</span>
+<span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</a>
+</section>
+<!-- 4. Quick Action Button -->
+<a class="w-full py-space-md rounded-2xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-space-xs transition-colors shadow-sm" data-path="nourishment-log" href="#">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>먹은 것</span>
+</a>
+</div>
+<!-- SIDE COLUMN (Right 1/3: 4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Side Card 1: 나의 다짐 -->
+<section class="bg-surface-container rounded-2xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between text-secondary">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="font-label-sm text-label-sm">나의 다짐</span>
+</div>
+<span class="material-symbols-outlined text-[16px]">format_quote</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-relaxed pt-space-xs">
+          “야근한 날도 먹은 건 가볍게 남기기”
+        </p>
+<div class="flex items-center justify-between pt-space-sm">
+<span class="font-caption text-caption text-secondary">부담 없이 지키는 나만의 리듬</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</div>
+</section>
+<!-- Side Card 2: 이번 주 운동 Mini Strip Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary">이번 주 운동</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">이번 주 2번 했어요</h4>
+</div>
+<a class="font-caption text-caption text-secondary hover:text-on-surface flex items-center gap-0.5 transition-colors" data-path="workouts" href="#">
+            전체 보기 →
+          </a>
+</div>
+<!-- Weekly Strip Visual Representation -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="grid grid-cols-7 gap-1 text-center">
+<span class="font-caption text-caption text-secondary">월</span>
+<span class="font-caption text-caption text-secondary">화</span>
+<span class="font-caption text-caption font-semibold text-on-surface">수</span>
+<span class="font-caption text-caption text-secondary">목</span>
+<span class="font-caption text-caption font-semibold text-primary">금</span>
+<span class="font-caption text-caption text-secondary">토</span>
+<span class="font-caption text-caption font-semibold text-on-surface">일</span>
+</div>
+<div class="grid grid-cols-7 gap-1 items-center justify-items-center py-space-xs">
+<!-- 월 (Empty) -->
+<div class="w-7 h-7 rounded-full flex items-center justify-center bg-surface-container-high">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-variant"></span>
+</div>
+<!-- 화 (Empty) -->
+<div class="w-7 h-7 rounded-full flex items-center justify-center bg-surface-container-high">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-variant"></span>
+</div>
+<!-- 수 (Completed: Black Dot) -->
+<div class="w-7 h-7 rounded-full flex items-center justify-center bg-inverse-surface text-inverse-on-surface">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<!-- 목 (Empty) -->
+<div class="w-7 h-7 rounded-full flex items-center justify-center bg-surface-container-high">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-variant"></span>
+</div>
+<!-- 금 (Scheduled: Subtle Accent Marker) -->
+<div class="w-7 h-7 rounded-full flex items-center justify-center bg-surface-container-highest">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<!-- 토 (Empty) -->
+<div class="w-7 h-7 rounded-full flex items-center justify-center bg-surface-container-high">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-variant"></span>
+</div>
+<!-- 일 (Completed/Today: Black Dot) -->
+<div class="w-7 h-7 rounded-full flex items-center justify-center bg-inverse-surface text-inverse-on-surface ring-2 ring-primary-container/20">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-caption text-caption text-secondary">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-inverse-surface inline-block"></span> 완료
+            </span>
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary inline-block"></span> 예정
+            </span>
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-surface-variant inline-block"></span> 휴식
+            </span>
+</div>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">spa</span>
+<span class="font-body-sm text-body-sm text-secondary">
+            쉬어간 날도 몸이 회복되는 시간입니다.
+          </span>
+</div>
+</section>
+<!-- Side Ambient Graphic Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex flex-col gap-space-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">마음 챙김 가이드</span>
+<span class="font-caption text-caption text-primary">일요일 온기</span>
+</div>
+<div class="w-full h-32 rounded-xl bg-cover bg-center mt-1" data-alt="A warm cup of herbal tea resting beside a linen journal and soft indoor botanical leaf in delicate Japanese minimalist interior setting. Warm afternoon light streaming across a cream wooden tabletop." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBSOgALEjpLW2YiKrCdzW55w88Wb1ZWed-j3xTjaGgPa898YJ8u0Cs5y-sW4Dijt1UtoYlplcWtfKKuWhwDiO1tGgx6gsr1tHp3fiMimK7iM1gerwMjV-Bc3lcf1Bf-NMwkfBII1lWTqU6lPQBWURpSGAHtcfnhU4tqCuyUl_EcieilVh9T--pLUx7WzlqvadNg6g1KhdsZv4lIzDE3qzLKHPFQz55xUYBhhD_aXko')"></div>
+<p class="font-caption text-caption text-secondary mt-1">
+          천천히 마시는 한 잔의 물과 함께 가벼운 호흡으로 하루를 정리해 보세요.
+        </p>
+</section>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for chips toggles
+  document.querySelectorAll('#weekday-selector .weekday-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#weekday-selector .weekday-chip').forEach(b => {
+        b.className = 'weekday-chip w-10 h-10 rounded-full font-label-md text-label-md transition-colors bg-surface-container-lowest text-on-surface hover:bg-surface-container-high';
+      });
+      btn.className = 'weekday-chip w-10 h-10 rounded-full font-label-md text-label-md transition-colors bg-inverse-surface text-inverse-on-surface font-semibold shadow-sm';
+    });
+  });
+
+  document.querySelectorAll('#sleep-chips .sleep-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#sleep-chips .sleep-chip').forEach(b => {
+        b.className = 'sleep-chip py-2 px-1 text-center rounded-lg font-caption text-caption transition-colors bg-surface-container-lowest text-secondary hover:text-on-surface';
+      });
+      btn.className = 'sleep-chip py-2 px-1 text-center rounded-lg font-caption text-caption transition-colors bg-inverse-surface text-inverse-on-surface font-semibold';
+    });
+  });
+
+  document.querySelectorAll('#condition-scales .condition-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#condition-scales .condition-btn').forEach(b => {
+        b.className = 'condition-btn flex-1 py-2 rounded-lg font-label-md text-label-md transition-colors bg-surface-container-lowest text-secondary hover:text-on-surface';
+      });
+      btn.className = 'condition-btn flex-1 py-2 rounded-lg font-label-md text-label-md transition-colors bg-inverse-surface text-inverse-on-surface font-semibold shadow-sm';
+    });
+  });
+</script></div></main></div></body></html>

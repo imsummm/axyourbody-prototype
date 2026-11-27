@@ -37,15 +37,15 @@
   <main class="flex-1 min-w-0">
     <header class="h-16 border-b border-hairline px-8 flex items-center gap-8">
       <span class="text-button text-ink border-b-2 border-ink py-4">이번 주 운동</span>
-      <a href="#" data-path="workout-catalog" class="text-button text-mute py-4 hover:text-ink active:text-body">따라 할 운동</a>
+      <a href="../d6/" data-path="workout-catalog" class="text-button text-mute py-4 hover:text-ink active:text-body">따라 할 운동</a>
     </header>
 
     <div class="max-w-[1100px] mx-auto p-8 grid grid-cols-12 gap-6 items-start">
       <div class="col-span-8 flex flex-col gap-6">
         <div>
-          <p class="text-caption text-mute">10/26 ~ 11/1 · 일요일 밤</p>
-          <h1 class="text-title text-ink mt-1">이번 주 2번 했어요</h1>
-          <p class="text-body text-mute mt-1">토요일 폼롤러는 중간까지 했어요.</p>
+          <p id="wk-range" class="text-caption text-mute">10/26 ~ 11/1 · 일요일 밤</p>
+          <h1 id="wk-count" class="text-title text-ink mt-1">이번 주 2번 했어요</h1>
+          <p id="wk-sub" class="text-body text-mute mt-1">토요일 폼롤러는 중간까지 했어요.</p>
         </div>
 
         <section class="rounded-lg bg-card p-6 grid grid-cols-7 gap-2 text-center">
@@ -55,36 +55,37 @@
           <div><p class="text-caption text-mute">목 10/29</p><span class="block w-12 h-12 mx-auto mt-2 rounded-full bg-canvas"></span></div>
           <div><p class="text-caption text-ink font-semibold">금 10/30</p><span class="block w-12 h-12 mx-auto mt-2 rounded-full border-2 border-stone bg-canvas"></span><p class="text-caption text-mute mt-2">못 했어요</p></div>
           <div><p class="text-caption text-ink font-semibold">토 10/31</p><span class="block w-12 h-12 mx-auto mt-2 rounded-full bg-stone"></span><p class="text-caption text-ink mt-2">여기까지 했어요</p></div>
-          <div><p class="text-caption text-ink font-semibold">일 11/1</p><span class="block w-12 h-12 mx-auto mt-2 rounded-full bg-ink text-white"><svg class="w-6 h-6 m-3" aria-label="했어요"><use href="../assets/icons.svg#i-check"/></svg></span><p class="text-caption text-ink mt-2">했어요</p></div>
+          <div><p class="text-caption text-ink font-semibold">일 11/1</p><span id="wk-sun" class="block w-12 h-12 mx-auto mt-2 rounded-full bg-ink text-white"><svg class="w-6 h-6 m-3" aria-label="했어요"><use href="../assets/icons.svg#i-check"/></svg></span><p id="wk-sun-cap" class="text-caption text-ink mt-2">했어요</p></div>
         </section>
 
         <section>
           <h2 class="text-heading-sm text-ink">운동한 날과 할 운동</h2>
-          <div class="mt-2 rounded-lg bg-card">
-            <a href="#" data-path="workout-detail" class="p-6 border-b border-hairline flex items-center gap-6 hover:bg-secondary active:bg-secondary-pressed">
-              <span class="w-16 shrink-0 text-center"><span class="block text-caption text-mute">10월</span><span class="block text-title-sm text-ink">28</span></span>
-              <span class="flex-1 min-w-0"><span class="block text-heading-sm text-ink">목·어깨 풀기 20분</span><span class="block text-body-sm text-mute mt-1">거실 매트 · 스트레칭</span></span>
-              <span class="px-3 py-1 rounded-full bg-ink text-white text-caption">했어요</span>
+          <div id="wk-list" class="mt-2 rounded-lg bg-card">
+            <a href="../d7/?r=neck" data-path="workout-detail" data-status="했어요" data-place="집" data-kind="스트레칭" class="p-6 border-b border-hairline flex items-center gap-6 hover:bg-secondary active:bg-secondary-pressed">
+              <span class="w-16 shrink-0 text-center"><span class="block text-caption text-mute" data-f="mon">10월</span><span class="block text-title-sm text-ink" data-f="day">28</span></span>
+              <span class="flex-1 min-w-0"><span class="block text-heading-sm text-ink" data-f="title">목·어깨 풀기 20분</span><span class="block text-body-sm text-mute mt-1" data-f="sub">거실 매트 · 스트레칭</span></span>
+              <span data-f="chip" data-base="px-3 py-1 rounded-full text-caption" class="px-3 py-1 rounded-full bg-ink text-white text-caption">했어요</span>
             </a>
-            <a href="#" data-path="workout-detail" class="p-6 border-b border-hairline flex items-center gap-6 hover:bg-secondary active:bg-secondary-pressed">
+            <a href="../d7/?r=core" data-path="workout-detail" data-status="못 했어요" data-place="집" data-kind="코어" class="p-6 border-b border-hairline flex items-center gap-6 hover:bg-secondary active:bg-secondary-pressed">
               <span class="w-16 shrink-0 text-center"><span class="block text-caption text-mute">10월</span><span class="block text-title-sm text-ink">30</span></span>
               <span class="flex-1 min-w-0"><span class="block text-heading-sm text-ink">코어·자세 20분</span><span class="block text-body-sm text-mute mt-1">집 · 코어</span></span>
               <span class="px-3 py-1 rounded-full bg-canvas text-mute text-caption">못 했어요</span>
             </a>
-            <a href="#" data-path="workout-detail" class="p-6 border-b border-hairline flex items-center gap-6 hover:bg-secondary active:bg-secondary-pressed">
+            <a href="../d7/?r=foam" data-path="workout-detail" data-status="여기까지 했어요" data-place="집" data-kind="폼롤러" class="p-6 border-b border-hairline flex items-center gap-6 hover:bg-secondary active:bg-secondary-pressed">
               <span class="w-16 shrink-0 text-center"><span class="block text-caption text-mute">10월</span><span class="block text-title-sm text-ink">31</span></span>
               <span class="flex-1 min-w-0"><span class="block text-heading-sm text-ink">폼롤러 15분 중 8분</span><span class="block text-body-sm text-mute mt-1">집 · 폼롤러 · 종아리와 등</span></span>
               <span class="px-3 py-1 rounded-full bg-stone text-ink text-caption">여기까지 했어요</span>
             </a>
-            <a href="#" data-path="workout-detail" class="p-6 flex items-center gap-6 hover:bg-secondary active:bg-secondary-pressed">
+            <a href="../d7/?r=core" data-path="workout-detail" data-status="했어요" data-place="집" data-kind="코어" class="p-6 flex items-center gap-6 hover:bg-secondary active:bg-secondary-pressed">
               <span class="w-16 shrink-0 text-center"><span class="block text-caption text-mute">11월</span><span class="block text-title-sm text-ink">1</span></span>
               <span class="flex-1 min-w-0"><span class="block text-heading-sm text-ink">코어·자세 25분</span><span class="block text-body-sm text-mute mt-1">거실 · 코어</span></span>
               <span class="px-3 py-1 rounded-full bg-ink text-white text-caption">했어요</span>
             </a>
           </div>
+          <p id="wk-empty" class="hidden py-6 text-body-sm text-mute text-center">이 조건에 맞는 운동이 없어요.</p>
         </section>
 
-        <a href="#" data-path="workout-catalog" class="w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 hover:bg-secondary-pressed active:bg-stone">
+        <a href="../d6/" data-path="workout-catalog" class="w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 hover:bg-secondary-pressed active:bg-stone">
           <svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-plus"/></svg>할 운동 추가
         </a>
       </div>
@@ -93,31 +94,31 @@
         <section class="rounded-lg bg-card p-6">
           <div class="flex items-center justify-between">
             <h2 class="text-heading-sm text-ink">거르기</h2>
-            <button type="button" class="px-3 py-1 rounded-full text-caption text-mute hover:bg-secondary active:bg-secondary-pressed">처음으로</button>
+            <button type="button" data-action="reset-filter" class="px-3 py-1 rounded-full text-caption text-mute hover:bg-secondary active:bg-secondary-pressed">처음으로</button>
           </div>
           <p class="text-button text-ink mt-4">기간</p>
-          <div class="mt-2 flex flex-wrap gap-2">
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">전체</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">이번 주</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">이번 달</button>
+          <div class="mt-2 flex flex-wrap gap-2" data-group="wk-period" data-default="이번 주" data-on="bg-ink text-white active:bg-dark" data-off="bg-canvas text-ink hover:bg-secondary active:bg-secondary-pressed">
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">전체</button>
+            <button type="button" data-action="pick" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">이번 주</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">이번 달</button>
           </div>
           <p class="text-button text-ink mt-4">장소</p>
-          <div class="mt-2 flex flex-wrap gap-2">
-            <button type="button" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">집</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">헬스장</button>
+          <div class="mt-2 flex flex-wrap gap-2" data-group="wk-place" data-on="bg-ink text-white active:bg-dark" data-off="bg-canvas text-ink hover:bg-secondary active:bg-secondary-pressed">
+            <button type="button" data-action="pick" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">집</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">헬스장</button>
           </div>
           <p class="text-button text-ink mt-4">종류</p>
-          <div class="mt-2 flex flex-wrap gap-2">
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">스트레칭</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">코어</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">폼롤러</button>
+          <div class="mt-2 flex flex-wrap gap-2" data-group="wk-kind" data-multi data-on="bg-ink text-white active:bg-dark" data-off="bg-canvas text-ink hover:bg-secondary active:bg-secondary-pressed">
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">스트레칭</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">코어</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">폼롤러</button>
           </div>
           <p class="text-button text-ink mt-4">했는지</p>
           <div class="mt-2 flex flex-col gap-2 text-body-sm text-ink">
-            <label class="flex items-center gap-2"><input type="checkbox" checked="" class="w-4 h-4 accent-black"/>했어요</label>
-            <label class="flex items-center gap-2"><input type="checkbox" checked="" class="w-4 h-4 accent-black"/>여기까지 했어요</label>
-            <label class="flex items-center gap-2"><input type="checkbox" checked="" class="w-4 h-4 accent-black"/>못 했어요</label>
+            <label class="flex items-center gap-2"><input type="checkbox" checked="" data-action="filter-check" data-value="했어요" class="w-4 h-4 accent-black"/>했어요</label>
+            <label class="flex items-center gap-2"><input type="checkbox" checked="" data-action="filter-check" data-value="여기까지 했어요" class="w-4 h-4 accent-black"/>여기까지 했어요</label>
+            <label class="flex items-center gap-2"><input type="checkbox" checked="" data-action="filter-check" data-value="못 했어요" class="w-4 h-4 accent-black"/>못 했어요</label>
           </div>
         </section>
 
@@ -125,8 +126,8 @@
           <img class="w-full h-32 object-cover" src="../assets/img/d5-bg1.jpg" alt="오후 햇빛이 드는 거실 바닥에 펼친 운동 매트"/>
           <div class="p-6">
             <p class="text-caption text-mute">다음 주 할 운동</p>
-            <p class="text-heading-sm text-ink mt-1">수요일 · 목·어깨 풀기 20분</p>
-            <p class="text-body-sm text-mute mt-1">일요일에 고른 날이에요. 바쁘면 책상 앞 스트레칭 10분으로 바꿀 수 있어요.</p>
+            <p id="next-day-label" class="text-heading-sm text-ink mt-1">수요일 · 목·어깨 풀기 20분</p>
+            <p id="next-day-note" class="text-body-sm text-mute mt-1">일요일에 고른 날이에요. 바쁘면 책상 앞 스트레칭 10분으로 바꿀 수 있어요.</p>
           </div>
         </section>
       </div>
@@ -134,18 +135,5 @@
   </main>
 </div>
 
-<script>
-(function () {
-  document.querySelectorAll('section .flex.flex-wrap').forEach(function (row) {
-    var list = row.querySelectorAll('button');
-    list.forEach(function (b) {
-      b.addEventListener('click', function () {
-        list.forEach(function (x) { x.classList.remove('bg-ink', 'text-white'); x.classList.add('bg-canvas', 'text-ink'); });
-        b.classList.remove('bg-canvas', 'text-ink'); b.classList.add('bg-ink', 'text-white');
-      });
-    });
-  });
-})();
-</script>
 </body>
 </html>

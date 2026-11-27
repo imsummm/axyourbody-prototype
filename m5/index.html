@@ -19,16 +19,16 @@
     </a>
   </div>
   <div class="max-w-[480px] mx-auto px-4 flex items-center gap-6 border-b border-hairline">
-    <button type="button" aria-current="page" class="py-3 text-button text-ink border-b-2 border-ink active:bg-card">이번 주 운동</button>
-    <a href="#" data-path="workout-programs" class="py-3 text-button text-mute active:bg-card">따라 할 운동</a>
-    <button type="button" id="filter-btn" aria-label="필터: 장소·했는지" class="ml-auto w-12 h-12 rounded-full flex items-center justify-center text-ink active:bg-card"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-filter"/></svg></button>
+    <span aria-current="page" class="py-3 text-button text-ink border-b-2 border-ink">이번 주 운동</span>
+    <a href="../m6/" data-path="workout-programs" class="py-3 text-button text-mute active:bg-card">따라 할 운동</a>
+    <button type="button" data-action="open" data-target="filter-sheet" aria-label="필터: 장소·했는지" class="ml-auto w-12 h-12 rounded-full flex items-center justify-center text-ink active:bg-card"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-filter"/></svg></button>
   </div>
 </header>
 
 <main class="max-w-[480px] mx-auto px-4 pt-6 pb-16">
-  <p class="text-caption text-mute">10/26 ~ 11/1 · 일요일 밤</p>
-  <h2 class="text-title text-ink mt-1">이번 주 2번 했어요</h2>
-  <p class="text-body-sm text-mute mt-1">토요일 폼롤러는 중간까지 했어요.</p>
+  <p id="wk-range" class="text-caption text-mute">10/26 ~ 11/1 · 일요일 밤</p>
+  <h2 id="wk-count" class="text-title text-ink mt-1">이번 주 2번 했어요</h2>
+  <p id="wk-sub" class="text-body-sm text-mute mt-1">토요일 폼롤러는 중간까지 했어요.</p>
 
   <section class="mt-6 rounded-lg bg-card p-4">
     <div class="grid grid-cols-7 text-center text-caption text-mute">
@@ -38,59 +38,61 @@
       <span>목<span class="block w-8 h-8 mx-auto mt-1 rounded-full bg-canvas"></span></span>
       <span>금<span class="block w-8 h-8 mx-auto mt-1 rounded-full border-2 border-stone bg-canvas" title="못 했어요"></span></span>
       <span class="text-ink font-semibold">토<span class="block w-8 h-8 mx-auto mt-1 rounded-full bg-stone" title="여기까지 했어요"></span></span>
-      <span class="text-ink font-semibold">일<span class="block w-8 h-8 mx-auto mt-1 rounded-full bg-ink text-white"><svg class="w-4 h-4 m-2" aria-label="했어요"><use href="../assets/icons.svg#i-check"/></svg></span></span>
+      <span class="text-ink font-semibold">일<span id="wk-sun" class="block w-8 h-8 mx-auto mt-1 rounded-full bg-ink text-white"><svg class="w-4 h-4 m-2" aria-label="했어요"><use href="../assets/icons.svg#i-check"/></svg></span></span>
     </div>
     <p class="text-caption text-mute mt-4">검정은 했어요, 회색은 여기까지 했어요, 테두리는 못 했어요</p>
   </section>
 
   <section class="mt-6">
     <h3 class="text-heading-sm text-ink">운동한 날과 할 운동</h3>
-    <div class="mt-2 flex flex-col">
-      <a href="#" data-path="workout-detail-wed" class="py-4 border-b border-hairline flex items-center justify-between gap-4 active:bg-card">
-        <span class="min-w-0"><span class="block text-button text-ink">10/28 수 · 목·어깨 풀기 20분</span><span class="block text-caption text-mute mt-1">거실 매트 · 스트레칭</span></span>
-        <span class="shrink-0 px-3 py-1 rounded-full bg-ink text-white text-caption">했어요</span>
+    <div id="wk-list" class="mt-2 flex flex-col">
+      <a href="../m7/?r=neck" data-path="workout-detail-wed" data-status="했어요" data-place="집" data-kind="스트레칭" class="py-4 border-b border-hairline flex items-center justify-between gap-4 active:bg-card">
+        <span class="min-w-0"><span class="block text-button text-ink" data-f="title">10/28 수 · 목·어깨 풀기 20분</span><span class="block text-caption text-mute mt-1" data-f="sub">거실 매트 · 스트레칭</span></span>
+        <span data-f="chip" data-base="shrink-0 px-3 py-1 rounded-full text-caption" class="shrink-0 px-3 py-1 rounded-full bg-ink text-white text-caption">했어요</span>
       </a>
-      <a href="#" data-path="workout-detail-fri" class="py-4 border-b border-hairline flex items-center justify-between gap-4 active:bg-card">
+      <a href="../m7/?r=core" data-path="workout-detail-fri" data-status="못 했어요" data-place="집" data-kind="코어" class="py-4 border-b border-hairline flex items-center justify-between gap-4 active:bg-card">
         <span class="min-w-0"><span class="block text-button text-ink">10/30 금 · 코어·자세 20분</span><span class="block text-caption text-mute mt-1">집 · 코어</span></span>
         <span class="shrink-0 px-3 py-1 rounded-full bg-card text-mute text-caption">못 했어요</span>
       </a>
-      <a href="#" data-path="workout-detail-sat" class="py-4 border-b border-hairline flex items-center justify-between gap-4 active:bg-card">
+      <a href="../m7/?r=foam" data-path="workout-detail-sat" data-status="여기까지 했어요" data-place="집" data-kind="폼롤러" class="py-4 border-b border-hairline flex items-center justify-between gap-4 active:bg-card">
         <span class="min-w-0"><span class="block text-button text-ink">10/31 토 · 폼롤러 15분 중 8분</span><span class="block text-caption text-mute mt-1">집 · 폼롤러 · 종아리와 등</span></span>
         <span class="shrink-0 px-3 py-1 rounded-full bg-stone text-ink text-caption">여기까지 했어요</span>
       </a>
-      <a href="#" data-path="workout-detail-sun" class="py-4 flex items-center justify-between gap-4 active:bg-card">
+      <a href="../m7/?r=core" data-path="workout-detail-sun" data-status="했어요" data-place="집" data-kind="코어" class="py-4 flex items-center justify-between gap-4 active:bg-card">
         <span class="min-w-0"><span class="block text-button text-ink">11/1 일 · 코어·자세 25분</span><span class="block text-caption text-mute mt-1">거실 · 코어</span></span>
         <span class="shrink-0 px-3 py-1 rounded-full bg-ink text-white text-caption">했어요</span>
       </a>
     </div>
   </section>
 
-  <a href="#" data-path="workout-browse" class="mt-6 w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 active:bg-secondary-pressed">
+  <p id="wk-empty" class="hidden py-6 text-body-sm text-mute text-center">이 조건에 맞는 운동이 없어요.</p>
+
+  <a href="../m6/" data-path="workout-browse" class="mt-6 w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 active:bg-secondary-pressed">
     <svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-plus"/></svg>할 운동 추가
   </a>
 </main>
 
-<div id="filter-sheet" class="hidden fixed inset-0 z-50">
-  <div class="absolute inset-0 bg-black/50"></div>
+<div id="filter-sheet" data-sheet class="hidden fixed inset-0 z-50">
+  <div data-action="close" data-target="filter-sheet" class="absolute inset-0 bg-black/50"></div>
   <div class="absolute bottom-0 inset-x-0 max-w-[480px] mx-auto bg-canvas rounded-t-lg p-6">
     <div class="flex items-center justify-between">
       <h3 class="text-heading text-ink">이번 주 운동 거르기</h3>
-      <button type="button" id="close-filter-btn" aria-label="닫기" class="w-12 h-12 rounded-full bg-card text-ink flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-close"/></svg></button>
+      <button type="button" data-action="close" data-target="filter-sheet" aria-label="닫기" class="w-12 h-12 rounded-full bg-card text-ink flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-close"/></svg></button>
     </div>
     <p class="text-button text-ink mt-4">장소</p>
-    <div class="mt-2 flex gap-2">
-      <button type="button" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
-      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">집</button>
-      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">헬스장</button>
+    <div class="mt-2 flex gap-2" data-group="wk-place" data-on="bg-ink text-white active:bg-dark" data-off="bg-card text-ink active:bg-secondary">
+      <button type="button" data-action="pick" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
+      <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">집</button>
+      <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">헬스장</button>
     </div>
     <p class="text-button text-ink mt-4">했는지</p>
-    <div class="mt-2 flex flex-wrap gap-2">
-      <button type="button" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
-      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">했어요</button>
-      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">여기까지 했어요</button>
-      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">못 했어요</button>
+    <div class="mt-2 flex flex-wrap gap-2" data-group="wk-status" data-on="bg-ink text-white active:bg-dark" data-off="bg-card text-ink active:bg-secondary">
+      <button type="button" data-action="pick" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
+      <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">했어요</button>
+      <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">여기까지 했어요</button>
+      <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">못 했어요</button>
     </div>
-    <button type="button" id="apply-filter-btn" class="mt-6 w-full py-4 rounded-md bg-ink text-white text-button active:bg-dark">이 조건으로 보기</button>
+    <button type="button" data-action="apply-filter close" data-target="filter-sheet" class="mt-6 w-full py-4 rounded-md bg-ink text-white text-button active:bg-dark">이 조건으로 보기</button>
   </div>
 </div>
 
@@ -103,22 +105,5 @@
   </div>
 </nav>
 
-<script>
-(function () {
-  var sheet = document.getElementById('filter-sheet');
-  document.getElementById('filter-btn').addEventListener('click', function () { sheet.classList.remove('hidden'); });
-  document.getElementById('close-filter-btn').addEventListener('click', function () { sheet.classList.add('hidden'); });
-  document.getElementById('apply-filter-btn').addEventListener('click', function () { sheet.classList.add('hidden'); });
-  sheet.querySelectorAll('.flex.gap-2, .flex.flex-wrap').forEach(function (row) {
-    var list = row.querySelectorAll('button');
-    list.forEach(function (b) {
-      b.addEventListener('click', function () {
-        list.forEach(function (x) { x.classList.remove('bg-ink', 'text-white'); x.classList.add('bg-card', 'text-ink'); });
-        b.classList.remove('bg-card', 'text-ink'); b.classList.add('bg-ink', 'text-white');
-      });
-    });
-  });
-})();
-</script>
 </body>
 </html>

@@ -29,6 +29,8 @@
   }
   function screenUrl(n, q) { return '../' + KIND + n + '/' + (q || ''); }
   function go(n, q) { location.href = screenUrl(n, q); }
+  // 8 플레이어에서 나갈 때는 방문 기록에서 8을 빼서, 9·5의 뒤로가 플레이어를 다시 열지 않게 한다.
+  function leaveTo(n, q) { location.replace(screenUrl(n, q)); }
   function text(el, s) { if (el) el.textContent = s; }
   function valueOf(el) { return el.getAttribute('data-value') || el.textContent.trim(); }
 
@@ -160,6 +162,21 @@
         show();
       }, 1500);
     },
+    // 5 거르기
+    'apply-filter': function () { applyWeekly(); },
+    'filter-check': function () {
+      WF.checks = $$('input[data-action~="filter-check"]:checked').map(function (c) { return c.getAttribute('data-value'); });
+      applyWeekly();
+    },
+    'reset-filter': function () {
+      $$('[data-group^="wk-"]').forEach(function (g) {
+        paint(g, g.hasAttribute('data-multi') ? [] : (g.getAttribute('data-default') || '전체'));
+        changed(g, true);
+      });
+      $$('input[data-action~="filter-check"]').forEach(function (c) { c.checked = true; });
+      WF.checks = null;
+      applyWeekly();
+    },
     // 8 플레이어 조작
     'pause': function () {
       P.paused = !P.paused;
@@ -171,7 +188,7 @@
     'stop': function () {
       clearInterval(P.timer);
       if (P.done > 0) addLog('여기까지 했어요', P.done);
-      go(5);
+      leaveTo(5);
     },
     // 음성 안내 켜짐 ↔ 꺼짐 표시(소리는 내지 않음). ax-voice에 저장되어 7·8이 같이 쓴다.
     'voice': function () {
@@ -354,9 +371,9 @@
   // 끝까지 진행했으면 "했어요" → 9. 다음 버튼으로 건너뛴 동작이 있으면 "여기까지 했어요" → 5.
   function finish() {
     clearInterval(P.timer);
-    if (P.skipped) { addLog('여기까지 했어요', P.done); go(5); return; }
+    if (P.skipped) { addLog('여기까지 했어요', P.done); leaveTo(5); return; }
     addLog('했어요', P.done);
-    go(9, '?r=' + RID);
+    leaveTo(9, '?r=' + RID);
   }
   function startPlayer() {
     if (ROUTINE.img && $('#pl-img')) { $('#pl-img').src = '../assets/img/' + ROUTINE.img[0]; $('#pl-img').alt = ROUTINE.img[1]; }
@@ -378,7 +395,7 @@
   }
 
 
-  // FLOW:done — 9: 방금 기록한 운동(ax-log 마지막 줄)의 이름과 한 시간을 보여 준다. 어땠는지·뻐근한 곳 답은 ax-done-feel·ax-done-sore에 저장되어 6에 보인다. 확인 → 1(오늘로) 또는 5(이번 주 운동).
+  // FLOW:done — 9: 방금 기록한 운동(ax-log 마지막 줄)의 이름과 한 시간을 보여 준다. 어땠는지·뻐근한 곳 답은 그 기록 줄의 feel·sore로 저장되어 6에 보인다. 확인 → 1(오늘로) 또는 5(이번 주 운동).
   function initDone() {
     var log = store.get('log', []);
     var last = log[log.length - 1];
@@ -386,12 +403,109 @@
       text($('#dn-name'), last.name + ' · ' + minSec(last.doneSec));
       if (last.r !== 'neck') text($('#dn-note'), '이번 주 운동에 "' + last.status + '"로 남겼어요.');
     }
-    var pick = $('#next-day-label');
-    if (pick) {
-      var day = store.get('p2-nextday', '');
-      var names = { '월': '월요일', '화': '화요일', '수': '수요일', '목': '목요일', '금': '금요일' };
-      text(pick, day ? names[day] + ' · 목·어깨 풀기 20분' : '아직 고르지 않았어요');
+    $$('[data-group="done-feel"],[data-group="done-sore"]').forEach(function (g) {
+      paint(g, (last && last[g.getAttribute('data-group') === 'done-feel' ? 'feel' : 'sore']) || '');
+    });
+    paintNextDay();
+  }
+
+
+  // FLOW:weekly — 5: 8에서 남긴 기록(ax-log)을 "11/1 일(오늘)" 줄로 목록 위에 더하고, 이번 주 횟수와 일요일 점에 반영한다.
+  // ax-plan의 할 운동도 목록 끝에 "할 운동" 줄로 보인다. 위쪽 탭은 5↔6 링크, "+ 할 운동 추가"는 6(따라 할 운동)으로 가서 7에서 넣는다.
+  // 거르기: 장소·했는지(모바일은 시트에서 고르고 "이 조건으로 보기"), 데스크톱은 기간·장소·종류·했는지를 바로 적용한다.
+  var KIND_OF = { neck: '스트레칭', core: '코어', foam: '폼롤러', desk: '스트레칭' };
+  var CHIP = { '했어요': 'bg-ink text-white', '여기까지 했어요': 'bg-stone text-ink', '못 했어요': 'bg-card text-mute', '할 운동': 'bg-canvas text-ink border border-stone' };
+  var WF = { place: '전체', status: '전체', kind: [], checks: null };
+  function weeklyRow(tpl, o) {
+    var a = tpl.cloneNode(true);
+    a.setAttribute('href', screenUrl(7, '?r=' + o.r));
+    a.removeAttribute('data-path');
+    a.setAttribute('data-status', o.status);
+    a.setAttribute('data-place', '집');
+    a.setAttribute('data-kind', KIND_OF[o.r] || '스트레칭');
+    a.classList.add('border-b', 'border-hairline');
+    text($('[data-f="title"]', a), o.title);
+    text($('[data-f="sub"]', a), o.sub);
+    text($('[data-f="mon"]', a), o.mon);
+    text($('[data-f="day"]', a), o.day);
+    var chip = $('[data-f="chip"]', a);
+    if (chip) { chip.className = chip.getAttribute('data-base') + ' ' + CHIP[o.status]; chip.textContent = o.status; }
+    return a;
+  }
+  function initWeekly() {
+    var list = $('#wk-list');
+    if (!list) return;
+    var tpl = list.firstElementChild;
+    var log = store.get('log', []), plan = store.get('plan', []);
+    var datePrefix = KIND === 'm' ? '11/1 일 · ' : '';
+    log.forEach(function (l) {
+      var mins = l.status === '했어요' ? l.min + '분' : l.min + '분 중 ' + Math.max(1, Math.ceil(l.doneSec / 60)) + '분';
+      list.insertBefore(weeklyRow(tpl, { r: l.r, status: l.status, title: datePrefix + l.name + ' ' + mins, sub: '오늘 · 이 기기에서 남긴 기록', mon: '11월', day: '1' }), list.firstElementChild);
+    });
+    plan.forEach(function (p) {
+      list.appendChild(weeklyRow(tpl, { r: p.r, status: '할 운동', title: (KIND === 'm' ? p.when + ' · ' : '') + p.name + ' ' + p.min + '분', sub: p.note || (KIND === 'm' ? '할 운동으로 넣어 둔 것' : p.when + ' · 할 운동으로 넣어 둔 것'), mon: p.when.indexOf('다음 주') === 0 ? '다음 주' : '이번 주', day: p.day || '·' }));
+    });
+    var last = list.lastElementChild;
+    $$('#wk-list > a').forEach(function (a) { a.classList.toggle('border-b', a !== last); });
+    var done = log.filter(function (l) { return l.status === '했어요'; }).length;
+    if (log.length) {
+      text($('#wk-count'), '이번 주 ' + (2 + done) + '번 했어요');
+      text($('#wk-sub'), '오늘 남긴 기록 ' + log.length + '개를 더했어요.');
     }
+    var sun = $('#wk-sun');
+    if (sun && done) {
+      while (sun.firstChild) sun.removeChild(sun.firstChild);
+      sun.textContent = String(1 + done);
+      sun.classList.add('flex', 'items-center', 'justify-center', 'text-caption');
+      sun.setAttribute('aria-label', '했어요 ' + (1 + done) + '번');
+      text($('#wk-sun-cap'), '했어요 ' + (1 + done) + '번');
+    }
+    paintNextDay();
+    applyWeekly();
+  }
+  function applyWeekly() {
+    var shown = 0;
+    $$('#wk-list > a').forEach(function (r) {
+      var st = r.getAttribute('data-status');
+      var ok = (WF.place === '전체' || r.getAttribute('data-place') === WF.place) &&
+        (WF.status === '전체' || st === WF.status) &&
+        (!WF.kind.length || WF.kind.indexOf(r.getAttribute('data-kind')) > -1) &&
+        (!WF.checks || st === '할 운동' || WF.checks.indexOf(st) > -1);
+      r.classList.toggle('hidden', !ok);
+      if (ok) shown += 1;
+    });
+    var empty = $('#wk-empty');
+    if (empty) empty.classList.toggle('hidden', shown > 0);
+  }
+  function liveWeekly() { if (!$('#filter-sheet')) applyWeekly(); }
+  ON_CHANGE['wk-place'] = function (v) { WF.place = v || '전체'; liveWeekly(); };
+  ON_CHANGE['wk-status'] = function (v) { WF.status = v || '전체'; liveWeekly(); };
+  ON_CHANGE['wk-kind'] = function (v) { WF.kind = v; liveWeekly(); };
+  ON_CHANGE['wk-period'] = function (v) {
+    var range = { '이번 주': '10/26 ~ 11/1 · 일요일 밤', '이번 달': '10월 1일 ~ 11/1 · 이 기기 기록은 이번 주부터 있어요', '전체': '전체 기간 · 이 기기 기록은 이번 주부터 있어요' };
+    text($('#wk-range'), range[v] || range['이번 주']);
+  };
+
+  function saveDoneAnswer(field) {
+    return function (v, g, byUser) {
+      if (!byUser) return;
+      var log = store.get('log', []);
+      if (!log.length) return;
+      log[log.length - 1][field] = v;
+      store.set('log', log);
+    };
+  }
+  ON_CHANGE['done-feel'] = saveDoneAnswer('feel');
+  ON_CHANGE['done-sore'] = saveDoneAnswer('sore');
+
+  // 2·5·9: 2에서 고른 다음 주 요일을 보여 준다.
+  function paintNextDay() {
+    var el = $('#next-day-label');
+    if (!el || NUM === 2) return;
+    var day = store.get('p2-nextday', '');
+    var names = { '월': '월요일', '화': '화요일', '수': '수요일', '목': '목요일', '금': '금요일' };
+    text(el, day ? names[day] + ' · 목·어깨 풀기 20분' : '아직 고르지 않았어요');
+    if (!day) text($('#next-day-note'), '오늘 화면의 "다음 주 하루 고르기"에서 고를 수 있어요.');
   }
 
   /* ---------- 이벤트 연결 ---------- */
@@ -421,4 +535,5 @@
   if (NUM === 7) renderRoutine();
   if (NUM === 8) startPlayer();
   if (NUM === 9) initDone();
+  if (NUM === 5) initWeekly();
 })();

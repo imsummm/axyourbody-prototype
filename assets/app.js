@@ -110,6 +110,9 @@
       }
       if (g.hasAttribute('data-keep')) store.set(g.getAttribute('data-group'), groupValue(g));
       changed(g, true);
+      // data-saved="요소 id": 저장했다는 글자를 잠깐 보여 준다(m3 원래 동작).
+      var sv = document.getElementById(g.getAttribute('data-saved'));
+      if (sv) { sv.classList.remove('opacity-0'); setTimeout(function () { sv.classList.add('opacity-0'); }, 1500); }
     },
 
     // 시트·서랍·창 열고 닫기: data-target="요소 id"
@@ -140,11 +143,22 @@
   // FLOW:sunday — 2 다시 시작: 시작하기 → 8(?r=neck), 나중에 → 1, "다음 주 하루 고르기" 요일을 고르면 그날 할 운동으로 ax-plan에 넣고 5에 보인다.
   ON_CHANGE['p2-nextday'] = function (day, g, byUser) {
     var b = $('[aria-pressed="true"]', g);
-    var full = b ? b.getAttribute('data-name') : day + '요일';
+    if (!b) { text($('#next-day-label'), '아직 고르지 않았어요'); return; }
+    var full = b.getAttribute('data-name');
     text($('#next-day-label'), full + ' · 목·어깨 풀기 20분');
     if (!byUser) return;
     addPlan({ id: 'sunday-pick', day: day, when: '다음 주 ' + full, name: '목·어깨 풀기 스트레칭', min: 20, r: 'neck' });
     toast('다음 주 ' + full + '에 목·어깨 풀기 20분을 넣어 뒀어요');
+  };
+
+  // FLOW:busy-week — 3 "이번 주 바쁜가요?" 답을 ax-p3-busy에 저장. "예"면 오늘 할 운동을 책상 앞 스트레칭 10분(?r=desk)으로 바꾸고, "아니요"면 코어·자세 25분 그대로.
+  ON_CHANGE['p3-busy'] = function (v) {
+    var busy = v === '예';
+    text($('#today-name'), busy ? '책상 앞 스트레칭 · 10분' : '코어·자세 루틴 · 25분');
+    text($('#today-desc'), busy ? '야근 중에도 자리에서 할 수 있어요' : '오래 앉아 굳은 허리와 코어를 깨워요');
+    var link = $('#today-link');
+    if (link) link.setAttribute('href', screenUrl(7, busy ? '?r=desk' : '?r=core'));
+    if (v) text($('#week-note'), busy ? '이번 주 남은 운동은 10분짜리로 바꿨어요' : '오늘과 금요일 할 운동은 그대로예요');
   };
 
   /* ---------- 이벤트 연결 ---------- */

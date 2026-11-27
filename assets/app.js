@@ -134,7 +134,7 @@
     },
 
     // 7 바로 시작(버튼일 때) → 8, 같은 루틴
-    'start': function () { go(8, '?r=' + RID); },
+    'start': function () { var f = params.get('from'); go(8, '?r=' + RID + (f ? '&from=' + f : '')); },
     // 7 할 운동에 추가 → ax-plan. 5의 할 운동 목록에 보인다.
     'add-plan': function () {
       addPlan({ id: 'add-' + RID, day: '', when: '이번 주', name: ROUTINE.name, min: ROUTINE.min, r: RID });
@@ -161,6 +161,19 @@
         if (i >= ROUTINE.moves.length) { A['preview'](el); return; }
         show();
       }, 1500);
+    },
+    // 6 저장 표시 켜고 끄기
+    'bookmark': function (el, e) {
+      if (e) e.preventDefault();
+      var r = el.getAttribute('data-r'), saved = savedList(), i = saved.indexOf(r);
+      if (i > -1) saved.splice(i, 1); else saved.push(r);
+      store.set('saved', saved);
+      paintBookmarks();
+      applyLibrary();
+      toast(i > -1 ? '저장을 뺐어요' : '저장했어요. "저장됨"에서 다시 볼 수 있어요');
+    },
+    'reset-library': function () {
+      $$('[data-group^="lib-"]').forEach(function (g) { paint(g, g.getAttribute('data-default') || '전체'); changed(g, true); });
     },
     // 5 거르기
     'apply-filter': function () { applyWeekly(); },
@@ -257,7 +270,9 @@
       });
     }
     var start = $('#rt-start');
-    if (start && start.tagName === 'A') start.setAttribute('href', screenUrl(8, '?r=' + RID));
+    var from = +(params.get('from') || 0);
+    if (start && start.tagName === 'A') start.setAttribute('href', screenUrl(8, '?r=' + RID + (from ? '&from=' + from : '')));
+    if (from) text($('#rt-meta'), ROUTINE.meta + ' · ' + from + '분까지 했어요. 시작하면 그다음부터 이어져요');
     var planned = store.get('plan', []).some(function (p) { return p.id === 'add-' + RID; });
     if (planned) text($('#rt-add-text'), '할 운동에 넣었어요');
     document.title = 'AX YOUR BODY · 운동 · ' + ROUTINE.name;
@@ -380,6 +395,14 @@
     document.title = 'AX YOUR BODY · 운동 · ' + ROUTINE.name + ' 하는 중';
     var speed = Math.max(1, Math.min(120, +(params.get('fast') || 1)));
     jump(0);
+    // ?from=분: 그 시간까지 한 것으로 치고 다음 순간부터 이어서 한다(6·7의 "이어서 하기").
+    var skip = Math.max(0, Math.min(ROUTINE.min - 1, +(params.get('from') || 0))) * 60;
+    while (skip > 0) {
+      var step = Math.min(skip, P.left);
+      P.left -= step; P.done += step; skip -= step;
+      if (P.left <= 0) { P.i += 1; P.left = moveSec(P.i); }
+    }
+    paintPlayer();
     P.timer = setInterval(function () {
       if (P.paused) return;
       for (var t = 0; t < speed; t++) {
@@ -508,6 +531,57 @@
     if (!day) text($('#next-day-note'), '오늘 화면의 "다음 주 하루 고르기"에서 고를 수 있어요.');
   }
 
+
+  // FLOW:library — 6: 주제 칩(거북목·어깨 결림·체력·저장됨)과 데스크톱 거르기(시간·부위·형식)가 카드를 실제로 거른다.
+  // 저장 표시는 ax-saved에 저장되고 "저장됨" 칩이 저장한 것만 보여 준다. 카드를 누르면 그 루틴의 7로 간다. 9에서 고른 답이 "지난 운동 뒤 답"으로 보인다.
+  var LF = { topic: '거북목·어깨 결림', time: '전체', part: '전체', format: '전체' };
+  function savedList() { return store.get('saved', ['foam']); }
+  function paintBookmarks() {
+    var saved = savedList();
+    $$('[data-action~="bookmark"]').forEach(function (b) {
+      var on = saved.indexOf(b.getAttribute('data-r')) > -1;
+      b.setAttribute('aria-pressed', String(on));
+      b.setAttribute('aria-label', (on ? '저장됨: ' : '저장: ') + b.getAttribute('data-name'));
+      b.classList.toggle('text-ink', on); b.classList.toggle('text-mute', !on);
+      var svg = $('svg', b); if (svg) svg.setAttribute('fill', on ? 'currentColor' : 'none');
+    });
+  }
+  function timeOk(min) {
+    return LF.time === '전체' || (LF.time === '10분 이하' && min <= 10) || (LF.time === '15~20분' && min >= 15 && min <= 20) || (LF.time === '25분 이상' && min >= 25);
+  }
+  function applyLibrary() {
+    var saved = savedList(), shown = 0, others = 0;
+    $$('[data-lib]').forEach(function (c) {
+      var r = c.getAttribute('data-lib');
+      var ok = (LF.topic === '저장됨' ? saved.indexOf(r) > -1 : words(c.getAttribute('data-topic').replace(/ /g, '_').replace(/,/g, ' ')).indexOf(LF.topic.replace(/ /g, '_')) > -1) &&
+        timeOk(+c.getAttribute('data-min')) &&
+        (LF.part === '전체' || c.getAttribute('data-part') === LF.part) &&
+        (LF.format === '전체' || c.getAttribute('data-format').split(',').indexOf(LF.format) > -1);
+      c.classList.toggle('hidden', !ok);
+      if (ok) { shown += 1; if (!c.hasAttribute('data-featured')) others += 1; }
+    });
+    text($('#lib-others'), '다른 운동 ' + others + '개');
+    var oh = $('#lib-others'); if (oh) oh.classList.toggle('hidden', others === 0);
+    text($('#lib-sub'), (LF.topic === '저장됨' ? '저장한 운동' : LF.topic + ' 주제') + ' ' + shown + '개 · 모두 집에서 매트나 의자로 할 수 있어요');
+    var empty = $('#lib-empty'); if (empty) empty.classList.toggle('hidden', shown > 0);
+  }
+  ON_CHANGE['lib-topic'] = function (v) { LF.topic = v || '거북목·어깨 결림'; applyLibrary(); };
+  ON_CHANGE['lib-time'] = function (v) { LF.time = v || '전체'; applyLibrary(); };
+  ON_CHANGE['lib-part'] = function (v) { LF.part = v || '전체'; applyLibrary(); };
+  ON_CHANGE['lib-format'] = function (v) { LF.format = v || '전체'; applyLibrary(); };
+  function initLibrary() {
+    paintBookmarks();
+    var log = store.get('log', []), withAnswer = null;
+    for (var k = log.length - 1; k >= 0; k--) { if (log[k].feel || log[k].sore) { withAnswer = log[k]; break; } }
+    var el = $('#lib-last');
+    if (el && withAnswer) {
+      var sore = withAnswer.sore && withAnswer.sore !== '없어요' ? ' · 아직 뻐근한 곳: ' + withAnswer.sore : '';
+      el.textContent = '지난 운동 뒤 답 · ' + withAnswer.name + ': ' + (withAnswer.feel || '답 없음') + sore;
+      el.classList.remove('hidden');
+    }
+    applyLibrary();
+  }
+
   /* ---------- 이벤트 연결 ---------- */
   function run(el, e) {
     words(el.getAttribute('data-action')).forEach(function (n) { if (A[n]) A[n](el, e); });
@@ -536,4 +610,5 @@
   if (NUM === 8) startPlayer();
   if (NUM === 9) initDone();
   if (NUM === 5) initWeekly();
+  if (NUM === 6) initLibrary();
 })();

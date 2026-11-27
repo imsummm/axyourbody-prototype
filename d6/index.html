@@ -36,7 +36,7 @@
 
   <main class="flex-1 min-w-0">
     <header class="h-16 border-b border-hairline px-8 flex items-center gap-8">
-      <a href="#" data-path="workout-week" class="text-button text-mute py-4 hover:text-ink active:text-body">이번 주 운동</a>
+      <a href="../d5/" data-path="workout-week" class="text-button text-mute py-4 hover:text-ink active:text-body">이번 주 운동</a>
       <span aria-current="page" class="text-button text-ink border-b-2 border-ink py-4">따라 할 운동</span>
     </header>
 
@@ -44,58 +44,60 @@
       <div class="col-span-8 flex flex-col gap-6">
         <div>
           <h1 class="text-title text-ink">따라 할 운동</h1>
-          <p class="text-body text-mute mt-1">거북목·어깨 결림 주제 4개 · 모두 집에서 매트나 의자로 할 수 있어요</p>
-          <div class="mt-4 flex flex-wrap gap-2" id="topic-chips">
-            <button type="button" data-selected="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">거북목·어깨 결림</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">체력</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed flex items-center gap-1"><svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg>저장됨</button>
+          <p id="lib-sub" class="text-body text-mute mt-1">거북목·어깨 결림 주제 4개 · 모두 집에서 매트나 의자로 할 수 있어요</p>
+          <div class="mt-4 flex flex-wrap gap-2" data-group="lib-topic" data-default="거북목·어깨 결림" data-on="bg-ink text-white active:bg-dark" data-off="bg-card text-ink hover:bg-secondary active:bg-secondary-pressed">
+            <button type="button" data-action="pick" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">거북목·어깨 결림</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">체력</button>
+            <button type="button" data-action="pick" data-value="저장됨" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed flex items-center gap-1"><svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg>저장됨</button>
           </div>
+          <p id="lib-last" class="hidden mt-3 text-caption text-mute"></p>
         </div>
 
-        <section class="rounded-lg bg-card overflow-hidden grid grid-cols-2">
+        <section data-lib="neck" data-featured data-topic="거북목·어깨 결림" data-min="20" data-part="목·어깨" data-format="음성 안내,글·동작 카드" class="rounded-lg bg-card overflow-hidden grid grid-cols-2">
           <img class="w-full h-full min-h-[280px] object-cover" src="../assets/img/d6-bg1.jpg" alt="해 질 녘 거실에서 편한 옷을 입고 목을 늘리는 사람"/>
           <div class="p-8 flex flex-col justify-center">
             <p class="text-caption text-mute">지금 추천 · 거북목·어깨 결림 · 20분 이하</p>
             <h2 class="text-heading text-ink mt-2">목·어깨 풀기 스트레칭 · 20분</h2>
             <p class="text-body-sm text-mute mt-2">하루 종일 앉아 굳은 목 앞쪽과 어깨를 풀어 줘요. 매트 하나면 되고, 음성 안내를 켜고 끌 수 있어요.</p>
-            <a href="#" data-path="routine-detail" class="mt-6 self-start px-6 py-3 rounded-md bg-ink text-white text-button flex items-center gap-2 active:bg-dark">루틴 보기<svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
+            <a href="../d7/?r=neck" data-path="routine-detail" class="mt-6 self-start px-6 py-3 rounded-md bg-ink text-white text-button flex items-center gap-2 active:bg-dark">루틴 보기<svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
           </div>
         </section>
 
         <section>
-          <h3 class="text-heading-sm text-ink">다른 운동 3개</h3>
+          <h3 id="lib-others" class="text-heading-sm text-ink">다른 운동 3개</h3>
           <div class="mt-2 flex flex-col gap-4">
-            <div class="rounded-lg bg-card p-4 flex items-center gap-6">
+            <div data-lib="core" data-topic="거북목·어깨 결림,체력" data-min="25" data-part="허리·코어" data-format="음성 안내,글·동작 카드" class="rounded-lg bg-card p-4 flex items-center gap-6">
               <img class="w-32 h-24 rounded-md object-cover shrink-0" src="../assets/img/d6-bg2.jpg" alt="매트 위에서 등을 둥글게 말았다 펴는 동작"/>
               <div class="flex-1 min-w-0">
                 <p class="text-heading-sm text-ink">코어·자세 루틴 · 25분</p>
                 <p class="text-body-sm text-mute mt-1">구부정한 등을 세우는 힘을 기르고, 숨을 쉬며 코어를 버텨요</p>
                 <p class="text-caption text-mute mt-2">매트 · 자세</p>
               </div>
-              <button type="button" aria-label="저장" aria-pressed="false" class="bookmark w-12 h-12 rounded-full text-mute flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
-              <a href="#" data-path="routine-detail-core" aria-label="코어·자세 루틴 자세히" class="w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
+              <button type="button" data-action="bookmark" data-r="core" data-name="코어·자세 루틴" aria-label="저장: 코어·자세 루틴" aria-pressed="false" class="w-12 h-12 rounded-full text-mute flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
+              <a href="../d7/?r=core" data-path="routine-detail-core" aria-label="코어·자세 루틴 자세히" class="w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
             </div>
-            <div class="rounded-lg bg-card p-4 flex items-center gap-6">
+            <div data-lib="foam" data-topic="거북목·어깨 결림" data-min="15" data-part="목·어깨" data-format="음성 안내,글·동작 카드" class="rounded-lg bg-card p-4 flex items-center gap-6">
               <img class="w-32 h-24 rounded-md object-cover shrink-0" src="../assets/img/d6-bg3.jpg" alt="소파 옆 나무 바닥에 놓인 폼롤러"/>
               <div class="flex-1 min-w-0">
                 <p class="text-heading-sm text-ink">폼롤러 등 풀기 · 15분</p>
                 <p class="text-body-sm text-mute mt-1">날개뼈 사이 뭉침을 풀어요 · 토요일 8분에서 멈춤</p>
                 <p class="text-caption text-mute mt-2">폼롤러 · 등·어깨</p>
               </div>
-              <button type="button" aria-label="저장됨" aria-pressed="true" class="bookmark w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" fill="currentColor" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
-              <a href="#" data-path="routine-detail-foamroller" aria-label="폼롤러 등 풀기 자세히" class="w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
+              <button type="button" data-action="bookmark" data-r="foam" data-name="폼롤러 등 풀기" aria-label="저장됨: 폼롤러 등 풀기" aria-pressed="true" class="w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" fill="currentColor" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
+              <a href="../d7/?r=foam" data-path="routine-detail-foamroller" aria-label="폼롤러 등 풀기 자세히" class="w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
             </div>
-            <div class="rounded-lg bg-card p-4 flex items-center gap-6">
+            <div data-lib="desk" data-topic="거북목·어깨 결림" data-min="10" data-part="목·어깨" data-format="음성 안내,글·동작 카드" class="rounded-lg bg-card p-4 flex items-center gap-6">
               <img class="w-32 h-24 rounded-md object-cover shrink-0" src="../assets/img/d6-bg4.jpg" alt="스탠드 조명이 켜진 나무 책상과 노트"/>
               <div class="flex-1 min-w-0">
                 <p class="text-heading-sm text-ink">책상 앞 스트레칭 · 10분</p>
                 <p class="text-body-sm text-mute mt-1">야근 중에도 옷 갈아입을 필요 없이 의자에 앉은 채로 해요</p>
                 <p class="text-caption text-mute mt-2">도구 없이 · 손목·승모근</p>
               </div>
-              <button type="button" aria-label="저장" aria-pressed="false" class="bookmark w-12 h-12 rounded-full text-mute flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
-              <a href="#" data-path="routine-detail-desk" aria-label="책상 앞 스트레칭 자세히" class="w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
+              <button type="button" data-action="bookmark" data-r="desk" data-name="책상 앞 스트레칭" aria-label="저장: 책상 앞 스트레칭" aria-pressed="false" class="w-12 h-12 rounded-full text-mute flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
+              <a href="../d7/?r=desk" data-path="routine-detail-desk" aria-label="책상 앞 스트레칭 자세히" class="w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
             </div>
           </div>
+          <p id="lib-empty" class="hidden py-6 text-body-sm text-mute text-center">이 조건에 맞는 운동이 없어요. 거르기를 처음으로 돌려 보세요.</p>
         </section>
       </div>
 
@@ -103,28 +105,28 @@
         <section class="rounded-lg bg-card p-6" id="filters">
           <div class="flex items-center justify-between">
             <h2 class="text-heading-sm text-ink">거르기</h2>
-            <button type="button" class="px-3 py-1 rounded-full text-caption text-mute hover:bg-secondary active:bg-secondary-pressed">처음으로</button>
+            <button type="button" data-action="reset-library" class="px-3 py-1 rounded-full text-caption text-mute hover:bg-secondary active:bg-secondary-pressed">처음으로</button>
           </div>
           <p class="text-button text-ink mt-4">걸리는 시간</p>
-          <div class="mt-2 flex flex-wrap gap-2">
-            <button type="button" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">10분 이하</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">15~20분</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">25분 이상</button>
+          <div class="mt-2 flex flex-wrap gap-2" data-group="lib-time" data-on="bg-ink text-white active:bg-dark" data-off="bg-canvas text-ink hover:bg-secondary active:bg-secondary-pressed">
+            <button type="button" data-action="pick" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">10분 이하</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">15~20분</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">25분 이상</button>
           </div>
           <p class="text-button text-ink mt-4">부위</p>
-          <div class="mt-2 flex flex-wrap gap-2">
-            <button type="button" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">목·어깨</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">허리·코어</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">하체</button>
+          <div class="mt-2 flex flex-wrap gap-2" data-group="lib-part" data-on="bg-ink text-white active:bg-dark" data-off="bg-canvas text-ink hover:bg-secondary active:bg-secondary-pressed">
+            <button type="button" data-action="pick" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">목·어깨</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">허리·코어</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">하체</button>
           </div>
           <p class="text-button text-ink mt-4">형식</p>
-          <div class="mt-2 flex flex-wrap gap-2">
-            <button type="button" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">영상</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">음성 안내</button>
-            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">글·동작 카드</button>
+          <div class="mt-2 flex flex-wrap gap-2" data-group="lib-format" data-on="bg-ink text-white active:bg-dark" data-off="bg-canvas text-ink hover:bg-secondary active:bg-secondary-pressed">
+            <button type="button" data-action="pick" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">영상</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">음성 안내</button>
+            <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">글·동작 카드</button>
           </div>
         </section>
 
@@ -132,36 +134,12 @@
           <p class="text-caption text-mute">이어서 하기</p>
           <p class="text-heading-sm text-ink mt-1">폼롤러 등 풀기 · 7분 남음</p>
           <p class="text-body-sm text-mute mt-1">토요일에 8분까지 하고 멈췄어요. 멈춘 동작부터 이어져요.</p>
-          <a href="#" data-path="routine-detail-foamroller" class="mt-4 inline-flex items-center gap-1 text-button text-ink hover:underline active:text-body">이어서 보기<svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
+          <a href="../d7/?r=foam&amp;from=8" data-path="routine-detail-foamroller" class="mt-4 inline-flex items-center gap-1 text-button text-ink hover:underline active:text-body">이어서 보기<svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
         </section>
       </div>
     </div>
   </main>
 </div>
 
-<script>
-(function () {
-  function group(row, off) {
-    var list = row.querySelectorAll('button');
-    list.forEach(function (b) {
-      b.addEventListener('click', function () {
-        list.forEach(function (x) { x.classList.remove('bg-ink', 'text-white'); x.classList.add(off, 'text-ink'); x.removeAttribute('data-selected'); });
-        b.classList.remove(off, 'text-ink'); b.classList.add('bg-ink', 'text-white'); b.setAttribute('data-selected', 'true');
-      });
-    });
-  }
-  group(document.getElementById('topic-chips'), 'bg-card');
-  document.querySelectorAll('#filters .flex.flex-wrap').forEach(function (row) { group(row, 'bg-canvas'); });
-  document.querySelectorAll('.bookmark').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var on = b.getAttribute('aria-pressed') !== 'true';
-      b.setAttribute('aria-pressed', String(on));
-      b.setAttribute('aria-label', on ? '저장됨' : '저장');
-      b.classList.toggle('text-ink', on); b.classList.toggle('text-mute', !on);
-      b.querySelector('svg').setAttribute('fill', on ? 'currentColor' : 'none');
-    });
-  });
-})();
-</script>
 </body>
 </html>

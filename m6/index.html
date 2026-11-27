@@ -19,19 +19,21 @@
     </a>
   </div>
   <div class="max-w-[480px] mx-auto px-4 flex items-center gap-6 border-b border-hairline">
-    <a href="#" data-path="workouts-weekly" class="py-3 text-button text-mute active:bg-card">이번 주 운동</a>
+    <a href="../m5/" data-path="workouts-weekly" class="py-3 text-button text-mute active:bg-card">이번 주 운동</a>
     <span aria-current="page" class="py-3 text-button text-ink border-b-2 border-ink">따라 할 운동</span>
   </div>
 </header>
 
 <main class="max-w-[480px] mx-auto px-4 pt-6 pb-16">
-  <div class="flex flex-wrap gap-2" id="topic-chips">
-    <button type="button" data-selected="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">거북목·어깨 결림</button>
-    <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">체력</button>
-    <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary flex items-center gap-1"><svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg>저장됨</button>
+  <div class="flex flex-wrap gap-2" data-group="lib-topic" data-default="거북목·어깨 결림" data-on="bg-ink text-white active:bg-dark" data-off="bg-card text-ink active:bg-secondary">
+    <button type="button" data-action="pick" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">거북목·어깨 결림</button>
+    <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">체력</button>
+    <button type="button" data-action="pick" data-value="저장됨" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary flex items-center gap-1"><svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg>저장됨</button>
   </div>
+  <p id="lib-last" class="hidden mt-3 text-caption text-mute"></p>
+  <p id="lib-empty" class="hidden mt-6 py-6 text-body-sm text-mute text-center">이 조건에 맞는 운동이 없어요. 다른 칩을 눌러 보세요.</p>
 
-  <a href="#" data-path="routine-detail" class="mt-6 block rounded-lg bg-card overflow-hidden active:bg-secondary">
+  <a href="../m7/?r=neck" data-lib="neck" data-featured data-topic="거북목·어깨 결림" data-min="20" data-part="목·어깨" data-format="음성 안내,글·동작 카드" data-path="routine-detail" class="mt-6 block rounded-lg bg-card overflow-hidden active:bg-secondary">
     <div class="relative h-48">
       <img class="w-full h-full object-cover" src="../assets/img/neck-stretch-mat.jpg" alt="거실 매트 위에서 목과 어깨를 늘리는 사람"/>
       <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-canvas text-caption text-ink">지금 추천 · 거북목·어깨 결림 · 20분 이하</span>
@@ -43,28 +45,28 @@
     </div>
   </a>
 
-  <h3 class="text-heading-sm text-ink mt-8">다른 운동 3개</h3>
+  <h3 id="lib-others" class="text-heading-sm text-ink mt-8">다른 운동 3개</h3>
   <div class="mt-2 flex flex-col gap-4">
-    <div class="rounded-lg bg-card p-4 flex items-center gap-4">
-      <a href="#" data-path="routine-detail" class="flex-1 min-w-0 flex items-center gap-4 active:bg-secondary">
+    <div data-lib="core" data-topic="거북목·어깨 결림,체력" data-min="25" data-part="허리·코어" data-format="음성 안내,글·동작 카드" class="rounded-lg bg-card p-4 flex items-center gap-4">
+      <a href="../m7/?r=core" data-path="routine-detail" class="flex-1 min-w-0 flex items-center gap-4 active:bg-secondary">
         <img class="w-16 h-16 rounded-md object-cover shrink-0" src="../assets/img/back-alignment.jpg" alt="모래색 매트 위에서 등을 곧게 펴는 동작"/>
         <span class="min-w-0"><span class="block text-button text-ink">코어·자세 루틴 · 25분</span><span class="block text-caption text-mute mt-1">구부정한 등을 세우는 힘을 길러요</span></span>
       </a>
-      <button type="button" aria-label="저장" aria-pressed="false" class="bookmark w-12 h-12 rounded-full text-mute flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
+      <button type="button" data-action="bookmark" data-r="core" data-name="코어·자세 루틴" aria-label="저장: 코어·자세 루틴" aria-pressed="false" class="w-12 h-12 rounded-full text-mute flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
     </div>
-    <div class="rounded-lg bg-card p-4 flex items-center gap-4">
-      <a href="#" data-path="routine-detail" class="flex-1 min-w-0 flex items-center gap-4 active:bg-secondary">
+    <div data-lib="foam" data-topic="거북목·어깨 결림" data-min="15" data-part="목·어깨" data-format="음성 안내,글·동작 카드" class="rounded-lg bg-card p-4 flex items-center gap-4">
+      <a href="../m7/?r=foam" data-path="routine-detail" class="flex-1 min-w-0 flex items-center gap-4 active:bg-secondary">
         <img class="w-16 h-16 rounded-md object-cover shrink-0" src="../assets/img/foam-roller.jpg" alt="베이지 러그 위에 놓인 폼롤러"/>
         <span class="min-w-0"><span class="block text-button text-ink">폼롤러 등 풀기 · 15분</span><span class="block text-caption text-mute mt-1">날개뼈 사이 뭉침을 풀어요 · 토요일 8분에서 멈춤</span></span>
       </a>
-      <button type="button" aria-label="저장됨" aria-pressed="true" class="bookmark w-12 h-12 rounded-full text-ink flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" fill="currentColor" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
+      <button type="button" data-action="bookmark" data-r="foam" data-name="폼롤러 등 풀기" aria-label="저장됨: 폼롤러 등 풀기" aria-pressed="true" class="w-12 h-12 rounded-full text-ink flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" fill="currentColor" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
     </div>
-    <div class="rounded-lg bg-card p-4 flex items-center gap-4">
-      <a href="#" data-path="routine-detail" class="flex-1 min-w-0 flex items-center gap-4 active:bg-secondary">
+    <div data-lib="desk" data-topic="거북목·어깨 결림" data-min="10" data-part="목·어깨" data-format="음성 안내,글·동작 카드" class="rounded-lg bg-card p-4 flex items-center gap-4">
+      <a href="../m7/?r=desk" data-path="routine-detail" class="flex-1 min-w-0 flex items-center gap-4 active:bg-secondary">
         <img class="w-16 h-16 rounded-md object-cover shrink-0" src="../assets/img/desk-stretch.jpg" alt="나무 책상 앞에 앉아 손목과 어깨를 늘리는 사람"/>
         <span class="min-w-0"><span class="block text-button text-ink">책상 앞 스트레칭 · 10분</span><span class="block text-caption text-mute mt-1">야근 중에도 자리에서 할 수 있어요</span></span>
       </a>
-      <button type="button" aria-label="저장" aria-pressed="false" class="bookmark w-12 h-12 rounded-full text-mute flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
+      <button type="button" data-action="bookmark" data-r="desk" data-name="책상 앞 스트레칭" aria-label="저장: 책상 앞 스트레칭" aria-pressed="false" class="w-12 h-12 rounded-full text-mute flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
     </div>
   </div>
 
@@ -80,25 +82,5 @@
   </div>
 </nav>
 
-<script>
-(function () {
-  var chips = document.querySelectorAll('#topic-chips button');
-  chips.forEach(function (b) {
-    b.addEventListener('click', function () {
-      chips.forEach(function (x) { x.classList.remove('bg-ink', 'text-white'); x.classList.add('bg-card', 'text-ink'); x.removeAttribute('data-selected'); });
-      b.classList.remove('bg-card', 'text-ink'); b.classList.add('bg-ink', 'text-white'); b.setAttribute('data-selected', 'true');
-    });
-  });
-  document.querySelectorAll('.bookmark').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var on = b.getAttribute('aria-pressed') !== 'true';
-      b.setAttribute('aria-pressed', String(on));
-      b.setAttribute('aria-label', on ? '저장됨' : '저장');
-      b.classList.toggle('text-ink', on); b.classList.toggle('text-mute', !on);
-      b.querySelector('svg').setAttribute('fill', on ? 'currentColor' : 'none');
-    });
-  });
-})();
-</script>
 </body>
 </html>

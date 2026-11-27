@@ -1,301 +1,166 @@
 <!DOCTYPE html>
-
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"primary-container":"#e60023","on-tertiary":"#ffffff","on-surface-variant":"#5e3f3c","on-background":"#1a1c1b","surface-variant":"#e2e3e0","on-primary-container":"#fff7f6","primary-fixed-dim":"#ffb3ad","outline":"#936e6b","surface-container-lowest":"#ffffff","on-primary-fixed":"#410004","on-error-container":"#93000a","error-container":"#ffdad6","error":"#ba1a1a","on-secondary-container":"#63635d","tertiary-fixed":"#e3e3de","surface-container":"#eeeeeb","surface":"#f9f9f6","secondary-fixed-dim":"#c8c6bf","tertiary-container":"#72736f","on-surface":"#1a1c1b","tertiary":"#595b57","secondary":"#5f5f59","secondary-fixed":"#e5e2db","inverse-primary":"#ffb3ad","inverse-on-surface":"#f1f1ee","on-secondary-fixed":"#1c1c17","on-primary-fixed-variant":"#930012","surface-container-low":"#f4f4f1","secondary-container":"#e2e0d8","primary-fixed":"#ffdad7","outline-variant":"#e8bcb8","on-tertiary-fixed-variant":"#464744","primary":"#b7001a","inverse-surface":"#2f312f","surface-bright":"#f9f9f6","surface-dim":"#dadad7","on-tertiary-fixed":"#1a1c19","background":"#f9f9f6","on-error":"#ffffff","surface-container-highest":"#e2e3e0","tertiary-fixed-dim":"#c6c7c2","on-secondary":"#ffffff","on-secondary-fixed-variant":"#474742","on-primary":"#ffffff","surface-tint":"#c0001b","surface-container-high":"#e8e8e5","on-tertiary-container":"#fafaf4"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","gutter":"1rem","space-md":"1rem","margin":"1.25rem","space-sm":"0.5rem","margin-mobile":"1rem","space-lg":"1.5rem","gutter-mobile":"0.75rem","space-xl":"2rem"},"fontFamily":{"display-lg":["Inter"],"headline-md":["Inter"],"body-md":["Noto Sans"],"caption":["Noto Sans"],"body-lg":["Noto Sans"],"label-md":["Inter"],"display-lg-mobile":["Inter"],"label-lg":["Inter"],"body-sm":["Noto Sans"],"headline-sm":["Inter"],"label-sm":["Inter"],"headline-lg":["Inter"]},"fontSize":{"display-lg":["36px",{"lineHeight":"44px","fontWeight":"700"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"caption":["12px",{"lineHeight":"16px","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","fontWeight":"600"}],"display-lg-mobile":["28px",{"lineHeight":"36px","fontWeight":"700"}],"label-lg":["16px",{"lineHeight":"22px","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-sm":["18px",{"lineHeight":"26px","fontWeight":"600"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"600"}],"headline-lg":["24px",{"lineHeight":"32px","fontWeight":"700"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-lowest border-r border-[#dadad3] z-50 flex flex-col justify-between py-6 px-4"><div class="flex flex-col gap-8"><div class="flex items-center gap-1.5 px-3 py-2"><span class="font-headline-md text-headline-md tracking-tight font-bold text-on-surface">AX YOUR BODY</span><span class="w-2 h-2 rounded-full bg-primary-container inline-block"></span></div><nav class="flex flex-col gap-2" data-active-classes="bg-inverse-surface text-inverse-on-surface font-label-md text-label-md rounded-full px-4 py-3 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><a class="flex items-center justify-between px-4 py-3 rounded-full text-secondary hover:bg-surface-container-low hover:text-on-surface transition-all font-label-md text-label-md" data-path="today" href="#"><span>오늘</span></a><a aria-current="page" class="transition-all bg-inverse-surface text-inverse-on-surface font-label-md text-label-md rounded-full px-4 py-3 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-path="workout" href="#"><span>운동</span></a><a class="flex items-center justify-between px-4 py-3 rounded-full text-secondary hover:bg-surface-container-low hover:text-on-surface transition-all font-label-md text-label-md" data-path="nutrition" href="#"><span>먹은 것</span></a><a class="flex items-center justify-between px-4 py-3 rounded-full text-secondary hover:bg-surface-container-low hover:text-on-surface transition-all font-label-md text-label-md" data-path="body-evolution" href="#"><span>몸 변화</span></a></nav></div><div class="px-3"><div class="p-3 bg-surface-container-low rounded-xl flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-[20px]">self_improvement</span><span class="font-caption text-caption text-secondary">일상의 작은 쉼표</span></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-16 bg-surface/80 backdrop-blur-xl border-b border-[#dadad3] z-40 px-8 flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span><span class="font-headline-sm text-headline-sm text-on-surface">AX Sanctuary</span></div><div class="flex items-center gap-4"><a class="flex items-center gap-3 p-1.5 rounded-full hover:bg-surface-container-low transition-all" data-path="settings-notifications" href="#" title="설정 및 알림"><span class="font-label-sm text-label-sm text-secondary hidden sm:inline-block">설정·알림</span><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></a></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="max-w-5xl mx-auto px-8 py-8"><div class="flex flex-col w-full">
-<!-- Sub-header navigation: Inner Tabs -->
-<div class="flex items-center justify-between pb-6">
-<div class="flex items-center gap-8">
-<a class="font-headline-sm text-headline-sm text-secondary hover:text-on-surface transition-colors py-1" data-path="workout-week" href="#">
-        이번 주 운동
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AX YOUR BODY · 운동 · 따라 할 운동</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../assets/tailwind-config.js"></script>
+</head>
+<body class="bg-canvas text-body font-sans">
+<div class="min-h-screen flex">
+  <aside class="w-60 shrink-0 sticky top-0 h-screen bg-soft border-r border-hairline p-6 flex flex-col justify-between">
+    <div>
+      <a href="#" data-path="today" class="flex items-center gap-2 active:bg-card">
+        <span role="img" aria-label="AX YOUR BODY" class="w-8 h-8 rounded-full bg-primary text-white text-caption font-bold flex items-center justify-center">AX</span>
+        <span class="text-heading-sm text-ink">AX YOUR BODY</span>
       </a>
-<a class="relative font-headline-sm text-headline-sm text-on-surface py-1" data-path="workout-follow" href="#">
-        따라 할 운동
-        <span class="absolute bottom-0 left-0 right-0 h-[2.5px] bg-primary-container rounded-full"></span>
-</a>
-</div>
-<!-- Right subtle context label -->
-<div class="hidden md:flex items-center gap-2 text-secondary font-caption text-caption bg-surface-container-low px-3.5 py-1.5 rounded-full">
-<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
-<span>퇴근 후 무리 없는 1:1 회복 루틴</span>
-</div>
-</div>
-<!-- Purpose Chips Row -->
-<div class="flex items-center gap-2 pb-8 overflow-x-auto no-scrollbar">
-<button class="px-5 py-2 rounded-full bg-on-background text-surface-container-lowest font-label-sm text-label-sm transition-transform active:scale-95 flex items-center gap-1.5 shadow-sm" type="button">
-<span>거북목·어깨 결림</span>
-<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
-</button>
-<button class="px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-label-sm text-label-sm transition-all" type="button">
-      체력
-    </button>
-<button class="px-5 py-2 rounded-full bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-label-sm text-label-sm transition-all flex items-center gap-1" type="button">
-<span class="material-symbols-outlined text-[16px]">bookmark</span>
-<span>저장됨</span>
-</button>
-</div>
-<!-- 2-Column Bespoke Asymmetric Layout (Main 2/3 + Side 1/3) -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-<!-- MAIN COLUMN (8 cols of 12) -->
-<div class="lg:col-span-8 flex flex-col gap-8">
-<!-- HERO CARD: 지금 추천 -->
-<div class="group relative bg-surface-container-lowest rounded-[32px] overflow-hidden transition-all duration-300 hover:shadow-lg">
-<!-- Thumbnail Container -->
-<div class="relative w-full h-[340px] overflow-hidden bg-surface-container">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-[1.02]" data-alt="Modern serene Japandi home interior during gentle sunset warm daylight, woman in comfortable linen loungewear doing a gentle neck and shoulder stretch on a textured organic cotton yoga mat, soft warm cream tones, diffused natural sunlight, tranquil meditative peaceful atmosphere, no harsh shadows" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuByXhNcTIZgZQQso6th-KXhV1koR1ZTsDdaWcYCAiHNAp3FLgorUShFiCjX9ltgSISNsE5oKVPGPkrp43mHgFr5MJlRS-E6qisZU7cH-StSg76tSQv0e9guBrg7u_xnWNOpgy5TTWTuBCIIvvTLm1FYu6uo1XCuTvuRKiCpbW6xOQ2HpPHZSIUlkI3GmOo2dCWa9WPHwYz3eHXD9v_z7qoet94ATJnJJyIM7wd_stI')"></div>
-<!-- Calming Gradient Scrim -->
-<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 via-on-background/25 to-transparent"></div>
-<!-- Category Floating Badge -->
-<div class="absolute top-5 left-6 flex items-center gap-2">
-<span class="px-3.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-sm text-label-sm text-on-surface shadow-sm">
-              지금 추천
-            </span>
-<span class="px-3 py-1 rounded-full bg-primary-container text-surface-container-lowest font-caption text-caption flex items-center gap-1">
-<span class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest animate-ping"></span>
-              지친 저녁 회복
-            </span>
-</div>
-<!-- Play Center Indicator -->
-<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-<div class="w-16 h-16 rounded-full bg-surface-container-lowest/90 backdrop-blur-md flex items-center justify-center text-on-surface group-hover:scale-110 transition-transform shadow-md">
-<span class="material-symbols-outlined text-[32px] translate-x-0.5" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-</div>
-</div>
-<!-- Hero Bottom Info Overlay -->
-<div class="absolute bottom-6 left-6 right-6 flex flex-col gap-2 text-surface-container-lowest">
-<div class="flex items-center gap-2">
-<span class="font-caption text-caption tracking-wider text-surface-variant uppercase">AX Signature · Recovery</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg text-surface-container-lowest">
-              목·어깨 풀기 스트레칭 · 20분
-            </h2>
-<p class="font-body-md text-body-md text-surface-variant line-clamp-1">
-              하루 종일 앉아 굳은 목 앞쪽과 어깨를 부드럽게 풀어 줘요
-            </p>
-</div>
-</div>
-<!-- Action Row under Hero -->
-<div class="p-6 bg-surface-container-lowest flex items-center justify-between">
-<div class="flex items-center gap-4 text-secondary font-caption text-caption">
-<span class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-[18px]">self_improvement</span>
-              매트 하나로 가능
-            </span>
-<span class="w-1 h-1 rounded-full bg-secondary-fixed-dim"></span>
-<span class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-[18px]">volume_up</span>
-              차분한 음성 가이드
-            </span>
-</div>
-<a class="inline-flex items-center gap-2 px-6 py-3 rounded-[16px] bg-primary-container text-surface-container-lowest font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all" data-path="routine-detail" href="#">
-<span>루틴 시작하기</span>
-<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</a>
-</div>
-</div>
-<!-- Vertical Structured Thoughtful List -->
-<div class="flex flex-col gap-4">
-<div class="flex items-center justify-between px-2 pt-2">
-<h3 class="font-headline-sm text-headline-sm text-on-surface">
-            추천 맞춤 동작
-          </h3>
-<span class="font-caption text-caption text-secondary">부담 없이 골라듣는 루틴</span>
-</div>
-<!-- Row 1 -->
-<div class="group bg-surface-container-lowest hover:bg-surface-container-low transition-all duration-200 rounded-[20px] p-4 flex items-center gap-5 cursor-pointer">
-<div class="relative w-24 h-24 rounded-[16px] overflow-hidden flex-shrink-0 bg-surface-container">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Minimalist beige yoga mat with warm sunlight, person gently stretching spine in cat-cow pose indoors, clean architectural lines, calming neutral palette, quiet Japanese Scandinavian aesthetic" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACDoJ8nRs5nD_T94e9MxO7ElsLRLMgBxqefCt0e9xyRckK4ydkFLFscs9iG8KYQauWyt1vJloP1Bvb83aezQS-h4O7Lg7s9XjRKcU7Po65iRvZDqGYR0q-CtwssGxBo5Z4Km2AohjbYT0O_wrzukcq4gm6ohn0hiWNU7q0kAkOkpBoOeD_Qpw0JDBPzdmT6wTtIzwIfYnSOY8--5CTSFsSwYwpjOgkgKjfHVCCH48')"></div>
-<div class="absolute inset-0 bg-on-background/10"></div>
-<div class="absolute bottom-1.5 right-1.5 px-1.5 py-0.5 rounded bg-on-background/80 text-surface-container-lowest font-caption text-[10px] leading-tight">
-              25m
+      <nav class="mt-8 flex flex-col gap-1">
+        <a href="#" data-path="today" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-home"/></svg>오늘</a>
+        <a href="#" data-path="workouts" aria-current="page" class="flex items-center gap-3 px-4 py-3 rounded-md bg-ink text-white text-button active:bg-dark"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-workout"/></svg>운동<span class="ml-auto w-2 h-2 rounded-full bg-primary"></span></a>
+        <a href="#" data-path="nourishment" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-meal"/></svg>먹은 것</a>
+        <a href="#" data-path="body-evolution" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-body"/></svg>몸 변화</a>
+      </nav>
+    </div>
+    <a href="#" data-path="settings-notifications" class="flex items-center gap-3 p-2 rounded-md bg-card hover:bg-secondary active:bg-secondary-pressed">
+      <span class="w-8 h-8 rounded-full bg-canvas text-ink flex items-center justify-center shrink-0"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-settings"/></svg></span>
+      <span class="min-w-0">
+        <span class="block text-caption text-ink">my-f-general</span>
+        <span class="block text-caption text-mute">설정 · 알림</span>
+      </span>
+    </a>
+  </aside>
+
+  <main class="flex-1 min-w-0">
+    <header class="h-16 border-b border-hairline px-8 flex items-center gap-8">
+      <a href="#" data-path="workout-week" class="text-button text-mute py-4 hover:text-ink active:text-body">이번 주 운동</a>
+      <span aria-current="page" class="text-button text-ink border-b-2 border-ink py-4">따라 할 운동</span>
+    </header>
+
+    <div class="max-w-[1100px] mx-auto p-8 grid grid-cols-12 gap-6 items-start">
+      <div class="col-span-8 flex flex-col gap-6">
+        <div>
+          <h1 class="text-title text-ink">따라 할 운동</h1>
+          <p class="text-body text-mute mt-1">거북목·어깨 결림 주제 4개 · 모두 집에서 매트나 의자로 할 수 있어요</p>
+          <div class="mt-4 flex flex-wrap gap-2" id="topic-chips">
+            <button type="button" data-selected="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">거북목·어깨 결림</button>
+            <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">체력</button>
+            <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed flex items-center gap-1"><svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg>저장됨</button>
+          </div>
+        </div>
+
+        <section class="rounded-lg bg-card overflow-hidden grid grid-cols-2">
+          <img class="w-full h-full min-h-[280px] object-cover" src="../assets/img/d6-bg1.jpg" alt="해 질 녘 거실에서 편한 옷을 입고 목을 늘리는 사람"/>
+          <div class="p-8 flex flex-col justify-center">
+            <p class="text-caption text-mute">지금 추천 · 거북목·어깨 결림 · 20분 이하</p>
+            <h2 class="text-heading text-ink mt-2">목·어깨 풀기 스트레칭 · 20분</h2>
+            <p class="text-body-sm text-mute mt-2">하루 종일 앉아 굳은 목 앞쪽과 어깨를 풀어 줘요. 매트 하나면 되고, 음성 안내를 켜고 끌 수 있어요.</p>
+            <a href="#" data-path="routine-detail" class="mt-6 self-start px-6 py-3 rounded-md bg-ink text-white text-button flex items-center gap-2 active:bg-dark">루틴 보기<svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
+          </div>
+        </section>
+
+        <section>
+          <h3 class="text-heading-sm text-ink">다른 운동 3개</h3>
+          <div class="mt-2 flex flex-col gap-4">
+            <div class="rounded-lg bg-card p-4 flex items-center gap-6">
+              <img class="w-32 h-24 rounded-md object-cover shrink-0" src="../assets/img/d6-bg2.jpg" alt="매트 위에서 등을 둥글게 말았다 펴는 동작"/>
+              <div class="flex-1 min-w-0">
+                <p class="text-heading-sm text-ink">코어·자세 루틴 · 25분</p>
+                <p class="text-body-sm text-mute mt-1">구부정한 등을 세우는 힘을 기르고, 숨을 쉬며 코어를 버텨요</p>
+                <p class="text-caption text-mute mt-2">매트 · 자세</p>
+              </div>
+              <button type="button" aria-label="저장" aria-pressed="false" class="bookmark w-12 h-12 rounded-full text-mute flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
+              <a href="#" data-path="routine-detail-core" aria-label="코어·자세 루틴 자세히" class="w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
             </div>
-</div>
-<div class="flex-1 min-w-0 flex flex-col justify-center">
-<div class="flex items-center gap-2 mb-1">
-<span class="font-label-lg text-label-lg text-on-surface truncate group-hover:text-primary-container transition-colors">
-                코어·자세 루틴 · 25분
-              </span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary truncate">
-              구부정한 등을 세우는 힘을 기르고, 호흡과 함께 코어를 안정시켜요
-            </p>
-<div class="flex items-center gap-3 mt-2 text-secondary font-caption text-caption">
-<span>난이도 편안함</span>
-<span class="w-1 h-1 rounded-full bg-secondary-fixed-dim"></span>
-<span>자세 교정</span>
-</div>
-</div>
-<div class="flex items-center gap-2 flex-shrink-0 pr-2">
-<button class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:text-primary-container hover:bg-surface-container transition-all" title="북마크" type="button">
-<span class="material-symbols-outlined text-[20px]">bookmark_border</span>
-</button>
-<a class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-secondary group-hover:bg-on-background group-hover:text-surface-container-lowest transition-all" data-path="routine-detail-core" href="#" title="상세보기">
-<span class="material-symbols-outlined text-[20px]">chevron_right</span>
-</a>
-</div>
-</div>
-<!-- Row 2 -->
-<div class="group bg-surface-container-lowest hover:bg-surface-container-low transition-all duration-200 rounded-[20px] p-4 flex items-center gap-5 cursor-pointer">
-<div class="relative w-24 h-24 rounded-[16px] overflow-hidden flex-shrink-0 bg-surface-container">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Foam roller placed on warm wood floor near an off-white linen sofa, gentle morning light filtering through cotton curtain, relaxing rehabilitation concept, clean minimalist interior" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD_wAF9rywNc3Vt77CX8YFl4jUPpfPn28VCeId2osO83U6MBIdljCGdc3giezGb9z0UZQHvoR8EZkjJT9Zcx0S9jWnoinmbx7OoW4iCMdZ8-hmYsLAPLiHj06N-kvOxcwnF6JhnrxyrKeWGkyt_eEOXW_fXlFWTFAMhLv5pR3eDu_UDvqLkahEwafAjprJRCTz-m9bDv-cc9MkjFZlKQiQneT5ocSyzmxB9lVkI3nk')"></div>
-<div class="absolute inset-0 bg-on-background/10"></div>
-<div class="absolute bottom-1.5 right-1.5 px-1.5 py-0.5 rounded bg-on-background/80 text-surface-container-lowest font-caption text-[10px] leading-tight">
-              15m
+            <div class="rounded-lg bg-card p-4 flex items-center gap-6">
+              <img class="w-32 h-24 rounded-md object-cover shrink-0" src="../assets/img/d6-bg3.jpg" alt="소파 옆 나무 바닥에 놓인 폼롤러"/>
+              <div class="flex-1 min-w-0">
+                <p class="text-heading-sm text-ink">폼롤러 등 풀기 · 15분</p>
+                <p class="text-body-sm text-mute mt-1">날개뼈 사이 뭉침을 풀어요 · 토요일 8분에서 멈춤</p>
+                <p class="text-caption text-mute mt-2">폼롤러 · 등·어깨</p>
+              </div>
+              <button type="button" aria-label="저장됨" aria-pressed="true" class="bookmark w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" fill="currentColor" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
+              <a href="#" data-path="routine-detail-foamroller" aria-label="폼롤러 등 풀기 자세히" class="w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
             </div>
-</div>
-<div class="flex-1 min-w-0 flex flex-col justify-center">
-<div class="flex items-center gap-2 mb-1">
-<span class="font-label-lg text-label-lg text-on-surface truncate group-hover:text-primary-container transition-colors">
-                폼롤러 등 풀기 · 15분
-              </span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary truncate">
-              날개뼈 사이 뭉침과 뻐근한 등 줄기를 부드러운 압력으로 풀어요
-            </p>
-<div class="flex items-center gap-3 mt-2 text-secondary font-caption text-caption">
-<span>도구: 폼롤러</span>
-<span class="w-1 h-1 rounded-full bg-secondary-fixed-dim"></span>
-<span>등·어깨 순환</span>
-</div>
-</div>
-<div class="flex items-center gap-2 flex-shrink-0 pr-2">
-<button class="w-10 h-10 rounded-full flex items-center justify-center text-primary-container hover:bg-surface-container transition-all" title="북마크 저장됨" type="button">
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bookmark</span>
-</button>
-<a class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-secondary group-hover:bg-on-background group-hover:text-surface-container-lowest transition-all" data-path="routine-detail-foamroller" href="#" title="상세보기">
-<span class="material-symbols-outlined text-[20px]">chevron_right</span>
-</a>
-</div>
-</div>
-<!-- Row 3 -->
-<div class="group bg-surface-container-lowest hover:bg-surface-container-low transition-all duration-200 rounded-[20px] p-4 flex items-center gap-5 cursor-pointer">
-<div class="relative w-24 h-24 rounded-[16px] overflow-hidden flex-shrink-0 bg-surface-container">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Quiet modern wooden office desk with warm task lamp lighting, ceramic coffee cup and neat notebook, serene aesthetic, subtle indoor stretching feeling, calm office evening" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCH8vFDnr04ygA90295YKiZWT94TZphASApsWPRCdzVdz8-BG19zQypSK4ObAoRyoH9j-0-XjpzpgSIYG1dKDXeuZWySbTRYoMoYBFYwusHJvyXDU0sLane6IDp2ZLtB2NWuHOxnzvEnAiFyE-_zqFBjRYvWrrXmjGzDViEJMm4wNvKMxSJVeUeUCmtghyQPcmsy_ijqNGCvaS5jJTkLFPUrqGfRqM9oxXqAVDkKXA')"></div>
-<div class="absolute inset-0 bg-on-background/10"></div>
-<div class="absolute bottom-1.5 right-1.5 px-1.5 py-0.5 rounded bg-on-background/80 text-surface-container-lowest font-caption text-[10px] leading-tight">
-              10m
+            <div class="rounded-lg bg-card p-4 flex items-center gap-6">
+              <img class="w-32 h-24 rounded-md object-cover shrink-0" src="../assets/img/d6-bg4.jpg" alt="스탠드 조명이 켜진 나무 책상과 노트"/>
+              <div class="flex-1 min-w-0">
+                <p class="text-heading-sm text-ink">책상 앞 스트레칭 · 10분</p>
+                <p class="text-body-sm text-mute mt-1">야근 중에도 옷 갈아입을 필요 없이 의자에 앉은 채로 해요</p>
+                <p class="text-caption text-mute mt-2">도구 없이 · 손목·승모근</p>
+              </div>
+              <button type="button" aria-label="저장" aria-pressed="false" class="bookmark w-12 h-12 rounded-full text-mute flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-bookmark"/></svg></button>
+              <a href="#" data-path="routine-detail-desk" aria-label="책상 앞 스트레칭 자세히" class="w-12 h-12 rounded-full text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
             </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-span-4 flex flex-col gap-4">
+        <section class="rounded-lg bg-card p-6" id="filters">
+          <div class="flex items-center justify-between">
+            <h2 class="text-heading-sm text-ink">거르기</h2>
+            <button type="button" class="px-3 py-1 rounded-full text-caption text-mute hover:bg-secondary active:bg-secondary-pressed">처음으로</button>
+          </div>
+          <p class="text-button text-ink mt-4">걸리는 시간</p>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <button type="button" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
+            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">10분 이하</button>
+            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">15~20분</button>
+            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">25분 이상</button>
+          </div>
+          <p class="text-button text-ink mt-4">부위</p>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <button type="button" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
+            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">목·어깨</button>
+            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">허리·코어</button>
+            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">하체</button>
+          </div>
+          <p class="text-button text-ink mt-4">형식</p>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <button type="button" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">전체</button>
+            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">영상</button>
+            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">음성 안내</button>
+            <button type="button" class="px-4 py-2 rounded-full bg-canvas text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">글·동작 카드</button>
+          </div>
+        </section>
+
+        <section class="rounded-lg bg-card p-6">
+          <p class="text-caption text-mute">이어서 하기</p>
+          <p class="text-heading-sm text-ink mt-1">폼롤러 등 풀기 · 7분 남음</p>
+          <p class="text-body-sm text-mute mt-1">토요일에 8분까지 하고 멈췄어요. 멈춘 동작부터 이어져요.</p>
+          <a href="#" data-path="routine-detail-foamroller" class="mt-4 inline-flex items-center gap-1 text-button text-ink hover:underline active:text-body">이어서 보기<svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg></a>
+        </section>
+      </div>
+    </div>
+  </main>
 </div>
-<div class="flex-1 min-w-0 flex flex-col justify-center">
-<div class="flex items-center gap-2 mb-1">
-<span class="font-label-lg text-label-lg text-on-surface truncate group-hover:text-primary-container transition-colors">
-                책상 앞 스트레칭 · 10분
-              </span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary truncate">
-              야근 중에도 옷 갈아입을 필요 없이 의자에 앉은 채로 바로 해요
-            </p>
-<div class="flex items-center gap-3 mt-2 text-secondary font-caption text-caption">
-<span>도구 불필요</span>
-<span class="w-1 h-1 rounded-full bg-secondary-fixed-dim"></span>
-<span>손목·승모근</span>
-</div>
-</div>
-<div class="flex items-center gap-2 flex-shrink-0 pr-2">
-<button class="w-10 h-10 rounded-full flex items-center justify-center text-secondary hover:text-primary-container hover:bg-surface-container transition-all" title="북마크" type="button">
-<span class="material-symbols-outlined text-[20px]">bookmark_border</span>
-</button>
-<a class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container text-secondary group-hover:bg-on-background group-hover:text-surface-container-lowest transition-all" data-path="routine-detail-desk" href="#" title="상세보기">
-<span class="material-symbols-outlined text-[20px]">chevron_right</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-<!-- SIDE COLUMN (4 cols of 12): Detailed Filters & Peaceful Note -->
-<div class="lg:col-span-4 flex flex-col gap-6 sticky top-24">
-<!-- Detailed Filter Panel -->
-<div class="bg-surface-container-lowest rounded-[24px] p-6 flex flex-col gap-6">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary text-[20px]">tune</span>
-<span class="font-headline-sm text-headline-sm text-on-surface">상세 필터</span>
-</div>
-<button class="font-caption text-caption text-secondary hover:text-primary-container transition-colors" type="button">
-            초기화
-          </button>
-</div>
-<!-- Filter 1: 소요 시간 -->
-<div class="flex flex-col gap-2.5">
-<span class="font-label-sm text-label-sm text-on-surface font-semibold">소요 시간</span>
-<div class="flex flex-wrap gap-2">
-<button class="px-3.5 py-1.5 rounded-full bg-on-background text-surface-container-lowest font-caption text-caption" type="button">
-              전체
-            </button>
-<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-caption text-caption transition-colors" type="button">
-              10분 이하
-            </button>
-<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-caption text-caption transition-colors" type="button">
-              15~20분
-            </button>
-<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-caption text-caption transition-colors" type="button">
-              25분 이상
-            </button>
-</div>
-</div>
-<!-- Filter 2: 주제 -->
-<div class="flex flex-col gap-2.5">
-<span class="font-label-sm text-label-sm text-on-surface font-semibold">주제</span>
-<div class="flex flex-wrap gap-2">
-<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-caption text-caption transition-colors" type="button">
-              전체
-            </button>
-<button class="px-3.5 py-1.5 rounded-full bg-on-background text-surface-container-lowest font-caption text-caption" type="button">
-              목·어깨
-            </button>
-<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-caption text-caption transition-colors" type="button">
-              허리·코어
-            </button>
-<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-caption text-caption transition-colors" type="button">
-              하체·순환
-            </button>
-</div>
-</div>
-<!-- Filter 3: 형식 -->
-<div class="flex flex-col gap-2.5">
-<span class="font-label-sm text-label-sm text-on-surface font-semibold">형식</span>
-<div class="flex flex-wrap gap-2">
-<button class="px-3.5 py-1.5 rounded-full bg-on-background text-surface-container-lowest font-caption text-caption" type="button">
-              전체
-            </button>
-<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-caption text-caption transition-colors" type="button">
-              영상
-            </button>
-<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-caption text-caption transition-colors" type="button">
-              오디오 가이드
-            </button>
-<button class="px-3.5 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-secondary hover:text-on-surface font-caption text-caption transition-colors" type="button">
-              글·동작카드
-            </button>
-</div>
-</div>
-</div>
-<!-- Peaceful Sanctuary Card -->
-<div class="relative overflow-hidden bg-surface-container-low rounded-[24px] p-6 flex flex-col gap-4">
-<!-- Subtle Zen Decorative Shape -->
-<div class="absolute -right-6 -bottom-6 w-28 h-28 rounded-full bg-secondary-fixed/50 pointer-events-none"></div>
-<div class="flex items-center gap-2">
-<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
-<span class="material-symbols-outlined text-[18px]">spa</span>
-</div>
-<span class="font-label-sm text-label-sm text-on-surface font-medium">쉼의 약속</span>
-</div>
-<blockquote class="font-body-md text-body-md text-on-surface leading-relaxed relative z-10">
-          “단 5분의 기지개만으로도<br/>
-          내 몸은 충분히 고마워합니다.”
-        </blockquote>
-<p class="font-caption text-caption text-secondary relative z-10">
-          모든 동작을 끝내지 않아도 괜찮아요. 할 수 있는 만큼만 부드럽게 이어가세요.
-        </p>
-</div>
-<!-- Quick Session Indicator -->
-<div class="px-6 py-4 rounded-[20px] bg-surface-container-lowest flex items-center justify-between text-secondary">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary-container text-[20px]">timer</span>
-<span class="font-caption text-caption">최근 이어하기</span>
-</div>
-<span class="font-label-sm text-label-sm text-on-surface">어깨 가동성 · 8분 남음</span>
-</div>
-</div>
-</div>
-</div></div></main></div></body></html>
+
+<script>
+(function () {
+  function group(row, off) {
+    var list = row.querySelectorAll('button');
+    list.forEach(function (b) {
+      b.addEventListener('click', function () {
+        list.forEach(function (x) { x.classList.remove('bg-ink', 'text-white'); x.classList.add(off, 'text-ink'); x.removeAttribute('data-selected'); });
+        b.classList.remove(off, 'text-ink'); b.classList.add('bg-ink', 'text-white'); b.setAttribute('data-selected', 'true');
+      });
+    });
+  }
+  group(document.getElementById('topic-chips'), 'bg-card');
+  document.querySelectorAll('#filters .flex.flex-wrap').forEach(function (row) { group(row, 'bg-canvas'); });
+  document.querySelectorAll('.bookmark').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var on = b.getAttribute('aria-pressed') !== 'true';
+      b.setAttribute('aria-pressed', String(on));
+      b.setAttribute('aria-label', on ? '저장됨' : '저장');
+      b.classList.toggle('text-ink', on); b.classList.toggle('text-mute', !on);
+      b.querySelector('svg').setAttribute('fill', on ? 'currentColor' : 'none');
+    });
+  });
+})();
+</script>
+</body>
+</html>

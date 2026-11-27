@@ -194,6 +194,19 @@
     'meal-find': function (el) { FL.q = el.value.trim().toLowerCase(); filterMeals(); },
     'prev-day': function () { var i = MEAL_DAYS.indexOf(mealDay); if (i > 0) { mealDay = MEAL_DAYS[i - 1]; renderMeals(); } },
     'next-day': function () { var i = MEAL_DAYS.indexOf(mealDay); if (i < MEAL_DAYS.length - 1) { mealDay = MEAL_DAYS[i + 1]; renderMeals(); } },
+    // 11 몸무게 저장
+    'save-weight': function (el) {
+      var f = el.closest('[data-weight-form]') || document;
+      var inp = $('[data-weight-input]', f);
+      var kg = parseFloat(inp ? inp.value : '');
+      if (!(kg >= 30 && kg <= 200)) { toast('몸무게를 숫자로 적어 주세요 (예: 58.4)'); if (inp) inp.focus(); return; }
+      var g = $('[data-group="bw-when"]', f);
+      var when = (g && groupValue(g)) || '아침 공복';
+      var list = weights(); list.push({ kg: Math.round(kg * 10) / 10, when: when }); store.set('weights', list);
+      var sheet = el.closest('[data-sheet]'); if (sheet) sheet.classList.add('hidden');
+      renderWeights();
+      toast('몸무게를 남겼어요 · ' + (Math.round(kg * 10) / 10).toFixed(1) + 'kg · ' + when);
+    },
     // 6 저장 표시 켜고 끄기
     'bookmark': function (el, e) {
       if (e) e.preventDefault();
@@ -713,6 +726,44 @@
     renderMeals();
   }
 
+
+  // FLOW:body-weight — 11: 몸무게(kg)와 "언제 쟀나요(아침 공복 · 저녁)"를 골라 저장하면 ax-weights에 들어가고,
+  // 위쪽 "가장 최근" 값, "남긴 몸무게" 목록, (아침 공복이면) 그래프 4주차 끝 값이 바뀐다. 위쪽 탭은 11↔12 링크.
+  var BW = { when: '전체' };
+  var BW_SEED = [{ label: '11/1', kg: 58.4, when: '아침 공복' }, { label: '10/25', kg: 58.5, when: '아침 공복' }, { label: '10/18', kg: 58.6, when: '아침 공복' }];
+  function weights() { return store.get('weights', []); }
+  function renderWeights() {
+    var list = $('#bw-list');
+    var saved = weights();
+    var last = saved[saved.length - 1];
+    if (last) {
+      text($('#bw-latest'), last.kg.toFixed(1) + 'kg');
+      text($('#bw-cap'), '가장 최근 · 방금 · ' + last.when);
+      text($('#bw-note'), last.when === '아침 공복' ? '아침 공복 값끼리 이어서 봐요. 하루 사이 오르내림은 흔한 일이에요.' : '저녁에 잰 값이라 아침 공복 그래프에는 넣지 않고 목록에만 남겨요.');
+    }
+    var morning = saved.filter(function (w) { return w.when === '아침 공복'; });
+    if (morning.length) text($('#bw-end'), morning[morning.length - 1].kg.toFixed(1) + ($('#bw-end').tagName.toLowerCase() === 'text' ? '' : 'kg'));
+    if (!list) return;
+    var tpl = list.firstElementChild;
+    while (list.children.length) list.removeChild(list.lastChild);
+    var rows = saved.slice().reverse().map(function (w) { return { label: '방금', kg: w.kg, when: w.when }; }).concat(BW_SEED);
+    var shown = 0;
+    rows.forEach(function (w) {
+      var li = tpl.cloneNode(true);
+      text($('[data-f="day"]', li), w.label + ' · ' + w.when);
+      text($('[data-f="kg"]', li), w.kg.toFixed(1) + 'kg');
+      var ok = BW.when === '전체' || w.when === BW.when;
+      li.classList.toggle('hidden', !ok);
+      if (ok) shown += 1;
+      list.appendChild(li);
+    });
+    var empty = $('#bw-empty'); if (empty) empty.classList.toggle('hidden', shown > 0);
+  }
+  ON_CHANGE['bw-filter'] = function (v) { BW.when = v || '전체'; renderWeights(); };
+  ON_CHANGE['bw-period'] = function (v) {
+    text($('#bw-range'), v === '최근 4주' || !v ? '3주차는 재지 않아 점선으로 이어요' : '이 기기에는 최근 4주 기록만 있어요. 4주 그래프를 그대로 보여 줘요');
+  };
+
   /* ---------- 이벤트 연결 ---------- */
   function run(el, e) {
     words(el.getAttribute('data-action')).forEach(function (n) { if (A[n]) A[n](el, e); });
@@ -743,6 +794,7 @@
   if (NUM === 5) initWeekly();
   if (NUM === 6) initLibrary();
   if (NUM === 10) initMeals();
+  if (NUM === 11) renderWeights();
   var flash = store.get('flash', null);
   if (flash) { store.set('flash', null); toast(flash); }
 })();

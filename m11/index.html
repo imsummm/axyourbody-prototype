@@ -19,16 +19,16 @@
     </a>
   </div>
   <div class="max-w-[480px] mx-auto px-4 flex items-center gap-6 border-b border-hairline">
-    <button type="button" aria-current="page" class="py-3 text-button text-ink border-b-2 border-ink active:bg-card">몸무게</button>
-    <a href="#" data-path="body-evolution-condition" class="py-3 text-button text-mute active:bg-card">잠·몸 상태</a>
+    <span aria-current="page" class="py-3 text-button text-ink border-b-2 border-ink">몸무게</span>
+    <a href="../m12/" data-path="body-evolution-condition" class="py-3 text-button text-mute active:bg-card">잠·몸 상태</a>
   </div>
 </header>
 
 <main class="max-w-[480px] mx-auto px-4 pt-6 pb-16">
   <section>
-    <p class="text-caption text-mute">가장 최근 · 11월 1일 · 아침 공복</p>
-    <p class="text-display text-ink mt-1">58.4kg</p>
-    <p class="text-body-sm text-mute mt-1">4주 동안 58kg대에서 비슷해요. 하루 사이 오르내림은 흔한 일이에요.</p>
+    <p id="bw-cap" class="text-caption text-mute">가장 최근 · 11월 1일 · 아침 공복</p>
+    <p id="bw-latest" class="text-display text-ink mt-1">58.4kg</p>
+    <p id="bw-note" class="text-body-sm text-mute mt-1">4주 동안 58kg대에서 비슷해요. 하루 사이 오르내림은 흔한 일이에요.</p>
   </section>
 
   <section class="mt-6 rounded-lg bg-card p-6">
@@ -49,9 +49,16 @@
       <circle cx="128" cy="80" fill="#000000" r="4.5"/>
       <text fill="#000000" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="128" y="66">58.5</text>
       <circle cx="288" cy="90" fill="#000000" r="5"/>
-      <text fill="#000000" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="288" y="76">58.4</text>
+      <text id="bw-end" fill="#000000" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="288" y="76">58.4</text>
     </svg>
     <div class="mt-2 grid grid-cols-4 text-center text-caption text-mute"><span>1주차</span><span>2주차</span><span>3주차</span><span>4주차</span></div>
+  </section>
+
+  <section class="mt-4 rounded-lg bg-card p-6">
+    <h2 class="text-heading-sm text-ink">남긴 몸무게</h2>
+    <ul id="bw-list" class="mt-2 flex flex-col">
+      <li class="py-2 flex items-center justify-between border-b border-hairline"><span data-f="day" class="text-body-sm text-mute">11/1 · 아침 공복</span><span data-f="kg" class="text-button text-ink">58.4kg</span></li>
+    </ul>
   </section>
 
   <section class="mt-4 rounded-lg bg-card p-6">
@@ -65,34 +72,33 @@
     <p class="text-body-sm text-mute">재지 못한 주는 비워 둬요. 다음에 잴 때 이어서 보면 돼요.</p>
   </div>
 
-  <button type="button" id="openWeightModal" class="mt-6 w-full py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-plus"/></svg>몸무게 남기기</button>
+  <button type="button" data-action="open" data-target="weightModalBackdrop" class="mt-6 w-full py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-plus"/></svg>몸무게 남기기</button>
 </main>
 
-<div id="weightModalBackdrop" class="hidden opacity-0 fixed inset-0 z-50 transition-opacity">
-  <div id="closeWeightModal" class="absolute inset-0 bg-black/50"></div>
-  <div id="weightSheet" class="absolute bottom-0 inset-x-0 max-w-[480px] mx-auto bg-canvas rounded-t-lg p-6 flex flex-col gap-6 translate-y-full transition-transform">
+<div id="weightModalBackdrop" data-sheet class="hidden fixed inset-0 z-50">
+  <div data-action="close" data-target="weightModalBackdrop" class="absolute inset-0 bg-black/50"></div>
+  <div data-weight-form class="absolute bottom-0 inset-x-0 max-w-[480px] mx-auto bg-canvas rounded-t-lg p-6 flex flex-col gap-6">
     <div class="flex items-start justify-between">
       <div>
         <h3 class="text-heading text-ink">오늘 몸무게</h3>
         <p class="text-caption text-mute mt-1">재지 못한 날은 건너뛰어도 괜찮아요</p>
       </div>
-      <button type="button" id="closeModalBtn" aria-label="닫기" class="w-12 h-12 rounded-full bg-card text-ink flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-close"/></svg></button>
+      <button type="button" data-action="close" data-target="weightModalBackdrop" aria-label="닫기" class="w-12 h-12 rounded-full bg-card text-ink flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-close"/></svg></button>
     </div>
     <label for="weightInput" class="text-button text-ink">몸무게 (kg)
       <span class="mt-2 h-12 rounded-md border border-ash px-4 flex items-center gap-2">
-        <input id="weightInput" type="number" step="0.1" value="58.4" class="flex-1 bg-transparent text-body text-ink outline-none"/>
+        <input id="weightInput" type="number" data-action="field" data-weight-input step="0.1" value="58.4" class="flex-1 bg-transparent text-body text-ink outline-none"/>
         <span class="text-body-sm text-mute">kg</span>
       </span>
     </label>
     <div>
       <p class="text-button text-ink">언제 쟀나요</p>
-      <div class="mt-2 grid grid-cols-3 gap-2">
-        <button type="button" class="tag-chip py-2 rounded-full bg-ink text-white text-caption active:bg-dark">아침 공복</button>
-        <button type="button" class="tag-chip py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">저녁</button>
-        <button type="button" class="tag-chip py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">잠들기 전</button>
+      <div class="mt-2 grid grid-cols-2 gap-2" data-group="bw-when" data-on="bg-ink text-white active:bg-dark" data-off="bg-card text-ink active:bg-secondary">
+        <button type="button" data-action="pick" aria-pressed="true" class="py-2 rounded-full bg-ink text-white text-caption active:bg-dark">아침 공복</button>
+        <button type="button" data-action="pick" aria-pressed="false" class="py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">저녁</button>
       </div>
     </div>
-    <button type="button" id="saveWeightBtn" class="w-full py-4 rounded-md bg-primary text-white text-button active:bg-primary-pressed">저장</button>
+    <button type="button" data-action="save-weight" class="w-full py-4 rounded-md bg-primary text-white text-button active:bg-primary-pressed">저장</button>
   </div>
 </div>
 
@@ -105,29 +111,5 @@
   </div>
 </nav>
 
-<script>
-(function () {
-  var backdrop = document.getElementById('weightModalBackdrop'), sheet = document.getElementById('weightSheet');
-  function openModal() {
-    backdrop.classList.remove('hidden');
-    requestAnimationFrame(function () { backdrop.classList.remove('opacity-0'); sheet.classList.remove('translate-y-full'); });
-  }
-  function closeModal() {
-    backdrop.classList.add('opacity-0'); sheet.classList.add('translate-y-full');
-    setTimeout(function () { backdrop.classList.add('hidden'); }, 300);
-  }
-  document.getElementById('openWeightModal').addEventListener('click', openModal);
-  document.getElementById('closeModalBtn').addEventListener('click', closeModal);
-  document.getElementById('closeWeightModal').addEventListener('click', closeModal);
-  document.getElementById('saveWeightBtn').addEventListener('click', closeModal);
-  var chips = document.querySelectorAll('.tag-chip');
-  chips.forEach(function (c) {
-    c.addEventListener('click', function () {
-      chips.forEach(function (x) { x.classList.remove('bg-ink', 'text-white'); x.classList.add('bg-card', 'text-ink'); });
-      c.classList.remove('bg-card', 'text-ink'); c.classList.add('bg-ink', 'text-white');
-    });
-  });
-})();
-</script>
 </body>
 </html>

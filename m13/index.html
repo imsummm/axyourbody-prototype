@@ -1,185 +1,89 @@
 <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>AX YOUR BODY · 설정 · 알림</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../assets/tailwind-config.js"></script>
+</head>
+<body class="bg-canvas text-body font-sans min-h-screen">
+<header class="sticky top-0 z-40 bg-canvas border-b border-hairline">
+  <div class="h-16 max-w-[480px] mx-auto px-2 flex items-center gap-2">
+    <button type="button" id="back-btn" aria-label="뒤로" class="w-12 h-12 rounded-full text-ink flex items-center justify-center active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-back"/></svg></button>
+    <h1 class="text-title-sm text-ink">설정 · 알림</h1>
+  </div>
+</header>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><title>AX YOUR BODY</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#f9f9f6;-webkit-tap-highlight-color:transparent;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'on-tertiary-container': '#fafaf4', 'tertiary-fixed': '#e3e3de', 'primary-container': '#e60023', 'error': '#ba1a1a', 'on-tertiary': '#ffffff', 'on-error-container': '#93000a', 'surface-container-low': '#f4f4f1', 'on-surface-variant': '#5e3f3c', 'on-secondary-container': '#63635d', 'on-primary-fixed-variant': '#930012', 'on-primary': '#ffffff', 'on-primary-container': '#fff7f6', 'inverse-on-surface': '#f1f1ee', 'secondary-fixed-dim': '#c8c6bf', 'primary': '#b7001a', 'primary-fixed-dim': '#ffb3ad', 'on-secondary': '#ffffff', 'surface': '#f9f9f6', 'surface-container': '#eeeeeb', 'error-container': '#ffdad6', 'on-primary-fixed': '#410004', 'background': '#f9f9f6', 'secondary-container': '#e2e0d8', 'on-tertiary-fixed-variant': '#464744', 'surface-container-high': '#e8e8e5', 'surface-bright': '#f9f9f6', 'surface-dim': '#dadad7', 'surface-container-lowest': '#ffffff', 'on-background': '#1a1c1b', 'on-surface': '#1a1c1b', 'surface-tint': '#c0001b', 'inverse-surface': '#2f312f', 'secondary': '#5f5f59', 'on-secondary-fixed': '#1c1c17', 'on-tertiary-fixed': '#1a1c19', 'tertiary': '#595b57', 'surface-variant': '#e2e3e0', 'inverse-primary': '#ffb3ad', 'outline-variant': '#e8bcb8', 'outline': '#936e6b', 'tertiary-container': '#72736f', 'tertiary-fixed-dim': '#c6c7c2', 'primary-fixed': '#ffdad7', 'secondary-fixed': '#e5e2db', 'surface-container-highest': '#e2e3e0', 'on-error': '#ffffff', 'on-secondary-fixed-variant': '#474742' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'gutter-mobile': '0.75rem', 'space-lg': '1.5rem', 'margin-mobile': '1rem', 'gutter': '1rem', 'space-md': '1rem', 'space-xs': '0.25rem', 'margin': '1.25rem', 'space-sm': '0.5rem', 'space-xl': '2rem' }, 'fontFamily': { 'body-sm': ['Noto Sans KR', 'Noto Sans'], 'body-md': ['Noto Sans KR', 'Noto Sans'], 'headline-sm': ['Inter'], 'label-sm': ['Inter'], 'headline-lg': ['Inter'], 'caption': ['Noto Sans KR', 'Noto Sans'], 'display-lg': ['Inter'], 'label-md': ['Inter'], 'headline-md': ['Inter'], 'body-lg': ['Noto Sans KR', 'Noto Sans'], 'label-lg': ['Inter'], 'display-lg-mobile': ['Inter'] }, 'fontSize': { 'body-sm': ['13px', { 'lineHeight': '18px', 'fontWeight': '400' }], 'body-md': ['14px', { 'lineHeight': '22px', 'fontWeight': '400' }], 'headline-sm': ['18px', { 'lineHeight': '26px', 'fontWeight': '600' }], 'label-sm': ['12px', { 'lineHeight': '16px', 'fontWeight': '600' }], 'headline-lg': ['24px', { 'lineHeight': '32px', 'fontWeight': '700' }], 'caption': ['12px', { 'lineHeight': '16px', 'fontWeight': '400' }], 'display-lg': ['36px', { 'lineHeight': '44px', 'fontWeight': '700' }], 'label-md': ['14px', { 'lineHeight': '20px', 'fontWeight': '600' }], 'headline-md': ['20px', { 'lineHeight': '28px', 'fontWeight': '600' }], 'body-lg': ['16px', { 'lineHeight': '24px', 'fontWeight': '400' }], 'label-lg': ['16px', { 'lineHeight': '22px', 'fontWeight': '600' }], 'display-lg-mobile': ['28px', { 'lineHeight': '36px', 'fontWeight': '700' }] } } } };</script><style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head><body class="bg-surface text-on-surface flex flex-col min-h-screen selection:bg-primary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] pt-safe"><div class="max-w-[480px] mx-auto h-16 px-space-xs flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="뒤로가기" class="w-11 h-11 flex items-center justify-center text-on-surface rounded-full active:bg-secondary-container transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[22px]">arrow_back</span></button><h1 class="font-headline-md text-headline-md tracking-tight text-on-surface truncate">Settings Notifications</h1></div><div class="flex items-center pr-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full max-w-[480px] mx-auto px-margin-mobile pt-16 pb-safe bg-surface"><div class="flex flex-col w-full pb-10">
-<!-- Profile & Sanctuary Status Card -->
-<section class="mt-4 mb-5">
-<div class="bg-surface-container-low rounded-3xl p-5 flex flex-col gap-4 shadow-sm">
-<div class="flex items-center gap-4">
-<div class="relative w-16 h-16 rounded-full overflow-hidden bg-secondary-container flex-shrink-0 shadow-inner">
-<img class="w-full h-full object-cover" data-alt="A gentle, warm-toned minimal portrait of a 28-year-old Korean female professional resting peacefully in natural soft daylight with a calm indoor plant background, muted warm beige tones, soft aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmyLygP0DcrnWn1KqGCU7S6HWB1QZvzILKu5bzhIGbQY2s3aMuRyo-le-TxreprHTrkmxe2jpywxrsZGNuRLRBoU8Mv69ntfB5KQ2YKnKCF3_SAhFl9yNbyRgplRSVQExS4dijDj6NQJrbVS7P44fiLkPZiSsSXW7JOg63P5W9YWGQC825QTdlXo8ci5LteVCJyHHiHFbVL1yvXu8wlc2Xr-AgpUa2oPcHQevmDdo"/>
-<div class="absolute bottom-0 right-0 w-4 h-4 bg-primary-container rounded-full ring-2 ring-surface flex items-center justify-center">
-<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
-</div>
-</div>
-<div class="flex flex-col min-w-0 flex-1">
-<div class="flex items-center gap-2">
-<span class="font-headline-sm text-headline-sm text-on-surface truncate">my-f-general</span>
-<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">28세 · 직장인</span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary truncate mt-0.5">나만의 호흡으로 채워가는 건강한 일상</p>
-</div>
-</div>
-<!-- Peaceful Routine Status Pill -->
-<div class="bg-surface-container-lowest rounded-2xl p-3.5 flex items-center gap-3 shadow-sm">
-<div class="w-8 h-8 rounded-xl bg-primary-fixed flex items-center justify-center text-primary flex-shrink-0">
-<span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;">self_improvement</span>
-</div>
-<div class="flex flex-col min-w-0">
-<span class="font-label-sm text-label-sm text-primary font-semibold">현재 나의 페이스</span>
-<span class="font-body-sm text-body-sm text-on-surface truncate">주 3회 가벼운 루틴으로 목·어깨 회복 중</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Notification Settings (Guilt-Free Warm Toggles) -->
-<section class="mb-5 flex flex-col gap-2">
-<div class="flex items-center justify-between px-1">
-<div class="flex items-center gap-1.5">
-<span class="material-symbols-outlined text-primary text-[18px]">notifications_active</span>
-<h2 class="font-label-lg text-label-lg text-on-surface tracking-tight">알림 설정</h2>
-</div>
-<span class="font-caption text-caption text-secondary">언제든 마음 편히 조절해요</span>
-</div>
-<div class="bg-surface-container-low rounded-3xl p-2 flex flex-col shadow-sm divide-y-0">
-<!-- Toggle 1: 운동 알림 -->
-<div class="p-3.5 rounded-2xl hover:bg-surface-container transition-colors flex items-start justify-between gap-3">
-<div class="flex flex-col pr-2">
-<div class="flex items-center gap-1.5">
-<span class="font-label-md text-label-md text-on-surface">운동 알림 (주 3회)</span>
-<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary mt-1">퇴근 후 또는 여유 있는 시간에 부담 없이 가볍게 톡 두드려드려요.</p>
-</div>
-<button aria-checked="true" class="toggle-btn relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full bg-primary-container p-0.5 transition-colors duration-200 ease-in-out focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
-<span class="toggle-thumb translate-x-5 pointer-events-none inline-block h-6 w-6 transform rounded-full bg-on-primary shadow-sm transition duration-200 ease-in-out"></span>
-</button>
-</div>
-<!-- Subtle separator using tonal block -->
-<div class="h-px w-full bg-surface-container-highest my-0.5 opacity-60"></div>
-<!-- Toggle 2: 먹은 것 알림 -->
-<div class="p-3.5 rounded-2xl hover:bg-surface-container transition-colors flex items-start justify-between gap-3">
-<div class="flex flex-col pr-2">
-<div class="flex items-center gap-1.5">
-<span class="font-label-md text-label-md text-on-surface">먹은 것 알림 (밤 10시)</span>
-<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary mt-1">야식이나 식사를 가볍게 남기도록 안내해요. 비워둔 날도 괜찮습니다.</p>
-</div>
-<button aria-checked="true" class="toggle-btn relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full bg-primary-container p-0.5 transition-colors duration-200 ease-in-out focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
-<span class="toggle-thumb translate-x-5 pointer-events-none inline-block h-6 w-6 transform rounded-full bg-on-primary shadow-sm transition duration-200 ease-in-out"></span>
-</button>
-</div>
-<!-- Subtle separator using tonal block -->
-<div class="h-px w-full bg-surface-container-highest my-0.5 opacity-60"></div>
-<!-- Toggle 3: 쉬는 동안 알림 주 1회로 줄이기 -->
-<div class="p-3.5 rounded-2xl hover:bg-surface-container transition-colors flex items-start justify-between gap-3">
-<div class="flex flex-col pr-2">
-<div class="flex items-center gap-1.5">
-<span class="font-label-md text-label-md text-on-surface">쉬는 동안 알림 주 1회로 줄이기</span>
-<span class="px-1.5 py-0.2 rounded-md bg-secondary-container text-on-secondary-container font-caption text-caption">안식 모드</span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary mt-1">운동을 쉬어가는 주에도 재촉하지 않고 조용히 자리를 지켜요.</p>
-</div>
-<button aria-checked="true" class="toggle-btn relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full bg-primary-container p-0.5 transition-colors duration-200 ease-in-out focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
-<span class="toggle-thumb translate-x-5 pointer-events-none inline-block h-6 w-6 transform rounded-full bg-on-primary shadow-sm transition duration-200 ease-in-out"></span>
-</button>
-</div>
-</div>
-</section>
-<!-- Preferences & Account Details Section -->
-<section class="mb-5 flex flex-col gap-2">
-<div class="px-1">
-<h2 class="font-label-lg text-label-lg text-on-surface tracking-tight">환경 및 루틴 관리</h2>
-</div>
-<div class="bg-surface-container-low rounded-3xl p-1.5 flex flex-col shadow-sm">
-<!-- Row 1: 내 정보 -->
-<button class="w-full text-left p-3.5 rounded-2xl hover:bg-surface-container active:bg-secondary-container transition-colors flex items-center justify-between gap-3" type="button">
-<div class="flex items-center gap-3 min-w-0">
-<div class="w-9 h-9 rounded-xl bg-surface-container-highest flex items-center justify-center text-on-surface flex-shrink-0">
-<span class="material-symbols-outlined text-[20px]">badge</span>
-</div>
-<div class="flex flex-col min-w-0">
-<span class="font-label-md text-label-md text-on-surface">내 정보</span>
-<span class="font-body-sm text-body-sm text-secondary truncate">my-f-general · 28세 · 목·어깨 완화 &amp; 체력 회복</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-secondary flex-shrink-0 text-[20px]">chevron_right</span>
-</button>
-<!-- Row 2: 운동 장소 -->
-<button class="w-full text-left p-3.5 rounded-2xl hover:bg-surface-container active:bg-secondary-container transition-colors flex items-center justify-between gap-3" type="button">
-<div class="flex items-center gap-3 min-w-0">
-<div class="w-9 h-9 rounded-xl bg-surface-container-highest flex items-center justify-center text-on-surface flex-shrink-0">
-<span class="material-symbols-outlined text-[20px]">home_pin</span>
-</div>
-<div class="flex flex-col min-w-0">
-<span class="font-label-md text-label-md text-on-surface">운동 장소</span>
-<span class="font-body-sm text-body-sm text-secondary">가장 편안한 나의 집</span>
-</div>
-</div>
-<div class="flex items-center gap-1.5 flex-shrink-0">
-<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">집</span>
-<span class="material-symbols-outlined text-secondary text-[20px]">chevron_right</span>
-</div>
-</button>
-<!-- Row 3: 앱 버전 & 데이터 백업 -->
-<button class="w-full text-left p-3.5 rounded-2xl hover:bg-surface-container active:bg-secondary-container transition-colors flex items-center justify-between gap-3" type="button">
-<div class="flex items-center gap-3 min-w-0">
-<div class="w-9 h-9 rounded-xl bg-surface-container-highest flex items-center justify-center text-on-surface flex-shrink-0">
-<span class="material-symbols-outlined text-[20px]">cloud_sync</span>
-</div>
-<div class="flex flex-col min-w-0">
-<span class="font-label-md text-label-md text-on-surface">기록 안전 보관 (백업)</span>
-<span class="font-body-sm text-body-sm text-secondary">최근 자동 저장 완료 · 버전 1.0.0</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-secondary flex-shrink-0 text-[20px]">chevron_right</span>
-</button>
-</div>
-</section>
-<!-- Thoughtful Warm Note / Quote -->
-<section class="mt-2 mb-2">
-<div class="bg-surface-container rounded-3xl p-5 flex items-center gap-3.5">
-<div class="w-10 h-10 rounded-2xl bg-secondary-container flex items-center justify-center text-on-secondary-container flex-shrink-0">
-<span class="material-symbols-outlined text-[22px]">spa</span>
-</div>
-<div class="flex flex-col min-w-0">
-<p class="font-label-sm text-label-sm text-on-surface">운동을 건너뛴 날도 회복의 과정입니다.</p>
-<p class="font-body-sm text-body-sm text-secondary mt-0.5">퇴근길의 깊은 숨 한 번도 오늘의 소중한 루틴이에요.</p>
-</div>
-</div>
-</section>
-<!-- Secondary Actions (Gentle Links) -->
-<div class="flex justify-center items-center gap-4 mt-6 text-center">
-<button class="font-caption text-caption text-secondary hover:text-on-surface transition-colors py-1" type="button">이용 약관</button>
-<span class="text-surface-dim font-caption text-caption">·</span>
-<button class="font-caption text-caption text-secondary hover:text-on-surface transition-colors py-1" type="button">개인정보 처리방침</button>
-<span class="text-surface-dim font-caption text-caption">·</span>
-<button class="font-caption text-caption text-secondary hover:text-on-surface transition-colors py-1" type="button">계정 잠시 쉬어가기</button>
-</div>
-</div>
+<main class="max-w-[480px] mx-auto px-4 pt-6 pb-8">
+  <section class="rounded-lg bg-card p-6 flex items-center gap-4">
+    <img class="w-16 h-16 rounded-full object-cover shrink-0" src="../assets/img/profile-portrait-2.jpg" alt="가상 프로필 사진"/>
+    <div class="min-w-0">
+      <p class="text-heading-sm text-ink">my-f-general</p>
+      <p class="text-body-sm text-mute">28세 · 야근이 많은 사무직</p>
+      <p class="text-caption text-mute mt-1">목표 · 거북목·어깨 결림 줄이기, 체력 올리기, 주 3회 운동</p>
+    </div>
+  </section>
+
+  <section class="mt-6">
+    <h2 class="text-heading text-ink">알림</h2>
+    <p class="text-caption text-mute mt-1">바꾸면 바로 적용돼요</p>
+    <div class="mt-2 flex flex-col">
+      <div class="py-4 border-b border-hairline flex items-start justify-between gap-4">
+        <div><p class="text-button text-ink">운동 알림 (주 3회)</p><p class="text-body-sm text-mute mt-1">할 운동이 있는 날 퇴근 시간 뒤에 한 번 알려 드려요.</p></div>
+        <button type="button" role="switch" aria-checked="true" class="switch shrink-0 w-12 h-8 rounded-full bg-ink p-1 active:opacity-100 active:ring-2 active:ring-stone"><span class="toggle-thumb block w-6 h-6 rounded-full bg-white translate-x-4 transition-transform"></span></button>
+      </div>
+      <div class="py-4 border-b border-hairline flex items-start justify-between gap-4">
+        <div><p class="text-button text-ink">먹은 것 알림 (밤 10시)</p><p class="text-body-sm text-mute mt-1">먹은 것을 남길 수 있게 한 번 알려 드려요. 비워 둔 날도 괜찮아요.</p></div>
+        <button type="button" role="switch" aria-checked="true" class="switch shrink-0 w-12 h-8 rounded-full bg-ink p-1 active:ring-2 active:ring-stone"><span class="toggle-thumb block w-6 h-6 rounded-full bg-white translate-x-4 transition-transform"></span></button>
+      </div>
+      <div class="py-4 flex items-start justify-between gap-4">
+        <div><p class="text-button text-ink">쉬는 동안 알림 주 1회로 줄이기</p><p class="text-body-sm text-mute mt-1">운동을 쉰 주에는 알림을 줄이고 재촉하지 않아요.</p></div>
+        <button type="button" role="switch" aria-checked="true" class="switch shrink-0 w-12 h-8 rounded-full bg-ink p-1 active:ring-2 active:ring-stone"><span class="toggle-thumb block w-6 h-6 rounded-full bg-white translate-x-4 transition-transform"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-6">
+    <h2 class="text-heading text-ink">내 정보와 운동 환경</h2>
+    <div class="mt-2 flex flex-col">
+      <button type="button" class="py-4 border-b border-hairline flex items-center justify-between gap-4 text-left active:bg-card">
+        <span><span class="block text-button text-ink">내 정보</span><span class="block text-body-sm text-mute mt-1">my-f-general · 28세 · 거북목·어깨 결림 줄이기, 체력 올리기, 주 3회 운동</span></span>
+        <svg class="w-5 h-5 text-mute" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg>
+      </button>
+      <button type="button" class="py-4 border-b border-hairline flex items-center justify-between gap-4 text-left active:bg-card">
+        <span><span class="block text-button text-ink">운동 장소</span><span class="block text-body-sm text-mute mt-1">집</span></span>
+        <svg class="w-5 h-5 text-mute" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg>
+      </button>
+      <button type="button" class="py-4 flex items-center justify-between gap-4 text-left active:bg-card">
+        <span><span class="block text-button text-ink">기록 보관</span><span class="block text-body-sm text-mute mt-1">이 기기에 저장돼요</span></span>
+        <svg class="w-5 h-5 text-mute" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <div class="mt-8 flex items-center justify-center gap-2 text-caption text-mute">
+    <button type="button" class="px-2 py-1 rounded-sm active:bg-card">이용 약관</button><span>·</span>
+    <button type="button" class="px-2 py-1 rounded-sm active:bg-card">개인정보 처리방침</button><span>·</span>
+    <button type="button" class="px-2 py-1 rounded-sm active:bg-card">계정 잠시 쉬기</button>
+  </div>
+</main>
+
 <script>
-  function toggleSwitch(button) {
-    const isChecked = button.getAttribute('aria-checked') === 'true';
-    const thumb = button.querySelector('.toggle-thumb');
-    
-    if (isChecked) {
-      button.setAttribute('aria-checked', 'false');
-      button.classList.remove('bg-primary-container');
-      button.classList.add('bg-secondary-container');
-      thumb.classList.remove('translate-x-5');
-      thumb.classList.add('translate-x-0');
-    } else {
-      button.setAttribute('aria-checked', 'true');
-      button.classList.remove('bg-secondary-container');
-      button.classList.add('bg-primary-container');
-      thumb.classList.remove('translate-x-0');
-      thumb.classList.add('translate-x-5');
-    }
-  }
-</script></main></body></html>
+(function () {
+  document.getElementById('back-btn').addEventListener('click', function () { history.back(); });
+  document.querySelectorAll('.switch').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var on = b.getAttribute('aria-checked') !== 'true';
+      b.setAttribute('aria-checked', String(on));
+      b.classList.toggle('bg-ink', on); b.classList.toggle('bg-stone', !on);
+      var t = b.querySelector('.toggle-thumb');
+      t.classList.toggle('translate-x-4', on); t.classList.toggle('translate-x-0', !on);
+    });
+  });
+})();
+</script>
+</body>
+</html>

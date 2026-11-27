@@ -1,164 +1,73 @@
 <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>AX YOUR BODY · 운동 · 운동 플레이어</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../assets/tailwind-config.js"></script>
+</head>
+<body class="bg-canvas text-body font-sans min-h-screen">
+<header class="sticky top-0 z-40 bg-canvas border-b border-hairline">
+  <div class="h-16 max-w-[480px] mx-auto px-2 flex items-center justify-between">
+    <a href="#" data-path="today-dashboard" aria-label="오늘로" class="w-12 h-12 rounded-full text-ink flex items-center justify-center active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-close"/></svg></a>
+    <h1 class="text-title-sm text-ink">목·어깨 풀기 20분</h1>
+    <button type="button" aria-pressed="true" class="px-3 py-2 rounded-full bg-card text-caption text-ink flex items-center gap-1 active:bg-secondary"><svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-sound"/></svg>음성 켜짐</button>
+  </div>
+</header>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans:wght@100..900&display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-container": "#fff7f6", "on-error": "#ffffff", "tertiary-container": "#72736f", "on-tertiary": "#ffffff", "tertiary-fixed-dim": "#c6c7c2", "on-background": "#1a1c1b", "surface-container-highest": "#e2e3e0", "primary-container": "#e60023", "on-tertiary-fixed-variant": "#464744", "on-primary-fixed": "#410004", "on-primary": "#ffffff", "primary-fixed-dim": "#ffb3ad", "inverse-on-surface": "#f1f1ee", "surface-container-lowest": "#ffffff", "on-tertiary-container": "#fafaf4", "surface-container-high": "#e8e8e5", "tertiary": "#595b57", "surface-bright": "#f9f9f6", "on-error-container": "#93000a", "on-secondary-container": "#63635d", "on-surface-variant": "#5e3f3c", "background": "#f9f9f6", "inverse-primary": "#ffb3ad", "on-primary-fixed-variant": "#930012", "on-secondary-fixed": "#1c1c17", "secondary-container": "#e2e0d8", "primary": "#b7001a", "surface-container": "#eeeeeb", "on-secondary-fixed-variant": "#474742", "surface": "#f9f9f6", "inverse-surface": "#2f312f", "surface-dim": "#dadad7", "on-secondary": "#ffffff", "surface-variant": "#e2e3e0", "surface-tint": "#c0001b", "secondary": "#5f5f59", "on-tertiary-fixed": "#1a1c19", "error-container": "#ffdad6", "secondary-fixed": "#e5e2db", "primary-fixed": "#ffdad7", "surface-container-low": "#f4f4f1", "tertiary-fixed": "#e3e3de", "error": "#ba1a1a", "on-surface": "#1a1c1b", "secondary-fixed-dim": "#c8c6bf", "outline": "#936e6b", "outline-variant": "#e8bcb8" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-md": "1rem", "gutter-mobile": "0.75rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "margin-mobile": "1rem", "space-xl": "2rem", "margin": "1.25rem", "gutter": "1rem" }, fontFamily: { "headline-lg": ["Inter"], "body-lg": ["Noto Sans"], "body-sm": ["Noto Sans"], "caption": ["Noto Sans"], "headline-md": ["Inter"], "body-md": ["Noto Sans"], "label-lg": ["Inter"], "display-lg-mobile": ["Inter"], "label-md": ["Inter"], "display-lg": ["Inter"], "label-sm": ["Inter"], "headline-sm": ["Inter"] }, fontSize: { "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "label-lg": ["16px", { "lineHeight": "22px", "fontWeight": "600" }], "display-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }], "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "display-lg": ["36px", { "lineHeight": "44px", "fontWeight": "700" }], "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head><body class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe"><div class="h-16 px-gutter-mobile flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="뒤로 가기" class="w-11 h-11 flex items-center justify-center text-on-surface hover:opacity-75 transition-opacity" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span></button><img alt="AX YOUR BODY Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrAYTlP26bVj6Yns9Ltnh7wUGoCBkZvgE-UdKmxa4LOp5e3Uh8SSUdu42uecxs5aN_mwxYScgf2HvyuOzSKHnWMP3yYUCP3wG3E9qI8blrUwOgWEDNS0Qb8k7TFsGfvEvJ18eSo2drFMPPVdqR6YLwinuMJC2wmbLo-1KdgAUIVQ6ou1SP-7lgsuEg_UmB3tSzUZS_fqHNi9arry5tcI-N82IZvOhl8E6cudPPGVk8Td"/><h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Workout Session</h1></div><a class="flex items-center justify-center min-w-[44px] min-h-[44px] rounded-full hover:opacity-85 transition-opacity" data-path="settings-notifications" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWI0kmDUxe2TeaT0wB8MOqBoqQJHBtagrwR59rTho7w3iClB2vCN3iC2wPFfIOxwduRHOWdQVSSwhTTwG5uq4QSuXYuuD6BY4g638DWYXMC-WOubCWkE67huuALwBH8rVJAlZkiK7zHQy9boYzKvWrSKqfR_ICOPnEyEloEra8MbAUhq59k4aFINePf1DN8telXG4TGgZFqtALcxgAyHLDcolOU9ej60YLEH4-xJU"/></a></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface max-w-[480px] mx-auto min-h-screen"><div class="flex flex-col w-full pb-8 select-none">
-<!-- Top Progress Bar & Header Subtitle -->
-<section class="px-margin flex flex-col gap-space-xs mt-2">
-<div class="flex items-center justify-between">
-<a class="inline-flex items-center gap-1 text-on-surface hover:opacity-70 transition-opacity" data-path="today-dashboard" href="#">
-<span class="material-symbols-outlined text-[18px]">arrow_back_ios</span>
-<span class="font-label-md text-label-md">오늘로</span>
-</a>
-<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-fixed">
-<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
-<span class="font-label-sm text-label-sm tracking-wide">3 / 8 동작</span>
-</div>
-</div>
-<!-- Mini Smooth Step Bar -->
-<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden mt-1">
-<div class="h-full bg-primary-container rounded-full transition-all duration-500 ease-out" style="width: 37.5%;"></div>
-</div>
-</section>
-<!-- Central Dynamic Focus (Move & High Contrast Timer) -->
-<section class="px-margin mt-5 flex flex-col items-center text-center">
-<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-tertiary font-label-sm text-label-sm mb-1.5">
-<span class="material-symbols-outlined text-[14px]">self_improvement</span>
-<span>바른 호흡에 집중하기</span>
-</div>
-<!-- Movement Name -->
-<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface tracking-tight font-bold">턱 당기기</h2>
-<!-- Huge High-Contrast Monospace Timer -->
-<div class="flex items-baseline justify-center gap-1 my-1">
-<span class="font-mono text-[54px] leading-tight font-bold text-on-surface tracking-tighter" id="timer-display">00:42</span>
-</div>
-<!-- Gentle Breathing Indicator (Animated rhythmic pill) -->
-<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low text-tertiary">
-<span class="relative flex h-2 w-2">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60"></span>
-<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-</span>
-<span class="font-caption text-caption transition-opacity duration-700" id="breath-guide">천천히 숨을 내쉬며 긴장을 풀어주세요</span>
-</div>
-</section>
-<!-- Visual Guide Card Area -->
-<section class="px-margin mt-4">
-<div class="relative w-full aspect-[4/3] rounded-[24px] overflow-hidden bg-surface-container flex flex-col justify-end p-4">
-<!-- Ergonomic Visual Background -->
-<img class="absolute inset-0 w-full h-full object-cover" data-alt="A warm, minimal Japanese-Scandinavian aesthetic studio illustration of a person gently retracting their chin to stretch the back of their neck. Soft muted warm lighting, calming cream and beige tones, serene and peaceful atmosphere, clean lines, perfectly ergonomic posture focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW4mO-4M-M7MSfEZJJUGAmAfIhqXprLwmSEnaNMRVYU-m3YV3Y03adv7wwrVSzBO_zJrT4AoqrP3XgnNWP7LH-P-F86IxDXgstVhdOyffafSg0FQBDfiqB5uyCem91e0H2QDxZrJ9wiySa0JnWPfONtpbTFEjeX_X89HQXPRBYbkYzuXz6Pdzmm6GY_NqtWN9uUOCpH5hwcSm07Q3155mx-STJHjgQ2wglCvgwHVE"/>
-<!-- Subtle Visual Scrim for Text Legibility -->
-<div class="absolute inset-0 bg-gradient-to-t from-on-surface/70 via-on-surface/20 to-transparent"></div>
-<!-- Live Floating Rhythm Overlay -->
-<div class="absolute top-3.5 right-3.5 flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface/90 backdrop-blur-md text-on-surface">
-<span class="material-symbols-outlined text-[16px] text-primary-container" style="font-variation-settings: 'FILL' 1;">spa</span>
-<span class="font-label-sm text-label-sm">바른 자세 유지</span>
-</div>
-<!-- Actionable Pose Cue (Warm & Non-judgmental) -->
-<div class="relative z-10 bg-surface/95 backdrop-blur-md rounded-xl p-3.5 flex items-start gap-3 text-on-surface">
-<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 text-on-surface mt-0.5">
-<span class="material-symbols-outlined text-[20px]">lightbulb</span>
-</div>
-<div class="flex flex-col min-w-0">
-<p class="font-label-sm text-label-sm font-semibold text-on-surface">자세 가이드</p>
-<p class="font-body-sm text-body-sm text-tertiary leading-snug mt-0.5">턱을 목젖 쪽으로 가볍게 당겨 뒷목을 부드럽게 늘려 주세요.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Next Movement Preview Row -->
-<section class="px-margin mt-3.5">
-<div class="rounded-xl bg-surface-container-low p-3.5 flex items-center justify-between transition-colors">
-<div class="flex items-center gap-2.5 min-w-0">
-<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center shrink-0 text-tertiary">
-<span class="material-symbols-outlined text-[18px]">skip_next</span>
-</div>
-<div class="flex flex-col min-w-0">
-<span class="font-caption text-caption text-tertiary">다음 순서</span>
-<span class="font-label-md text-label-md text-on-surface truncate">어깨 돌리기 (Shoulder Rolls)</span>
-</div>
-</div>
-<div class="flex items-center gap-1 text-tertiary shrink-0 ml-2">
-<span class="material-symbols-outlined text-[16px]">schedule</span>
-<span class="font-label-sm text-label-sm">30초</span>
-</div>
-</div>
-</section>
-<!-- Distraction-free Action Controls -->
-<section class="px-margin mt-6 flex flex-col gap-2.5">
-<div class="flex items-center gap-3">
-<!-- Pause / Resume Button -->
-<button class="flex-1 py-4 px-4 rounded-[16px] bg-secondary-container text-on-secondary-fixed font-label-lg text-label-lg flex items-center justify-center gap-2 active:opacity-85 transition-opacity" id="pause-btn">
-<span class="material-symbols-outlined text-[20px]" id="pause-icon">pause</span>
-<span id="pause-text">잠깐 멈추기</span>
-</button>
-<!-- Complete / Quit Flow Button (Target: M9 운동 완료) -->
-<a class="flex-1 py-4 px-4 rounded-[16px] bg-surface-container-lowest text-tertiary font-label-lg text-label-lg text-center flex items-center justify-center gap-1.5 active:bg-surface-container-high transition-colors" data-path="workout-completion" href="#">
-<span class="material-symbols-outlined text-[18px]">check_circle</span>
-<span>그만하기</span>
-</a>
-</div>
-<!-- Gentle Assurance Message -->
-<p class="text-center font-caption text-caption text-tertiary mt-1">
-      언제든 멈추셔도 괜찮아요. 지금까지 진행한 시간도 소중히 보관됩니다.
-    </p>
-</section>
-</div>
+<main class="max-w-[480px] mx-auto px-4 pt-4 pb-8">
+  <section class="relative rounded-lg overflow-hidden">
+    <img class="w-full h-72 object-cover" src="../assets/img/chin-tuck-illust.jpg" alt="턱을 뒤로 당겨 목 뒤를 늘리는 사람 그림"/>
+    <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-canvas text-caption text-ink">1 / 8 동작</span>
+    <span id="total-left" class="absolute top-3 right-3 px-3 py-1 rounded-full bg-dark text-caption text-white">전체 19분 42초 남음</span>
+  </section>
+
+  <section class="mt-6">
+    <div class="flex items-end justify-between">
+      <h2 class="text-title text-ink">턱 당기기</h2>
+      <span class="text-title text-ink tabular-nums" id="timer-display">00:42</span>
+    </div>
+    <p class="text-body text-mute mt-2" id="breath-guide">천천히 숨을 내쉬며 턱을 목 쪽으로 가볍게 당겨요. 뒷목이 길게 늘어나는 느낌이면 돼요.</p>
+    <div class="mt-4 grid grid-cols-8 gap-1" aria-label="진행 1 / 8">
+      <span class="h-1 rounded-full bg-ink"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span>
+    </div>
+  </section>
+
+  <section class="mt-6 rounded-md bg-card p-4 flex items-center justify-between">
+    <span><span class="block text-caption text-mute">다음 동작</span><span class="block text-button text-ink">목 옆 늘리기</span></span>
+    <span class="text-caption text-mute">2분</span>
+  </section>
+
+  <section class="mt-6 grid grid-cols-2 gap-2">
+    <button type="button" id="pause-btn" class="py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed"><svg class="w-5 h-5" aria-hidden="true" id="pause-icon"><use href="../assets/icons.svg#i-pause"/></svg><span id="pause-text">일시정지</span></button>
+    <a href="#" data-path="workout-completion" class="py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center active:bg-secondary-pressed">그만하기</a>
+  </section>
+  <p class="text-caption text-mute text-center mt-4">그만하면 지금까지 한 만큼 "여기까지 했어요"로 남아요.</p>
+</main>
+
 <script>
-  (function() {
-    let secondsLeft = 42;
-    let isPaused = false;
-    const timerEl = document.getElementById('timer-display');
-    const breathEl = document.getElementById('breath-guide');
-    const pauseBtn = document.getElementById('pause-btn');
-    const pauseText = document.getElementById('pause-text');
-    const pauseIcon = document.getElementById('pause-icon');
-
-    const breathCues = [
-      '천천히 숨을 내쉬며 긴장을 풀어주세요',
-      '코로 편안하게 숨을 들이마십니다',
-      '어깨 힘을 빼고 턱의 정렬을 느껴보세요'
-    ];
-    let cueIndex = 0;
-
-    const interval = setInterval(function() {
-      if (isPaused) return;
-      if (secondsLeft > 0) {
-        secondsLeft--;
-        const mins = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
-        const secs = String(secondsLeft % 60).padStart(2, '0');
-        if (timerEl) timerEl.textContent = mins + ':' + secs;
-
-        if (secondsLeft % 10 === 0 && breathEl) {
-          cueIndex = (cueIndex + 1) % breathCues.length;
-          breathEl.style.opacity = '0';
-          setTimeout(function() {
-            breathEl.textContent = breathCues[cueIndex];
-            breathEl.style.opacity = '1';
-          }, 350);
-        }
-      } else {
-        clearInterval(interval);
-      }
-    }, 1000);
-
-    if (pauseBtn) {
-      pauseBtn.addEventListener('click', function() {
-        isPaused = !isPaused;
-        if (isPaused) {
-          pauseText.textContent = '다시 시작';
-          pauseIcon.textContent = 'play_arrow';
-          if (breathEl) breathEl.textContent = '잠시 호흡을 고르고 계세요';
-        } else {
-          pauseText.textContent = '잠깐 멈추기';
-          pauseIcon.textContent = 'pause';
-          if (breathEl) breathEl.textContent = breathCues[cueIndex];
-        }
-      });
-    }
-  })();
-</script></main></body></html>
+(function () {
+  var paused = false, move = 42, total = 19 * 60 + 42;
+  function two(n) { return (n < 10 ? '0' : '') + n; }
+  function render() {
+    document.getElementById('timer-display').textContent = two(Math.floor(move / 60)) + ':' + two(move % 60);
+    document.getElementById('total-left').textContent = '전체 ' + Math.floor(total / 60) + '분 ' + two(total % 60) + '초 남음';
+  }
+  setInterval(function () {
+    if (paused) return;
+    if (move > 0) move--;
+    if (total > 0) total--;
+    render();
+  }, 1000);
+  document.getElementById('pause-btn').addEventListener('click', function () {
+    paused = !paused;
+    document.getElementById('pause-text').textContent = paused ? '이어서 하기' : '일시정지';
+    document.querySelector('#pause-icon use').setAttribute('href', '../assets/icons.svg#' + (paused ? 'i-play' : 'i-pause'));
+  });
+})();
+</script>
+</body>
+</html>

@@ -57,7 +57,7 @@
     </div>
     <div>
       <div class="flex items-center justify-between mb-2">
-        <span class="text-heading-sm text-ink">오늘 몸 상태</span>
+        <span class="text-heading-sm text-ink">오늘 몸 상태 <span id="save-status" class="text-caption text-mute font-normal opacity-0">저장했어요</span></span>
         <span class="text-caption text-mute" id="condition-label">나쁨 (2)</span>
       </div>
       <div class="grid grid-cols-5 gap-2" id="condition-chips">
@@ -116,8 +116,13 @@
   };
   var names = { '1': '매우 나쁨 (1)', '2': '나쁨 (2)', '3': '보통 (3)', '4': '좋음 (4)', '5': '매우 좋음 (5)' };
   group('#btn-busy-yes, #btn-busy-no', ['bg-secondary', 'text-ink'], function (b) { document.getElementById('busy-guidance-text').textContent = guide[b.id]; });
-  group('#sleep-chips button', ['bg-canvas', 'text-ink'], function (b) { document.getElementById('sleep-label').textContent = b.textContent.trim(); });
-  group('#condition-chips button', ['bg-canvas', 'text-ink'], function (b) { document.getElementById('condition-label').textContent = names[b.dataset.val]; });
+  function saved() {
+    var s = document.getElementById('save-status');
+    s.style.opacity = '1';
+    setTimeout(function () { s.style.opacity = '0'; }, 1500);
+  }
+  group('#sleep-chips button', ['bg-canvas', 'text-ink'], function (b) { document.getElementById('sleep-label').textContent = b.textContent.trim(); saved(); });
+  group('#condition-chips button', ['bg-canvas', 'text-ink'], function (b) { document.getElementById('condition-label').textContent = names[b.dataset.val]; saved(); });
 })();
 </script>
 </body>

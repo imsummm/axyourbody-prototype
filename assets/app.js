@@ -167,7 +167,7 @@
       var u = $('#pause-icon use'); if (u) u.setAttribute('href', '../assets/icons.svg#' + (P.paused ? 'i-play' : 'i-pause'));
     },
     'prev': function () { jump(P.i - 1); },
-    'next': function () { if (P.i >= ROUTINE.moves.length - 1) finish(); else jump(P.i + 1); },
+    'next': function () { P.skipped = true; if (P.i >= ROUTINE.moves.length - 1) finish(); else jump(P.i + 1); },
     'stop': function () {
       clearInterval(P.timer);
       if (P.done > 0) addLog('여기까지 했어요', P.done);
@@ -294,10 +294,9 @@
     var log = store.get('log', []);
     log.push({ r: RID, name: ROUTINE.name, min: ROUTINE.min, status: status, doneSec: doneSec, at: new Date().toISOString() });
     store.set('log', log);
-    // 할 운동 목록에서 같은 루틴 하나를 지운다(한 것으로 옮겨 감).
-    var plan = store.get('plan', []), i = -1;
-    plan.forEach(function (x, k) { if (i < 0 && x.r === RID) i = k; });
-    if (i > -1) { plan.splice(i, 1); store.set('plan', plan); }
+    // "했어요"이면 7에서 이번 주 할 운동으로 넣은 같은 루틴(add-<id>)만 목록에서 뺀다.
+    // 2에서 고른 다음 주 요일(sunday-pick)이나 3의 금요일(busy-fri)처럼 날을 정한 계획은 그대로 둔다.
+    if (status === '했어요') store.set('plan', store.get('plan', []).filter(function (x) { return x.id !== 'add-' + RID; }));
   }
   function two(n) { return (n < 10 ? '0' : '') + n; }
   function mmss(sec) { return two(Math.floor(sec / 60)) + ':' + two(sec % 60); }
@@ -306,7 +305,7 @@
   // FLOW:player — 8: 1/N 동작부터 시작. 동작 남은 시간과 전체 남은 시간이 함께 줄고, 00:00이 되면 다음 동작으로 넘어간다.
   // 일시정지 ↔ 이어서 하기, 이전·다음은 동작 번호·진행 막대·다음 동작 카드를 바꾼다. 음성 켜짐 ↔ 꺼짐은 표시만(소리 없음).
   // 끝까지 하면 "했어요"로 기록하고 9로, 닫기·그만하기는 "여기까지 했어요"로 기록하고 5로 간다. ?fast=30이면 30배 빠르게(확인용).
-  var P = { i: 0, left: 0, done: 0, paused: false, timer: null };
+  var P = { i: 0, left: 0, done: 0, paused: false, timer: null, skipped: false };
   function moveSec(k) { return ROUTINE.moves[k][2] * 60; }
   function totalLeft() {
     var t = P.left;
@@ -352,8 +351,10 @@
     P.left = moveSec(P.i);
     paintPlayer();
   }
+  // 끝까지 진행했으면 "했어요" → 9. 다음 버튼으로 건너뛴 동작이 있으면 "여기까지 했어요" → 5.
   function finish() {
     clearInterval(P.timer);
+    if (P.skipped) { addLog('여기까지 했어요', P.done); go(5); return; }
     addLog('했어요', P.done);
     go(9, '?r=' + RID);
   }
@@ -374,6 +375,23 @@
       }
       paintPlayer();
     }, 1000);
+  }
+
+
+  // FLOW:done — 9: 방금 기록한 운동(ax-log 마지막 줄)의 이름과 한 시간을 보여 준다. 어땠는지·뻐근한 곳 답은 ax-done-feel·ax-done-sore에 저장되어 6에 보인다. 확인 → 1(오늘로) 또는 5(이번 주 운동).
+  function initDone() {
+    var log = store.get('log', []);
+    var last = log[log.length - 1];
+    if (last && params.get('r')) {
+      text($('#dn-name'), last.name + ' · ' + minSec(last.doneSec));
+      if (last.r !== 'neck') text($('#dn-note'), '이번 주 운동에 "' + last.status + '"로 남겼어요.');
+    }
+    var pick = $('#next-day-label');
+    if (pick) {
+      var day = store.get('p2-nextday', '');
+      var names = { '월': '월요일', '화': '화요일', '수': '수요일', '목': '목요일', '금': '금요일' };
+      text(pick, day ? names[day] + ' · 목·어깨 풀기 20분' : '아직 고르지 않았어요');
+    }
   }
 
   /* ---------- 이벤트 연결 ---------- */
@@ -402,4 +420,5 @@
   paintVoice();
   if (NUM === 7) renderRoutine();
   if (NUM === 8) startPlayer();
+  if (NUM === 9) initDone();
 })();

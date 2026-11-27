@@ -1,189 +1,124 @@
 <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>AX YOUR BODY · 오늘 · 이번 주 바쁜가요?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../assets/tailwind-config.js"></script>
+</head>
+<body class="bg-canvas text-body font-sans min-h-screen">
+<header class="fixed top-0 inset-x-0 z-40 bg-canvas border-b border-hairline">
+  <div class="h-16 max-w-[480px] mx-auto px-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span role="img" aria-label="AX YOUR BODY" class="w-8 h-8 rounded-full bg-primary text-white text-caption font-bold flex items-center justify-center">AX</span>
+      <h1 class="text-title-sm text-ink">오늘</h1>
+    </div>
+    <a href="#" data-path="settings-notifications" aria-label="설정과 알림 (my-f-general)" class="w-12 h-12 rounded-full flex items-center justify-center active:bg-card">
+      <span class="w-8 h-8 rounded-full bg-card text-ink flex items-center justify-center"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-settings"/></svg></span>
+    </a>
+  </div>
+</header>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>AX YOUR BODY</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#f9f9f6;-webkit-tap-highlight-color:transparent;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'on-tertiary-container': '#fafaf4', 'tertiary-fixed': '#e3e3de', 'primary-container': '#e60023', 'error': '#ba1a1a', 'on-tertiary': '#ffffff', 'on-error-container': '#93000a', 'surface-container-low': '#f4f4f1', 'on-surface-variant': '#5e3f3c', 'on-secondary-container': '#63635d', 'on-primary-fixed-variant': '#930012', 'on-primary': '#ffffff', 'on-primary-container': '#fff7f6', 'inverse-on-surface': '#f1f1ee', 'secondary-fixed-dim': '#c8c6bf', 'primary': '#b7001a', 'primary-fixed-dim': '#ffb3ad', 'on-secondary': '#ffffff', 'surface': '#f9f9f6', 'surface-container': '#eeeeeb', 'error-container': '#ffdad6', 'on-primary-fixed': '#410004', 'background': '#f9f9f6', 'secondary-container': '#e2e0d8', 'on-tertiary-fixed-variant': '#464744', 'surface-container-high': '#e8e8e5', 'surface-bright': '#f9f9f6', 'surface-dim': '#dadad7', 'surface-container-lowest': '#ffffff', 'on-background': '#1a1c1b', 'on-surface': '#1a1c1b', 'surface-tint': '#c0001b', 'inverse-surface': '#2f312f', 'secondary': '#5f5f59', 'on-secondary-fixed': '#1c1c17', 'on-tertiary-fixed': '#1a1c19', 'tertiary': '#595b57', 'surface-variant': '#e2e3e0', 'inverse-primary': '#ffb3ad', 'outline-variant': '#e8bcb8', 'outline': '#936e6b', 'tertiary-container': '#72736f', 'tertiary-fixed-dim': '#c6c7c2', 'primary-fixed': '#ffdad7', 'secondary-fixed': '#e5e2db', 'surface-container-highest': '#e2e3e0', 'on-error': '#ffffff', 'on-secondary-fixed-variant': '#474742' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'gutter-mobile': '0.75rem', 'space-lg': '1.5rem', 'margin-mobile': '1rem', 'gutter': '1rem', 'space-md': '1rem', 'space-xs': '0.25rem', 'margin': '1.25rem', 'space-sm': '0.5rem', 'space-xl': '2rem' }, 'fontFamily': { 'body-sm': ['Noto Sans KR', 'Noto Sans'], 'body-md': ['Noto Sans KR', 'Noto Sans'], 'headline-sm': ['Inter'], 'label-sm': ['Inter'], 'headline-lg': ['Inter'], 'caption': ['Noto Sans KR', 'Noto Sans'], 'display-lg': ['Inter'], 'label-md': ['Inter'], 'headline-md': ['Inter'], 'body-lg': ['Noto Sans KR', 'Noto Sans'], 'label-lg': ['Inter'], 'display-lg-mobile': ['Inter'] }, 'fontSize': { 'body-sm': ['13px', { 'lineHeight': '18px', 'fontWeight': '400' }], 'body-md': ['14px', { 'lineHeight': '22px', 'fontWeight': '400' }], 'headline-sm': ['18px', { 'lineHeight': '26px', 'fontWeight': '600' }], 'label-sm': ['12px', { 'lineHeight': '16px', 'fontWeight': '600' }], 'headline-lg': ['24px', { 'lineHeight': '32px', 'fontWeight': '700' }], 'caption': ['12px', { 'lineHeight': '16px', 'fontWeight': '400' }], 'display-lg': ['36px', { 'lineHeight': '44px', 'fontWeight': '700' }], 'label-md': ['14px', { 'lineHeight': '20px', 'fontWeight': '600' }], 'headline-md': ['20px', { 'lineHeight': '28px', 'fontWeight': '600' }], 'body-lg': ['16px', { 'lineHeight': '24px', 'fontWeight': '400' }], 'label-lg': ['16px', { 'lineHeight': '22px', 'fontWeight': '600' }], 'display-lg-mobile': ['28px', { 'lineHeight': '36px', 'fontWeight': '700' }] } } } };</script><style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head><body class="bg-surface text-on-surface flex flex-col min-h-screen selection:bg-primary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] pt-safe"><div class="max-w-[480px] mx-auto h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-md tracking-tight text-on-surface">Today</span></div><div class="flex items-center gap-space-xs"><a class="w-11 h-11 flex items-center justify-center text-secondary hover:text-on-surface transition-colors" data-path="settings-notifications" href="#"><span class="material-symbols-outlined text-[22px]">tune</span></a><a class="w-11 h-11 flex items-center justify-center" data-path="settings-notifications" href="#"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></a></div></div></header><main class="flex-1 flex flex-col relative w-full max-w-[480px] mx-auto px-margin-mobile pt-16 pb-24 bg-surface"><div class="flex flex-col w-full gap-space-md">
-<!-- 1. Situation Inquiry Card (Top) -->
-<section class="bg-surface-container rounded-3xl p-5 shadow-sm transition-all duration-300" id="busy-check-card">
-<div class="flex items-start gap-3">
-<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center shrink-0 mt-0.5">
-<span class="material-symbols-outlined text-[18px] text-on-surface">spa</span>
-</div>
-<div class="flex flex-col gap-1">
-<span class="font-label-sm text-label-sm text-secondary">컨디션 케어</span>
-<h2 class="font-headline-sm text-headline-sm text-on-surface leading-snug">
-          요즘 잠이 짧고 야식이 이어졌어요. 이번 주 바쁜가요?
-        </h2>
-</div>
-</div>
-<!-- Choice Action Buttons -->
-<div class="grid grid-cols-2 gap-space-sm mt-4">
-<button class="h-12 rounded-2xl bg-on-surface text-surface font-label-md text-label-md flex items-center justify-center transition-all active:scale-[0.98] select-none" id="btn-busy-yes" onclick="handleBusySelection('yes')" type="button">
-        예
-      </button>
-<button class="h-12 rounded-2xl bg-secondary-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all active:scale-[0.98] select-none" id="btn-busy-no" onclick="handleBusySelection('no')" type="button">
-        아니요
-      </button>
-</div>
-<!-- Calm Guidance Line -->
-<p class="font-body-sm text-body-sm text-secondary mt-3 text-center leading-relaxed" id="busy-guidance-text">
-      예를 고르면 이번 주는 몸 상태 체크만 남겨요
-    </p>
-</section>
-<!-- Visual Atmospheric Interlude -->
-<div class="relative overflow-hidden rounded-2xl h-28 bg-surface-container flex items-center justify-between px-5">
-<img class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-multiply pointer-events-none" data-alt="Soft morning light diffused through linen curtains onto a calm minimalist wooden surface with a small warm ceramic cup, soothing peaceful atmosphere, muted earth tones, Japanese Scandinavian interior, high resolution photorealistic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAecWX3HfVmLCiTf_fji3MGHZ8dtek_ukkM_QybXEtfe7LlH6OtasMQj5dKGekl0RkyPeneJ_5NIhmNR8BgfVZq8yByxHyiDI8urZpWjFf3zAZolVBC0rgXiXBve001CrHYA9sJG0zewtaRK83vSvlRNv3g4Z_OjsAcc__zFrG-qlZMG3K-kO2BCx7bulGQ6a2xVxexZsbajHMdmUtnQ6OTAODnHI2zJtpq1iyaXKA"/>
-<div class="relative z-10 flex flex-col justify-center">
-<span class="font-label-sm text-label-sm text-secondary">오늘의 무드</span>
-<span class="font-headline-sm text-headline-sm text-on-surface">차분하고 편안한 호흡</span>
-</div>
-<div class="relative z-10 w-10 h-10 rounded-full bg-surface/80 backdrop-blur-md flex items-center justify-center text-on-surface">
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">cloud_sync</span>
-</div>
-</div>
-<!-- 2. Body-Check Card -->
-<section class="bg-surface-container rounded-3xl p-5 flex flex-col gap-5 shadow-sm">
-<!-- Sleep Duration -->
-<div class="flex flex-col gap-2.5">
-<div class="flex items-center justify-between">
-<span class="font-label-md text-label-md text-on-surface">어젯밤 잠</span>
-<div class="flex items-center gap-1 text-secondary font-caption text-caption">
-<span class="material-symbols-outlined text-[14px]">sync</span>
-<span>자동 동기화됨</span>
-</div>
-</div>
-<!-- Sleep chips -->
-<div class="grid grid-cols-4 gap-space-xs">
-<button class="sleep-chip py-2 rounded-full font-label-sm text-label-sm text-center transition-all bg-surface-container-low text-secondary active:scale-95" onclick="selectSleep(this)" type="button">
-          5시간 이하
-        </button>
-<button class="sleep-chip py-2 rounded-full font-label-sm text-label-sm text-center transition-all bg-surface-container-low text-secondary active:scale-95" onclick="selectSleep(this)" type="button">
-          6시간
-        </button>
-<button class="sleep-chip py-2 rounded-full font-label-sm text-label-sm text-center transition-all bg-on-surface text-surface active:scale-95" onclick="selectSleep(this)" type="button">
-          7시간
-        </button>
-<button class="sleep-chip py-2 rounded-full font-label-sm text-label-sm text-center transition-all bg-surface-container-low text-secondary active:scale-95" onclick="selectSleep(this)" type="button">
-          8시간 이상
-        </button>
-</div>
-</div>
-<!-- Body Condition Score -->
-<div class="flex flex-col gap-2.5 pt-1">
-<div class="flex items-center justify-between">
-<span class="font-label-md text-label-md text-on-surface">오늘 몸 상태</span>
-<span class="font-caption text-caption text-secondary transition-opacity opacity-0" id="save-status">실시간 저장됨</span>
-</div>
-<!-- Rating Selector 1 to 5 -->
-<div class="grid grid-cols-5 gap-space-xs">
-<button class="condition-btn h-12 rounded-xl flex items-center justify-center font-headline-sm text-headline-sm transition-all bg-surface-container-low text-secondary active:scale-95" onclick="selectCondition(1, this)" type="button">
-          1
-        </button>
-<button class="condition-btn h-12 rounded-xl flex items-center justify-center font-headline-sm text-headline-sm transition-all bg-surface-container-low text-secondary active:scale-95" onclick="selectCondition(2, this)" type="button">
-          2
-        </button>
-<button class="condition-btn h-12 rounded-xl flex items-center justify-center font-headline-sm text-headline-sm transition-all bg-surface-container-low text-secondary active:scale-95" onclick="selectCondition(3, this)" type="button">
-          3
-        </button>
-<button class="condition-btn h-12 rounded-xl flex items-center justify-center font-headline-sm text-headline-sm transition-all bg-on-surface text-surface active:scale-95" onclick="selectCondition(4, this)" type="button">
-          4
-        </button>
-<button class="condition-btn h-12 rounded-xl flex items-center justify-center font-headline-sm text-headline-sm transition-all bg-surface-container-low text-secondary active:scale-95" onclick="selectCondition(5, this)" type="button">
-          5
-        </button>
-</div>
-<!-- Descriptive scale anchors -->
-<div class="flex justify-between items-center px-1">
-<span class="font-caption text-caption text-secondary">매우 나쁨</span>
-<span class="font-caption text-caption text-secondary">보통</span>
-<span class="font-caption text-caption text-secondary">매우 좋음</span>
-</div>
-</div>
-</section>
-<!-- 3. Today's Workout Row Card -->
-<a class="group block bg-surface-container rounded-2xl p-4 shadow-sm transition-all hover:bg-surface-container-high active:scale-[0.99]" data-path="routine-detail" href="#">
-<div class="flex items-center gap-3.5">
-<!-- Icon Container -->
-<div class="w-12 h-12 rounded-xl bg-surface flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[24px] text-primary-container" style="font-variation-settings: 'FILL' 1;">self_improvement</span>
-</div>
-<!-- Workout Meta Details -->
-<div class="flex-1 min-w-0">
-<div class="flex items-center gap-2 mb-1">
-<span class="bg-primary-container text-on-primary font-label-sm text-label-sm px-2 py-0.5 rounded-full">
-            오늘 할 운동
-          </span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">
-          코어·자세 루틴 · 25분
-        </h3>
-<p class="font-body-sm text-body-sm text-secondary truncate mt-0.5">
-          오래 앉아 굳은 허리와 코어를 깨워요
-        </p>
-</div>
-<!-- Action Direction -->
-<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary group-hover:text-on-surface transition-colors shrink-0">
-<span class="material-symbols-outlined text-[20px]">chevron_right</span>
-</div>
-</div>
-</a>
-<!-- 4. Nourishment Log Button -->
-<a class="w-full py-3.5 px-4 rounded-2xl bg-secondary-container text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-2 active:opacity-90 transition-opacity select-none" data-path="nourishment-log" href="#">
-<span class="material-symbols-outlined text-[20px]">add</span>
-<span>먹은 것</span>
-</a>
-<!-- 5. Warm Supportive Motto Footer -->
-<div class="py-4 text-center">
-<p class="font-body-sm text-body-sm text-secondary select-none">
-      무리하지 않아도 괜찮아요. 한 걸음씩 가볍게.
-    </p>
-</div>
-</div>
+<main class="max-w-[480px] mx-auto px-4 pt-16 pb-16">
+  <section class="mt-6 rounded-lg bg-card p-6" id="busy-check-card">
+    <p class="text-caption text-mute">목요일 밤 · 최근 3일 잠 평균 5시간 40분 · 야식 3번</p>
+    <h2 class="text-title text-ink mt-2">요즘 잠이 짧고 야식이 이어졌어요. 이번 주 바쁜가요?</h2>
+    <div class="mt-4 grid grid-cols-2 gap-2">
+      <button type="button" id="btn-busy-yes" class="h-12 rounded-md bg-secondary text-ink text-button active:bg-secondary-pressed">예</button>
+      <button type="button" id="btn-busy-no" class="h-12 rounded-md bg-secondary text-ink text-button active:bg-secondary-pressed">아니요</button>
+    </div>
+    <p class="text-body-sm text-mute mt-3" id="busy-guidance-text">예를 고르면 이번 주 남은 운동을 10분짜리로 바꾸고, 잠과 몸 상태만 남겨요.</p>
+  </section>
+
+  <div class="mt-4 rounded-md bg-card p-4 flex items-center gap-4">
+    <img class="w-16 h-16 rounded-md object-cover shrink-0" src="../assets/img/morning-cup.jpg" alt="리넨 커튼 옆 나무 탁자 위 작은 찻잔"/>
+    <div class="min-w-0">
+      <p class="text-caption text-mute">이번 주 운동</p>
+      <p class="text-heading-sm text-ink">1번 했어요 · 목표 3번</p>
+      <p class="text-body-sm text-mute">바쁜 주에는 목표를 줄여도 괜찮아요</p>
+    </div>
+  </div>
+
+  <section class="mt-4 rounded-lg bg-card p-6 flex flex-col gap-6">
+    <div>
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-heading-sm text-ink">어젯밤 잠</span>
+        <span class="text-caption text-mute" id="sleep-label">5시간 이하</span>
+      </div>
+      <div class="grid grid-cols-4 gap-2" id="sleep-chips">
+        <button type="button" data-selected="true" class="sleep-chip py-2 rounded-full bg-ink text-white text-caption font-semibold active:bg-dark">5시간 이하</button>
+        <button type="button" class="sleep-chip py-2 rounded-full bg-canvas text-ink text-caption active:bg-secondary">6시간</button>
+        <button type="button" class="sleep-chip py-2 rounded-full bg-canvas text-ink text-caption active:bg-secondary">7시간</button>
+        <button type="button" class="sleep-chip py-2 rounded-full bg-canvas text-ink text-caption active:bg-secondary">8시간 이상</button>
+      </div>
+    </div>
+    <div>
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-heading-sm text-ink">오늘 몸 상태</span>
+        <span class="text-caption text-mute" id="condition-label">나쁨 (2)</span>
+      </div>
+      <div class="grid grid-cols-5 gap-2" id="condition-chips">
+        <button type="button" data-val="1" class="condition-btn h-12 rounded-md bg-canvas text-ink text-button active:bg-secondary">1</button>
+        <button type="button" data-val="2" data-selected="true" class="condition-btn h-12 rounded-md bg-ink text-white text-button active:bg-dark">2</button>
+        <button type="button" data-val="3" class="condition-btn h-12 rounded-md bg-canvas text-ink text-button active:bg-secondary">3</button>
+        <button type="button" data-val="4" class="condition-btn h-12 rounded-md bg-canvas text-ink text-button active:bg-secondary">4</button>
+        <button type="button" data-val="5" class="condition-btn h-12 rounded-md bg-canvas text-ink text-button active:bg-secondary">5</button>
+      </div>
+      <div class="flex justify-between mt-2 text-caption text-mute"><span>매우 나쁨</span><span>보통</span><span>매우 좋음</span></div>
+    </div>
+  </section>
+
+  <a href="#" data-path="routine-detail" class="mt-4 rounded-lg bg-card p-6 flex items-center justify-between gap-4 active:bg-secondary">
+    <span class="min-w-0">
+      <span class="block text-caption text-mute font-semibold">오늘 할 운동</span>
+      <span class="block text-heading text-ink">코어·자세 루틴 · 25분</span>
+      <span class="block text-body-sm text-mute mt-1">오래 앉아 굳은 허리와 코어를 깨워요</span>
+    </span>
+    <svg class="w-6 h-6 text-mute shrink-0" aria-hidden="true"><use href="../assets/icons.svg#i-chevron"/></svg>
+  </a>
+
+  <a href="#" data-path="nourishment-log" class="mt-4 w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 active:bg-secondary-pressed">
+    <svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-plus"/></svg>먹은 것
+    <span class="text-caption text-mute font-normal">야식도 한 줄이면 돼요</span>
+  </a>
+
+  <p class="text-caption text-mute text-center pt-6 pb-4">어느 쪽을 골라도 나중에 다시 바꿀 수 있어요.</p>
+</main>
+
+<nav class="fixed bottom-0 inset-x-0 z-40 bg-canvas border-t border-hairline">
+  <div class="h-16 max-w-[480px] mx-auto px-3 flex items-center justify-around">
+    <a href="#" data-path="today" aria-current="page" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-ink font-semibold active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-home"/></svg><span class="text-caption">오늘</span><span class="w-4 h-1 rounded-full bg-primary"></span></a>
+    <a href="#" data-path="workouts" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-mute active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-workout"/></svg><span class="text-caption">운동</span></a>
+    <a href="#" data-path="nourishment" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-mute active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-meal"/></svg><span class="text-caption">먹은 것</span></a>
+    <a href="#" data-path="body-evolution" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-mute active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-body"/></svg><span class="text-caption">몸 변화</span></a>
+  </div>
+</nav>
+
 <script>
-  function handleBusySelection(choice) {
-    const btnYes = document.getElementById('btn-busy-yes');
-    const btnNo = document.getElementById('btn-busy-no');
-    const guidance = document.getElementById('busy-guidance-text');
-    
-    if (choice === 'yes') {
-      btnYes.className = 'h-12 rounded-2xl bg-on-surface text-surface font-label-md text-label-md flex items-center justify-center transition-all active:scale-[0.98] select-none';
-      btnNo.className = 'h-12 rounded-2xl bg-secondary-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all active:scale-[0.98] select-none';
-      guidance.textContent = '이번 주는 부담 없이 몸 상태 기록에만 집중할게요.';
-    } else {
-      btnNo.className = 'h-12 rounded-2xl bg-on-surface text-surface font-label-md text-label-md flex items-center justify-center transition-all active:scale-[0.98] select-none';
-      btnYes.className = 'h-12 rounded-2xl bg-secondary-container text-on-surface font-label-md text-label-md flex items-center justify-center transition-all active:scale-[0.98] select-none';
-      guidance.textContent = '좋아요. 지금 리듬 그대로 가볍게 채워갈게요.';
-    }
-  }
-
-  function selectSleep(clickedBtn) {
-    const chips = document.querySelectorAll('.sleep-chip');
-    chips.forEach(chip => {
-      chip.className = 'sleep-chip py-2 rounded-full font-label-sm text-label-sm text-center transition-all bg-surface-container-low text-secondary active:scale-95';
+(function () {
+  var ON = ['bg-ink', 'text-white', 'font-semibold'];
+  function group(sel, off, after) {
+    var list = document.querySelectorAll(sel);
+    list.forEach(function (b) {
+      b.addEventListener('click', function () {
+        list.forEach(function (x) { x.classList.remove.apply(x.classList, ON); x.classList.add.apply(x.classList, off); x.removeAttribute('data-selected'); });
+        b.classList.remove.apply(b.classList, off); b.classList.add.apply(b.classList, ON); b.setAttribute('data-selected', 'true');
+        if (after) after(b);
+      });
     });
-    clickedBtn.className = 'sleep-chip py-2 rounded-full font-label-sm text-label-sm text-center transition-all bg-on-surface text-surface active:scale-95';
-    triggerSaveFeedback();
   }
-
-  function selectCondition(val, clickedBtn) {
-    const btns = document.querySelectorAll('.condition-btn');
-    btns.forEach(b => {
-      b.className = 'condition-btn h-12 rounded-xl flex items-center justify-center font-headline-sm text-headline-sm transition-all bg-surface-container-low text-secondary active:scale-95';
-    });
-    clickedBtn.className = 'condition-btn h-12 rounded-xl flex items-center justify-center font-headline-sm text-headline-sm transition-all bg-on-surface text-surface active:scale-95';
-    triggerSaveFeedback();
-  }
-
-  function triggerSaveFeedback() {
-    const status = document.getElementById('save-status');
-    if (!status) return;
-    status.style.opacity = '1';
-    setTimeout(() => {
-      status.style.opacity = '0';
-    }, 1500);
-  }
-</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.03)]" data-active-classes="text-on-surface font-semibold [&amp;_span.indicator]:opacity-100 [&amp;_span.material-symbols-outlined]:text-primary-container"><div class="max-w-[480px] mx-auto h-16 px-space-xs grid grid-cols-4 items-center"><a aria-current="page" class="group relative flex flex-col items-center justify-center h-full min-h-[44px] transition-colors text-on-surface font-semibold [&amp;_span.indicator]:opacity-100 [&amp;_span.material-symbols-outlined]:text-primary-container" data-path="today" href="#"><span class="material-symbols-outlined text-[24px] mb-0.5 transition-transform group-active:scale-95">calendar_today</span><span class="font-label-sm text-label-sm">오늘</span><span class="indicator opacity-0 w-1 h-1 rounded-full bg-primary-container mt-0.5 transition-opacity"></span></a><a class="group relative flex flex-col items-center justify-center h-full min-h-[44px] text-secondary hover:text-on-surface transition-colors" data-path="workouts" href="#"><span class="material-symbols-outlined text-[24px] mb-0.5 transition-transform group-active:scale-95">fitness_center</span><span class="font-label-sm text-label-sm">운동</span><span class="indicator opacity-0 w-1 h-1 rounded-full bg-primary-container mt-0.5 transition-opacity"></span></a><a class="group relative flex flex-col items-center justify-center h-full min-h-[44px] text-secondary hover:text-on-surface transition-colors" data-path="nourishment" href="#"><span class="material-symbols-outlined text-[24px] mb-0.5 transition-transform group-active:scale-95">restaurant</span><span class="font-label-sm text-label-sm">먹은 것</span><span class="indicator opacity-0 w-1 h-1 rounded-full bg-primary-container mt-0.5 transition-opacity"></span></a><a class="group relative flex flex-col items-center justify-center h-full min-h-[44px] text-secondary hover:text-on-surface transition-colors" data-path="body-evolution" href="#"><span class="material-symbols-outlined text-[24px] mb-0.5 transition-transform group-active:scale-95">show_chart</span><span class="font-label-sm text-label-sm">몸 변화</span><span class="indicator opacity-0 w-1 h-1 rounded-full bg-primary-container mt-0.5 transition-opacity"></span></a></div></nav></body></html>
+  var guide = {
+    'btn-busy-yes': '이번 주 남은 운동을 10분짜리로 바꾸고, 잠과 몸 상태만 남길게요.',
+    'btn-busy-no': '좋아요. 오늘 코어·자세 25분과 금요일 20분은 그대로 둘게요.'
+  };
+  var names = { '1': '매우 나쁨 (1)', '2': '나쁨 (2)', '3': '보통 (3)', '4': '좋음 (4)', '5': '매우 좋음 (5)' };
+  group('#btn-busy-yes, #btn-busy-no', ['bg-secondary', 'text-ink'], function (b) { document.getElementById('busy-guidance-text').textContent = guide[b.id]; });
+  group('#sleep-chips button', ['bg-canvas', 'text-ink'], function (b) { document.getElementById('sleep-label').textContent = b.textContent.trim(); });
+  group('#condition-chips button', ['bg-canvas', 'text-ink'], function (b) { document.getElementById('condition-label').textContent = names[b.dataset.val]; });
+})();
+</script>
+</body>
+</html>

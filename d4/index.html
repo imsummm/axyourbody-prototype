@@ -1,219 +1,146 @@
 <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AX YOUR BODY · 먹은 것 · 빠른 기록</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="../assets/tailwind-config.js"></script>
+</head>
+<body class="bg-canvas text-body font-sans">
+<div class="min-h-screen flex">
+  <aside class="w-60 shrink-0 sticky top-0 h-screen bg-soft border-r border-hairline p-6 flex flex-col justify-between">
+    <div>
+      <a href="#" data-path="today" class="flex items-center gap-2 active:bg-card">
+        <span role="img" aria-label="AX YOUR BODY" class="w-8 h-8 rounded-full bg-primary text-white text-caption font-bold flex items-center justify-center">AX</span>
+        <span class="text-heading-sm text-ink">AX YOUR BODY</span>
+      </a>
+      <nav class="mt-8 flex flex-col gap-1">
+        <a href="#" data-path="today" aria-current="page" class="flex items-center gap-3 px-4 py-3 rounded-md bg-ink text-white text-button active:bg-dark"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-home"/></svg>오늘<span class="ml-auto w-2 h-2 rounded-full bg-primary"></span></a>
+        <a href="#" data-path="workouts" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-workout"/></svg>운동</a>
+        <a href="#" data-path="nourishment" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-meal"/></svg>먹은 것</a>
+        <a href="#" data-path="body-evolution" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-body"/></svg>몸 변화</a>
+      </nav>
+    </div>
+    <a href="#" data-path="settings-notifications" class="flex items-center gap-3 p-2 rounded-md bg-card hover:bg-secondary active:bg-secondary-pressed">
+      <span class="w-8 h-8 rounded-full bg-canvas text-ink flex items-center justify-center shrink-0"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-settings"/></svg></span>
+      <span class="min-w-0">
+        <span class="block text-caption text-ink">my-f-general</span>
+        <span class="block text-caption text-mute">설정 · 알림</span>
+      </span>
+    </a>
+  </aside>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-secondary-fixed":"#1c1c17","secondary-fixed":"#e5e2db","error-container":"#ffdad6","background":"#f9f9f6","surface-container-high":"#e8e8e5","inverse-surface":"#2f312f","on-secondary-container":"#63635d","primary-fixed-dim":"#ffb3ad","on-primary":"#ffffff","secondary-container":"#e2e0d8","on-error":"#ffffff","surface-container-low":"#f4f4f1","primary-fixed":"#ffdad7","surface-variant":"#e2e3e0","error":"#ba1a1a","on-primary-fixed":"#410004","outline-variant":"#e8bcb8","primary-container":"#e60023","secondary-fixed-dim":"#c8c6bf","tertiary":"#595b57","tertiary-fixed":"#e3e3de","surface-dim":"#dadad7","on-secondary-fixed-variant":"#474742","tertiary-container":"#72736f","tertiary-fixed-dim":"#c6c7c2","on-primary-fixed-variant":"#930012","surface-container-lowest":"#ffffff","outline":"#936e6b","on-surface":"#1a1c1b","on-background":"#1a1c1b","on-tertiary-fixed":"#1a1c19","secondary":"#5f5f59","inverse-primary":"#ffb3ad","inverse-on-surface":"#f1f1ee","surface":"#f9f9f6","on-secondary":"#ffffff","on-primary-container":"#fff7f6","surface-container-highest":"#e2e3e0","on-tertiary-container":"#fafaf4","primary":"#b7001a","on-tertiary-fixed-variant":"#464744","on-error-container":"#93000a","surface-container":"#eeeeeb","surface-tint":"#c0001b","on-surface-variant":"#5e3f3c","on-tertiary":"#ffffff","surface-bright":"#f9f9f6"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","space-lg":"1.5rem","gutter-mobile":"0.75rem","space-xs":"0.25rem","gutter":"1rem","margin-mobile":"1rem","space-md":"1rem","margin":"1.25rem","space-xl":"2rem"},"fontFamily":{"headline-lg":["Inter"],"caption":["Noto Sans"],"body-sm":["Noto Sans"],"headline-md":["Inter"],"body-lg":["Noto Sans"],"display-lg":["Inter"],"label-lg":["Inter"],"label-md":["Inter"],"display-lg-mobile":["Inter"],"label-sm":["Inter"],"headline-sm":["Inter"],"body-md":["Noto Sans"]},"fontSize":{"headline-lg":["24px",{"lineHeight":"32px","fontWeight":"700"}],"caption":["12px",{"lineHeight":"16px","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"display-lg":["36px",{"lineHeight":"44px","fontWeight":"700"}],"label-lg":["16px",{"lineHeight":"22px","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"20px","fontWeight":"600"}],"display-lg-mobile":["28px",{"lineHeight":"36px","fontWeight":"700"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"600"}],"headline-sm":["18px",{"lineHeight":"26px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-60 bg-surface-container-low z-50 flex flex-col justify-between p-margin select-none"><div class="flex flex-col gap-space-xl"><div class="flex items-center gap-space-sm pt-space-xs"><span class="w-2 h-2 rounded-full bg-primary-container inline-block"></span><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface uppercase">AX YOUR BODY</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-inverse-surface text-inverse-on-surface rounded-xl"><a aria-current="page" class="flex items-center justify-between px-space-md py-space-sm font-label-md transition-colors bg-inverse-surface text-inverse-on-surface rounded-xl" data-path="today" href="#"><span class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">calendar_today</span><span>오늘</span></span><span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="workouts" href="#"><span class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">fitness_center</span><span>운동</span></span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="nourishment" href="#"><span class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">restaurant</span><span>먹은 것</span></span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-xl text-secondary font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="body-evolution" href="#"><span class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">accessibility_new</span><span>몸 변화</span></span></a></nav></div><div class="pt-space-md"><a class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors" data-path="settings-notifications" href="#"><div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-secondary text-[18px]">person</span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-label-sm text-label-sm text-on-surface truncate">my-f-general</span><span class="font-caption text-caption text-secondary truncate">평온한 회복 일상</span></div><span class="material-symbols-outlined text-secondary text-[16px]">more_vert</span></a></div></aside><div class="pl-60 min-h-screen flex flex-col"><header class="fixed top-0 left-60 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 flex items-center justify-between px-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="flex items-center gap-space-sm"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span><span class="font-headline-sm text-headline-sm text-on-surface">AX YOUR BODY</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs text-secondary font-caption text-caption px-space-sm py-space-xs rounded-full bg-surface-container-low"><span class="material-symbols-outlined text-[14px]">eco</span><span>부담 없는 하루 15분</span></div><a class="w-8 h-8 rounded-full bg-primary flex items-center justify-center transition-opacity hover:opacity-90" data-path="settings-notifications" href="#" title="설정 및 알림"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></a></div></header><main class="w-full pt-16 flex-1 bg-surface"><div class="max-w-[1100px] mx-auto px-space-xl py-space-xl"><div class="flex flex-col w-full relative">
-<!-- D1 "오늘" Realistic Background View (Rendered under scrim) -->
-<div class="w-full grid grid-cols-12 gap-space-lg select-none opacity-80 filter blur-[1px]">
-<!-- Left Column: Daily Progress & Rhythm -->
-<div class="col-span-8 flex flex-col gap-space-lg">
-<div class="bg-surface-container p-margin rounded-xl flex items-center justify-between">
-<div class="flex flex-col gap-space-xs">
-<span class="font-caption text-caption text-secondary uppercase tracking-widest">Today Recovery</span>
-<span class="font-display-lg text-display-lg text-on-surface">오늘의 잔잔한 호흡</span>
-<p class="font-body-md text-body-md text-secondary">지친 퇴근길, 압박감 없는 15분 스트레칭과 건강한 야식이 당신을 채웁니다.</p>
+  <main class="flex-1 min-w-0">
+    <header class="h-16 border-b border-hairline px-8 flex items-center justify-between">
+      <span class="text-body-sm text-mute">수요일 밤 11시 10분</span>
+      <span class="text-body-sm text-mute">이번 주 1번 했어요</span>
+    </header>
+
+    <div class="max-w-[1100px] mx-auto p-8 grid grid-cols-12 gap-6 items-start">
+      <section class="col-span-7 rounded-lg bg-card p-6">
+        <h1 class="text-title text-ink">오늘 운동은 아직이에요</h1>
+        <p class="text-body text-mute mt-1">오늘 할 운동 · 코어·자세 루틴 25분</p>
+        <div class="mt-6">
+          <span><span class="block text-heading-sm text-ink">이번 주 1번 했어요</span><span class="block text-body-sm text-mute">오늘(수)과 금요일에 할 운동이 있어요</span></span>
+        </div>
+      </section>
+
+      <section class="col-span-5 rounded-lg bg-card p-6">
+        <p class="text-button text-ink">오늘 먹은 것</p>
+        <ul class="mt-4 flex flex-col">
+          <li class="py-2 flex justify-between"><span class="text-body-sm text-ink">김치찌개와 공깃밥</span><span class="text-caption text-mute">점심 · 외식</span></li>
+          <li class="py-2 flex justify-between"><span class="text-body-sm text-ink">리코타 닭가슴살 샐러드</span><span class="text-caption text-mute">저녁 · 배달</span></li>
+        </ul>
+        <p class="text-caption text-mute mt-4">"야근한 날도 먹은 건 가볍게 남기기" · 숫자 계산 없이 메뉴만 남겨요.</p>
+      </section>
+    </div>
+  </main>
 </div>
-<div class="w-24 h-24 rounded-full bg-surface-container-high flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-[36px]">self_improvement</span>
-</div>
-</div>
-<!-- Bento Cards Grid -->
-<div class="grid grid-cols-2 gap-space-md">
-<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between h-48">
-<div class="flex items-center justify-between">
-<span class="font-label-md text-label-md text-on-surface">저녁 가벼운 루틴</span>
-<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
-</div>
-<div class="flex items-end justify-between">
-<div>
-<span class="font-display-lg text-display-lg text-on-surface">15</span>
-<span class="font-caption text-caption text-secondary ml-space-xs">분 완료</span>
-</div>
-<span class="font-caption text-caption px-space-sm py-space-xs rounded-full bg-surface-container text-secondary">편안한 상태</span>
-</div>
-</div>
-<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between h-48">
-<div class="flex items-center justify-between">
-<span class="font-label-md text-label-md text-on-surface">수분 및 차 한 잔</span>
-<span class="material-symbols-outlined text-secondary text-[20px]">local_cafe</span>
-</div>
-<div>
-<span class="font-headline-md text-headline-md text-on-surface">루이보스 블렌드</span>
-<p class="font-caption text-caption text-secondary mt-space-xs">따뜻한 온도로 긴장 완화</p>
-</div>
-</div>
-</div>
-<!-- Nourishment Preview List -->
-<div class="bg-surface-container-low p-space-lg rounded-xl">
-<div class="flex items-center justify-between mb-space-md">
-<span class="font-headline-sm text-headline-sm text-on-surface">오늘 기록한 식사</span>
-<span class="font-caption text-caption text-secondary">부담 없는 3개의 메모</span>
-</div>
-<div class="flex flex-col gap-space-sm">
-<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container">
-<div class="flex items-center gap-space-sm">
-<span class="material-symbols-outlined text-secondary text-[20px]">bakery_dining</span>
-<span class="font-body-md text-body-md text-on-surface">통밀 토스트 &amp; 두유</span>
-</div>
-<span class="font-caption text-caption text-secondary">아침 08:40</span>
-</div>
-<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container">
-<div class="flex items-center gap-space-sm">
-<span class="material-symbols-outlined text-secondary text-[20px]">restaurant</span>
-<span class="font-body-md text-body-md text-on-surface">연어 포케 보울</span>
-</div>
-<span class="font-caption text-caption text-secondary">점심 12:30</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Right Side Dashboard Column (Atmosphere) -->
-<div class="col-span-4 flex flex-col gap-space-lg">
-<div class="bg-surface-container-high p-margin rounded-xl">
-<span class="font-label-md text-label-md text-on-surface">마음의 무게 덜어내기</span>
-<p class="font-body-sm text-body-sm text-secondary mt-space-xs">
-          숫자를 세거나 완벽을 고집하지 않아도 충분합니다. 있는 그대로의 식습관을 다정하게 관찰하세요.
-        </p>
-<div class="mt-space-md w-full h-32 rounded-lg bg-surface-container flex items-center justify-center">
-<span class="material-symbols-outlined text-secondary-fixed-dim text-[48px]">spa</span>
-</div>
-</div>
-</div>
-</div>
-<!-- 50% Translucent Neutral Scrim Backdrop -->
-<div class="fixed inset-0 z-50 bg-black/45 backdrop-blur-sm transition-opacity duration-300" id="drawer-scrim" onclick="closeDrawer()"></div>
-<!-- D4 Slide-Over Right-Side Drawer Panel (Width: 480px) -->
-<aside class="fixed right-0 top-0 h-screen w-[480px] bg-surface-container-lowest z-50 shadow-2xl rounded-l-[32px] flex flex-col justify-between transition-transform duration-300 ease-out translate-x-0 overflow-hidden" id="drawer-panel">
-<!-- Top Header -->
-<div class="px-space-xl pt-space-xl pb-space-md flex items-center justify-between">
-<div class="flex items-center gap-space-sm">
-<span class="text-[20px] select-none">🌙</span>
-<span class="font-headline-md text-headline-md text-on-surface">먹은 것 · 밤 11:10</span>
-</div>
-<button aria-label="닫기" class="w-10 h-10 rounded-full bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-center text-on-surface" onclick="closeDrawer()" type="button">
-<span class="material-symbols-outlined text-[20px]">close</span>
-</button>
-</div>
-<!-- Drawer Scrollable Content Area -->
-<div class="px-space-xl py-space-sm flex-1 overflow-y-auto flex flex-col gap-space-lg">
-<!-- Section 1: 먹은 때 -->
-<section class="flex flex-col gap-space-sm">
-<div class="flex items-center justify-between">
-<span class="font-label-md text-label-md text-on-surface">먹은 때</span>
-<span class="font-caption text-caption text-secondary">현재 시간 반영됨</span>
-</div>
-<div class="flex flex-wrap gap-space-xs" id="time-chips">
-<button class="chip-item px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container transition-colors" data-selected="false" type="button">아침</button>
-<button class="chip-item px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container transition-colors" data-selected="false" type="button">점심</button>
-<button class="chip-item px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container transition-colors" data-selected="false" type="button">저녁</button>
-<button class="chip-item px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container transition-colors" data-selected="false" type="button">간식</button>
-<button class="chip-item px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-on-surface text-surface-container-lowest transition-colors" data-selected="true" type="button">야식</button>
-</div>
-</section>
-<!-- Section 2: 어떻게 먹었나요 -->
-<section class="flex flex-col gap-space-sm">
-<span class="font-label-md text-label-md text-on-surface">어떻게 먹었나요</span>
-<div class="flex flex-wrap gap-space-xs" id="style-chips">
-<button class="chip-item px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container transition-colors" data-selected="false" type="button">집밥</button>
-<button class="chip-item px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container transition-colors" data-selected="false" type="button">외식</button>
-<button class="chip-item px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-on-surface text-surface-container-lowest transition-colors" data-selected="true" type="button">배달</button>
-</div>
-</section>
-<!-- Section 3: 최근 · 자주 먹은 메뉴 -->
-<section class="flex flex-col gap-space-xs">
-<div class="flex items-center justify-between">
-<span class="font-label-md text-label-md text-on-surface">최근 · 자주 먹은 메뉴</span>
-<span class="font-caption text-caption text-secondary">한 번 탭하여 선택</span>
-</div>
-<div class="flex flex-wrap gap-space-xs mt-space-xs" id="quick-menu-chips">
-<button class="menu-chip px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-on-surface text-surface-container-lowest flex items-center gap-space-xs transition-colors" data-selected="true" type="button">
-<span class="material-symbols-outlined text-[16px]">check</span>
-<span>떡볶이</span>
-</button>
-<button class="menu-chip px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container flex items-center gap-space-xs transition-colors" data-selected="false" type="button">
-<span>치킨</span>
-</button>
-<button class="menu-chip px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container flex items-center gap-space-xs transition-colors" data-selected="false" type="button">
-<span>편의점 컵라면</span>
-</button>
-<button class="menu-chip px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container flex items-center gap-space-xs transition-colors" data-selected="false" type="button">
-<span>김밥</span>
-</button>
-</div>
-</section>
-<!-- Section 4: 메뉴 검색 input field -->
-<section class="flex flex-col gap-space-xs">
-<span class="font-label-sm text-label-sm text-secondary">메뉴 직접 추가</span>
-<div class="relative flex items-center w-full">
-<span class="material-symbols-outlined absolute left-space-md text-secondary text-[20px] pointer-events-none">search</span>
-<input class="w-full bg-surface-container-low text-on-surface placeholder:text-secondary font-body-md text-body-md pl-11 pr-space-md py-space-md rounded-full outline-none focus:bg-surface-container transition-colors" placeholder="메뉴 직접 입력 또는 검색" type="text"/>
-</div>
-</section>
-<!-- Section 5: Calming Note Sanctuary -->
-<div class="bg-surface-container-low p-space-md rounded-xl flex items-start gap-space-sm">
-<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5">spa</span>
-<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
-          칼로리나 무게 없이 편안하게 먹은 것만 가볍게 남겨요. 일상의 소중한 에너지를 회복하는 시간입니다.
-        </p>
-</div>
-</div>
-<!-- Bottom Action CTA -->
-<div class="p-space-xl bg-surface-container-lowest">
-<button class="w-full py-4 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-space-xs transition-colors active:opacity-90 shadow-sm" onclick="saveAndClose()" type="button">
-<span>저장</span>
-<span class="material-symbols-outlined text-[20px]">check</span>
-</button>
-</div>
+
+<div id="drawer-scrim" class="fixed inset-0 z-40 bg-black/50 transition-opacity"></div>
+<aside id="drawer-panel" class="fixed top-0 right-0 bottom-0 z-50 w-[480px] bg-canvas p-8 flex flex-col gap-6 overflow-y-auto transition-transform">
+  <div class="flex items-center justify-between">
+    <h2 class="text-heading text-ink">먹은 것 · 밤 11:10</h2>
+    <button type="button" id="drawer-close" aria-label="닫기" class="w-12 h-12 rounded-full bg-card text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-close"/></svg></button>
+  </div>
+
+  <section>
+    <p class="text-button text-ink">먹은 때</p>
+    <p class="text-caption text-mute mt-1">지금 시각 기준으로 골라 뒀어요</p>
+    <div class="mt-2 flex flex-wrap gap-2" id="time-chips">
+      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">아침</button>
+      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">점심</button>
+      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">저녁</button>
+      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">간식</button>
+      <button type="button" data-selected="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption font-semibold active:bg-dark">야식</button>
+    </div>
+  </section>
+
+  <section>
+    <p class="text-button text-ink">어떻게 먹었나요</p>
+    <div class="mt-2 grid grid-cols-3 gap-2" id="style-chips">
+      <button type="button" class="py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">집밥</button>
+      <button type="button" class="py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">외식</button>
+      <button type="button" data-selected="true" class="py-2 rounded-full bg-ink text-white text-caption font-semibold active:bg-dark">배달</button>
+    </div>
+  </section>
+
+  <section>
+    <p class="text-button text-ink">최근 · 자주 먹은 메뉴</p>
+    <p class="text-caption text-mute mt-1">여러 개를 고를 수 있어요</p>
+    <div class="mt-2 flex flex-wrap gap-2" id="quick-menu-chips">
+      <button type="button" data-selected="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption font-semibold active:bg-dark">떡볶이</button>
+      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">치킨</button>
+      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">편의점 컵라면</button>
+      <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption hover:bg-secondary active:bg-secondary-pressed">김밥</button>
+    </div>
+  </section>
+
+  <section>
+    <p class="text-button text-ink">메뉴 검색 또는 직접 입력</p>
+    <label class="mt-2 h-12 rounded-full bg-card px-4 flex items-center gap-2 text-mute">
+      <svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-search"/></svg>
+      <input type="text" placeholder="예: 김밥, 순대" class="flex-1 bg-transparent text-body-sm text-ink outline-none"/>
+    </label>
+  </section>
+
+  <p class="text-caption text-mute">칼로리나 무게 없이 메뉴만 남겨요.</p>
+  <button type="button" id="drawer-save" class="mt-auto w-full py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed">저장<svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-check"/></svg></button>
 </aside>
-</div>
+
 <script>
+(function () {
+  var drawer = document.getElementById('drawer-panel'), scrim = document.getElementById('drawer-scrim');
   function closeDrawer() {
-    const drawer = document.getElementById('drawer-panel');
-    const scrim = document.getElementById('drawer-scrim');
-    if (drawer && scrim) {
-      drawer.style.transform = 'translateX(100%)';
-      scrim.style.opacity = '0';
-      scrim.style.pointerEvents = 'none';
-      setTimeout(() => {
-        window.history.back();
-      }, 250);
-    }
+    drawer.style.transform = 'translateX(100%)';
+    scrim.style.opacity = '0';
+    scrim.style.pointerEvents = 'none';
+    setTimeout(function () { window.history.back(); }, 250);
   }
-
-  function saveAndClose() {
-    closeDrawer();
-  }
-
-  // Interactive Chip Selection Behavior
-  document.querySelectorAll('#time-chips button, #style-chips button').forEach((btn) => {
-    btn.addEventListener('click', function() {
-      const parent = this.parentElement;
-      parent.querySelectorAll('button').forEach(b => {
-        b.dataset.selected = "false";
-        b.className = 'chip-item px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container transition-colors';
+  scrim.addEventListener('click', closeDrawer);
+  document.getElementById('drawer-close').addEventListener('click', closeDrawer);
+  document.getElementById('drawer-save').addEventListener('click', closeDrawer);
+  var ON = ['bg-ink', 'text-white', 'font-semibold'], OFF = ['bg-card', 'text-ink'];
+  ['time-chips', 'style-chips'].forEach(function (id) {
+    var list = document.querySelectorAll('#' + id + ' button');
+    list.forEach(function (b) {
+      b.addEventListener('click', function () {
+        list.forEach(function (x) { x.classList.remove.apply(x.classList, ON); x.classList.add.apply(x.classList, OFF); x.removeAttribute('data-selected'); });
+        b.classList.remove.apply(b.classList, OFF); b.classList.add.apply(b.classList, ON); b.setAttribute('data-selected', 'true');
       });
-      this.dataset.selected = "true";
-      this.className = 'chip-item px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-on-surface text-surface-container-lowest transition-colors';
     });
   });
-
-  document.querySelectorAll('#quick-menu-chips .menu-chip').forEach((btn) => {
-    btn.addEventListener('click', function() {
-      const isSelected = this.dataset.selected === 'true';
-      if (isSelected) {
-        this.dataset.selected = 'false';
-        this.className = 'menu-chip px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-secondary hover:bg-surface-container flex items-center gap-space-xs transition-colors';
-        const icon = this.querySelector('.material-symbols-outlined');
-        if (icon) icon.remove();
-      } else {
-        this.dataset.selected = 'true';
-        this.className = 'menu-chip px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-on-surface text-surface-container-lowest flex items-center gap-space-xs transition-colors';
-        if (!this.querySelector('.material-symbols-outlined')) {
-          const checkIcon = document.createElement('span');
-          checkIcon.className = 'material-symbols-outlined text-[16px]';
-          checkIcon.textContent = 'check';
-          this.prepend(checkIcon);
-        }
-      }
+  document.querySelectorAll('#quick-menu-chips button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var on = b.getAttribute('data-selected') !== 'true';
+      if (on) { b.setAttribute('data-selected', 'true'); b.classList.remove.apply(b.classList, OFF); b.classList.add.apply(b.classList, ON); }
+      else { b.removeAttribute('data-selected'); b.classList.remove.apply(b.classList, ON); b.classList.add.apply(b.classList, OFF); }
     });
   });
-</script></div></main></div></body></html>
+})();
+</script>
+</body>
+</html>

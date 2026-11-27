@@ -160,6 +160,19 @@
         show();
       }, 1500);
     },
+    // 8 플레이어 조작
+    'pause': function () {
+      P.paused = !P.paused;
+      text($('#pause-text'), P.paused ? '이어서 하기' : '일시정지');
+      var u = $('#pause-icon use'); if (u) u.setAttribute('href', '../assets/icons.svg#' + (P.paused ? 'i-play' : 'i-pause'));
+    },
+    'prev': function () { jump(P.i - 1); },
+    'next': function () { if (P.i >= ROUTINE.moves.length - 1) finish(); else jump(P.i + 1); },
+    'stop': function () {
+      clearInterval(P.timer);
+      if (P.done > 0) addLog('여기까지 했어요', P.done);
+      go(5);
+    },
     // 음성 안내 켜짐 ↔ 꺼짐 표시(소리는 내지 않음). ax-voice에 저장되어 7·8이 같이 쓴다.
     'voice': function () {
       store.set('voice', !voiceOn());
@@ -173,23 +186,27 @@
   var ROUTINES = {
     neck: { name: '목·어깨 풀기 스트레칭', min: 20, img: null,
       desc: '거북목·어깨 결림에 맞아요. 앉아서 굳은 목 앞쪽을 늘리고 어깨를 내려 줘요. 아프기 직전까지만 늘리고, 숨은 참지 않아요.',
+      breath: ['4초 들이쉬고 · 6초 내쉬기', '목을 젖힐 때 들이쉬고, 제자리로 돌아오며 길게 내쉬어요. 머리 무게를 손에 맡기고 억지로 당기지 않아요.'],
       meta: '20분 · 동작 8개 · 의자·바닥·벽 하나면 돼요 · 뛰는 동작 없음',
-      moves: [['턱 당기기', '목 뒤를 길게 세워요', 1], ['목 옆 늘리기', '어깨 위 근육을 좌우로 늘려요', 2], ['어깨 돌리기', '앞뒤로 크게 원을 그려요', 2],
+      moves: [['턱 당기기', '목 뒤를 길게 세워요', 1, '천천히 숨을 내쉬며 턱을 목 쪽으로 가볍게 당겨요. 뒷목이 길게 늘어나는 느낌이면 돼요.'], ['목 옆 늘리기', '어깨 위 근육을 좌우로 늘려요', 2], ['어깨 돌리기', '앞뒤로 크게 원을 그려요', 2],
         ['가슴 열기', '말린 어깨를 뒤로 펴요', 3], ['날개뼈 모으기', '등 가운데를 조여 등을 펴요', 3], ['고양이 자세', '등을 둥글게 말았다 펴요', 3],
         ['벽 천사', '벽에 팔을 대고 올렸다 내려요', 3], ['숨 고르기', '눈을 감고 천천히 숨 쉬며 마쳐요', 3]] },
     core: { name: '코어·자세 루틴', min: 25, img: ['back-alignment.jpg', '모래색 매트 위에서 등을 곧게 펴는 동작'],
       desc: '오래 앉아 굳은 허리와 코어를 깨워요. 구부정한 등을 세우는 힘을 길러요. 허리가 뜨지 않게 배에 힘을 주고, 숨은 참지 않아요.',
+      breath: ['버틸 때 길게 내쉬기', '힘을 줄 때 내쉬고 풀 때 들이쉬어요. 허리가 뜨지 않게 배에 힘을 준 채로 숨은 참지 않아요.'],
       meta: '25분 · 동작 7개 · 매트 하나면 돼요 · 뛰는 동작 없음',
       moves: [['고양이 자세', '등을 둥글게 말았다 펴며 몸을 데워요', 3], ['데드버그', '누워서 팔다리를 번갈아 뻗어요', 4], ['버드독', '네발 자세에서 팔과 다리를 뻗어요', 4],
         ['무릎 대고 플랭크', '배에 힘을 주고 몸을 곧게 버텨요', 3], ['브리지', '엉덩이를 들어 허리 아래를 받쳐요', 4], ['옆으로 누워 다리 들기', '골반 옆 근육을 깨워요', 4],
         ['숨 고르기', '누워서 천천히 숨 쉬며 마쳐요', 3]] },
     foam: { name: '폼롤러 등 풀기', min: 15, img: ['foam-roller.jpg', '베이지 러그 위에 놓인 폼롤러'],
       desc: '날개뼈 사이 뭉침을 풀어요. 아픈 곳에서는 멈춰서 숨을 길게 내쉬고, 뼈 위는 굴리지 않아요.',
+      breath: ['뭉친 곳에서 6초 내쉬기', '아픈 곳에 머물 때 길게 내쉬면 힘이 풀려요. 굴릴 때는 편하게 숨 쉬어요.'],
       meta: '15분 · 동작 5개 · 폼롤러와 매트가 있으면 돼요',
       moves: [['등 위쪽 굴리기', '날개뼈 아래에 대고 천천히 굴려요', 3], ['날개뼈 사이 누르기', '팔을 모으고 뭉친 곳에 머물러요', 3],
         ['옆구리 굴리기', '옆으로 누워 겨드랑이 아래를 풀어요', 3], ['종아리 굴리기', '오래 앉아 굳은 종아리를 풀어요', 3], ['숨 고르기', '폼롤러 위에 누워 가슴을 열고 마쳐요', 3]] },
     desk: { name: '책상 앞 스트레칭', min: 10, img: ['desk-stretch.jpg', '나무 책상 앞에 앉아 손목과 어깨를 늘리는 사람'],
       desc: '야근 중에도 자리에서 할 수 있어요. 의자에 앉은 채로 목·어깨·손목을 풀어요.',
+      breath: ['4초 들이쉬고 · 6초 내쉬기', '늘릴 때 내쉬고 돌아올 때 들이쉬어요. 어깨가 귀 쪽으로 올라가지 않게 내려 둬요.'],
       meta: '10분 · 동작 6개 · 의자 하나면 돼요 · 일어서지 않아도 돼요',
       moves: [['턱 당기기', '목 뒤를 길게 세워요', 1], ['손목 늘리기', '손바닥을 앞뒤로 젖혀요', 2], ['어깨 으쓱 내리기', '올렸다가 툭 떨어뜨려요', 2],
         ['앉아서 몸통 돌리기', '등받이를 잡고 좌우로 돌려요', 2], ['의자 잡고 가슴 열기', '뒤로 손을 모아 가슴을 펴요', 2], ['숨 고르기', '눈을 감고 천천히 숨 쉬며 마쳐요', 1]] }
@@ -202,6 +219,8 @@
     text($('#rt-title'), ROUTINE.name);
     text($('#rt-desc'), ROUTINE.desc);
     text($('#rt-meta'), ROUTINE.meta);
+    text($('#rt-breath-head'), ROUTINE.breath[0]);
+    text($('#rt-breath'), ROUTINE.breath[1]);
     text($('#rt-count'), ROUTINE.moves.length + '개 · ' + ROUTINE.min + '분');
     var img = $('#rt-img');
     if (img && ROUTINE.img) { img.src = '../assets/img/' + ROUTINE.img[0]; img.alt = ROUTINE.img[1]; }
@@ -212,11 +231,10 @@
       while (list.firstChild) list.removeChild(list.firstChild);
       ROUTINE.moves.forEach(function (mv, i) {
         var li = tpl.cloneNode(true);
-        var sp = li.querySelectorAll('span');
-        sp[0].textContent = String(i + 1);
-        sp[2].textContent = mv[0];
-        sp[3].textContent = mv[1];
-        sp[4].textContent = mv[2] + '분';
+        text($('[data-f="no"]', li), String(i + 1));
+        text($('[data-f="name"]', li), mv[0]);
+        text($('[data-f="sub"]', li), mv[1]);
+        text($('[data-f="min"]', li), mv[2] + '분');
         if (!list.hasAttribute('data-lines') || i === ROUTINE.moves.length - 1) li.classList.remove('border-b');
         list.appendChild(li);
       });
@@ -225,7 +243,7 @@
     if (start && start.tagName === 'A') start.setAttribute('href', screenUrl(8, '?r=' + RID));
     var planned = store.get('plan', []).some(function (p) { return p.id === 'add-' + RID; });
     if (planned) text($('#rt-add-text'), '할 운동에 넣었어요');
-    document.title = 'AX YOUR BODY · ' + ROUTINE.name;
+    document.title = 'AX YOUR BODY · 운동 · ' + ROUTINE.name;
   }
 
   var previewTimer = null;
@@ -270,6 +288,94 @@
     else store.set('plan', store.get('plan', []).filter(function (p) { return p.id !== 'busy-fri'; }));
   };
 
+
+  // 운동 기록: ax-log = [{r, name, min, status:'했어요'|'여기까지 했어요', doneSec, at}]. 5(이번 주 운동)·9(다 했어요)가 읽는다.
+  function addLog(status, doneSec) {
+    var log = store.get('log', []);
+    log.push({ r: RID, name: ROUTINE.name, min: ROUTINE.min, status: status, doneSec: doneSec, at: new Date().toISOString() });
+    store.set('log', log);
+    // 할 운동 목록에서 같은 루틴 하나를 지운다(한 것으로 옮겨 감).
+    var plan = store.get('plan', []), i = -1;
+    plan.forEach(function (x, k) { if (i < 0 && x.r === RID) i = k; });
+    if (i > -1) { plan.splice(i, 1); store.set('plan', plan); }
+  }
+  function two(n) { return (n < 10 ? '0' : '') + n; }
+  function mmss(sec) { return two(Math.floor(sec / 60)) + ':' + two(sec % 60); }
+  function minSec(sec) { return Math.floor(sec / 60) + '분 ' + two(sec % 60) + '초'; }
+
+  // FLOW:player — 8: 1/N 동작부터 시작. 동작 남은 시간과 전체 남은 시간이 함께 줄고, 00:00이 되면 다음 동작으로 넘어간다.
+  // 일시정지 ↔ 이어서 하기, 이전·다음은 동작 번호·진행 막대·다음 동작 카드를 바꾼다. 음성 켜짐 ↔ 꺼짐은 표시만(소리 없음).
+  // 끝까지 하면 "했어요"로 기록하고 9로, 닫기·그만하기는 "여기까지 했어요"로 기록하고 5로 간다. ?fast=30이면 30배 빠르게(확인용).
+  var P = { i: 0, left: 0, done: 0, paused: false, timer: null };
+  function moveSec(k) { return ROUTINE.moves[k][2] * 60; }
+  function totalLeft() {
+    var t = P.left;
+    for (var k = P.i + 1; k < ROUTINE.moves.length; k++) t += moveSec(k);
+    return t;
+  }
+  function paintPlayer() {
+    var n = ROUTINE.moves.length, mv = ROUTINE.moves[P.i], nx = ROUTINE.moves[P.i + 1];
+    text($('#pl-title'), ROUTINE.name + ' · ' + ROUTINE.min + '분');
+    text($('#pl-step'), (P.i + 1) + ' / ' + n + ' 동작');
+    text($('#pl-move'), mv[0]);
+    text($('#pl-guide'), mv[3] || (mv[1] + '. 아프기 직전까지만 하고, 숨은 참지 않아요.'));
+    text($('#pl-timer'), mmss(P.left));
+    text($('#pl-total'), '전체 ' + minSec(totalLeft()) + ' 남음');
+    text($('#pl-next'), nx ? nx[0] : '마지막 동작이에요');
+    text($('#pl-next-min'), nx ? nx[2] + '분' : '');
+    text($('#pl-count'), n + '개 · ' + ROUTINE.min + '분');
+    var bar = $('#pl-bar');
+    if (bar) {
+      bar.style.gridTemplateColumns = 'repeat(' + n + ', minmax(0, 1fr))';
+      bar.setAttribute('aria-label', '진행 ' + (P.i + 1) + ' / ' + n);
+      while (bar.children.length < n) bar.appendChild(document.createElement('span'));
+      while (bar.children.length > n) bar.removeChild(bar.lastChild);
+      Array.prototype.forEach.call(bar.children, function (sp, k) { sp.className = 'h-1 rounded-full ' + (k <= P.i ? 'bg-ink' : 'bg-hairline'); });
+    }
+    var list = $('#pl-list');
+    if (list) {
+      while (list.firstChild) list.removeChild(list.firstChild);
+      ROUTINE.moves.forEach(function (m2, k) {
+        var li = document.createElement('li');
+        var now = k === P.i;
+        li.className = 'py-2 px-3 flex justify-between ' + (now ? 'rounded-md bg-ink text-white' : (k < P.i ? 'text-mute' : 'text-ink'));
+        if (now) li.setAttribute('aria-current', 'step');
+        var a = document.createElement('span'); a.textContent = (k + 1) + ' · ' + m2[0];
+        var b = document.createElement('span'); b.textContent = m2[2] + '분'; if (!now) b.className = 'text-mute';
+        li.appendChild(a); li.appendChild(b); list.appendChild(li);
+      });
+    }
+    $$('[data-action~="prev"]').forEach(function (b) { b.disabled = P.i === 0; });
+  }
+  function jump(k) {
+    P.i = Math.max(0, Math.min(ROUTINE.moves.length - 1, k));
+    P.left = moveSec(P.i);
+    paintPlayer();
+  }
+  function finish() {
+    clearInterval(P.timer);
+    addLog('했어요', P.done);
+    go(9, '?r=' + RID);
+  }
+  function startPlayer() {
+    if (ROUTINE.img && $('#pl-img')) { $('#pl-img').src = '../assets/img/' + ROUTINE.img[0]; $('#pl-img').alt = ROUTINE.img[1]; }
+    document.title = 'AX YOUR BODY · 운동 · ' + ROUTINE.name + ' 하는 중';
+    var speed = Math.max(1, Math.min(120, +(params.get('fast') || 1)));
+    jump(0);
+    P.timer = setInterval(function () {
+      if (P.paused) return;
+      for (var t = 0; t < speed; t++) {
+        P.done += 1;
+        P.left -= 1;
+        if (P.left <= 0) {
+          if (P.i >= ROUTINE.moves.length - 1) { P.left = 0; paintPlayer(); finish(); return; }
+          P.i += 1; P.left = moveSec(P.i);
+        }
+      }
+      paintPlayer();
+    }, 1000);
+  }
+
   /* ---------- 이벤트 연결 ---------- */
   function run(el, e) {
     words(el.getAttribute('data-action')).forEach(function (n) { if (A[n]) A[n](el, e); });
@@ -295,4 +401,5 @@
   restoreGroups();
   paintVoice();
   if (NUM === 7) renderRoutine();
+  if (NUM === 8) startPlayer();
 })();

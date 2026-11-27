@@ -13,62 +13,43 @@
 <body class="bg-canvas text-body font-sans min-h-screen">
 <header class="sticky top-0 z-40 bg-canvas border-b border-hairline">
   <div class="h-16 max-w-[480px] mx-auto px-2 flex items-center justify-between">
-    <a href="#" data-path="today-dashboard" aria-label="오늘로" class="w-12 h-12 rounded-full text-ink flex items-center justify-center active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-close"/></svg></a>
-    <h1 class="text-title-sm text-ink">목·어깨 풀기 20분</h1>
-    <button type="button" aria-pressed="true" class="px-3 py-2 rounded-full bg-card text-caption text-ink flex items-center gap-1 active:bg-secondary"><svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-sound"/></svg>음성 켜짐</button>
+    <button type="button" data-action="stop" aria-label="그만하고 닫기" class="w-12 h-12 rounded-full text-ink flex items-center justify-center active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-close"/></svg></button>
+    <h1 id="pl-title" class="text-title-sm text-ink">목·어깨 풀기 스트레칭 · 20분</h1>
+    <button type="button" data-action="voice" data-text-on="음성 켜짐" data-text-off="음성 꺼짐" aria-pressed="true" class="px-3 py-2 rounded-full bg-card text-caption text-ink flex items-center gap-1 active:bg-secondary"><svg class="w-4 h-4" aria-hidden="true"><use href="../assets/icons.svg#i-sound"/></svg><span data-voice-text>음성 켜짐</span></button>
   </div>
 </header>
 
 <main class="max-w-[480px] mx-auto px-4 pt-4 pb-8">
   <section class="relative rounded-lg overflow-hidden">
-    <img class="w-full h-72 object-cover" src="../assets/img/chin-tuck-illust.jpg" alt="턱을 뒤로 당겨 목 뒤를 늘리는 사람 그림"/>
-    <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-canvas text-caption text-ink">1 / 8 동작</span>
-    <span id="total-left" class="absolute top-3 right-3 px-3 py-1 rounded-full bg-dark text-caption text-white">전체 19분 42초 남음</span>
+    <img id="pl-img" class="w-full h-72 object-cover" src="../assets/img/chin-tuck-illust.jpg" alt="턱을 뒤로 당겨 목 뒤를 늘리는 사람 그림"/>
+    <span id="pl-step" class="absolute top-3 left-3 px-3 py-1 rounded-full bg-canvas text-caption text-ink">1 / 8 동작</span>
+    <span id="pl-total" class="absolute top-3 right-3 px-3 py-1 rounded-full bg-dark text-caption text-white">전체 20분 00초 남음</span>
   </section>
 
   <section class="mt-6">
     <div class="flex items-end justify-between">
-      <h2 class="text-title text-ink">턱 당기기</h2>
-      <span class="text-title text-ink tabular-nums" id="timer-display">00:42</span>
+      <h2 id="pl-move" class="text-title text-ink">턱 당기기</h2>
+      <span class="text-title text-ink tabular-nums" id="pl-timer">01:00</span>
     </div>
-    <p class="text-body text-mute mt-2" id="breath-guide">천천히 숨을 내쉬며 턱을 목 쪽으로 가볍게 당겨요. 뒷목이 길게 늘어나는 느낌이면 돼요.</p>
-    <div class="mt-4 grid grid-cols-8 gap-1" aria-label="진행 1 / 8">
+    <p class="text-body text-mute mt-2" id="pl-guide">천천히 숨을 내쉬며 턱을 목 쪽으로 가볍게 당겨요. 뒷목이 길게 늘어나는 느낌이면 돼요.</p>
+    <div id="pl-bar" class="mt-4 grid grid-cols-8 gap-1" aria-label="진행 1 / 8">
       <span class="h-1 rounded-full bg-ink"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span><span class="h-1 rounded-full bg-hairline"></span>
     </div>
   </section>
 
   <section class="mt-6 rounded-md bg-card p-4 flex items-center justify-between">
-    <span><span class="block text-caption text-mute">다음 동작</span><span class="block text-button text-ink">목 옆 늘리기</span></span>
-    <span class="text-caption text-mute">2분</span>
+    <span><span class="block text-caption text-mute">다음 동작</span><span id="pl-next" class="block text-button text-ink">목 옆 늘리기</span></span>
+    <span id="pl-next-min" class="text-caption text-mute">2분</span>
   </section>
 
-  <section class="mt-6 grid grid-cols-2 gap-2">
-    <button type="button" id="pause-btn" class="py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed"><svg class="w-5 h-5" aria-hidden="true" id="pause-icon"><use href="../assets/icons.svg#i-pause"/></svg><span id="pause-text">일시정지</span></button>
-    <a href="#" data-path="workout-completion" class="py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center active:bg-secondary-pressed">그만하기</a>
+  <section class="mt-6 grid grid-cols-4 gap-2">
+    <button type="button" data-action="prev" aria-label="이전 동작" class="py-4 rounded-md bg-secondary text-ink flex items-center justify-center active:bg-secondary-pressed disabled:text-ash"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-prev"/></svg></button>
+    <button type="button" data-action="pause" class="col-span-2 py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed"><svg class="w-5 h-5" aria-hidden="true" id="pause-icon"><use href="../assets/icons.svg#i-pause"/></svg><span id="pause-text">일시정지</span></button>
+    <button type="button" data-action="next" aria-label="다음 동작" class="py-4 rounded-md bg-secondary text-ink flex items-center justify-center active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-next"/></svg></button>
   </section>
+  <button type="button" data-action="stop" class="mt-2 w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center active:bg-secondary-pressed">그만하기</button>
   <p class="text-caption text-mute text-center mt-4">그만하면 지금까지 한 만큼 "여기까지 했어요"로 남아요.</p>
 </main>
 
-<script>
-(function () {
-  var paused = false, move = 42, total = 19 * 60 + 42;
-  function two(n) { return (n < 10 ? '0' : '') + n; }
-  function render() {
-    document.getElementById('timer-display').textContent = two(Math.floor(move / 60)) + ':' + two(move % 60);
-    document.getElementById('total-left').textContent = '전체 ' + Math.floor(total / 60) + '분 ' + two(total % 60) + '초 남음';
-  }
-  setInterval(function () {
-    if (paused) return;
-    if (move > 0) move--;
-    if (total > 0) total--;
-    render();
-  }, 1000);
-  document.getElementById('pause-btn').addEventListener('click', function () {
-    paused = !paused;
-    document.getElementById('pause-text').textContent = paused ? '이어서 하기' : '일시정지';
-    document.querySelector('#pause-icon use').setAttribute('href', '../assets/icons.svg#' + (paused ? 'i-play' : 'i-pause'));
-  });
-})();
-</script>
 </body>
 </html>

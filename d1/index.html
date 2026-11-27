@@ -8,23 +8,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="../assets/tailwind-config.js"></script>
+<script src="../assets/app.js" defer></script>
 </head>
 <body class="bg-canvas text-body font-sans">
 <div class="min-h-screen flex">
   <aside class="w-60 shrink-0 sticky top-0 h-screen bg-soft border-r border-hairline p-6 flex flex-col justify-between">
     <div>
-      <a href="#" data-path="today" class="flex items-center gap-2 active:opacity-100">
+      <a href="../d1/" data-path="today" class="flex items-center gap-2 active:opacity-100">
         <span class="w-8 h-8 rounded-full bg-primary text-white text-caption font-bold flex items-center justify-center">AX</span>
         <span class="text-heading-sm text-ink">AX YOUR BODY</span>
       </a>
       <nav class="mt-8 flex flex-col gap-1">
-        <a href="#" data-path="today" aria-current="page" class="flex items-center gap-3 px-4 py-3 rounded-md bg-ink text-white text-button active:bg-dark"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-home"/></svg>오늘<span class="ml-auto w-2 h-2 rounded-full bg-primary"></span></a>
-        <a href="#" data-path="workouts" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-workout"/></svg>운동</a>
-        <a href="#" data-path="nourishment" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-meal"/></svg>먹은 것</a>
-        <a href="#" data-path="body-evolution" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-body"/></svg>몸 변화</a>
+        <a href="../d1/" data-path="today" aria-current="page" class="flex items-center gap-3 px-4 py-3 rounded-md bg-ink text-white text-button active:bg-dark"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-home"/></svg>오늘<span class="ml-auto w-2 h-2 rounded-full bg-primary"></span></a>
+        <a href="../d5/" data-path="workouts" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-workout"/></svg>운동</a>
+        <a href="../d10/" data-path="nourishment" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-meal"/></svg>먹은 것</a>
+        <a href="../d11/" data-path="body-evolution" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-body"/></svg>몸 변화</a>
       </nav>
     </div>
-    <a href="#" data-path="settings-notifications" class="flex items-center gap-3 p-2 rounded-md bg-card hover:bg-secondary active:bg-secondary-pressed">
+    <a href="../d13/" data-path="settings-notifications" class="flex items-center gap-3 p-2 rounded-md bg-card hover:bg-secondary active:bg-secondary-pressed">
       <span class="w-8 h-8 rounded-full bg-canvas text-ink flex items-center justify-center shrink-0"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-settings"/></svg></span>
       <span class="min-w-0">
         <span class="block text-caption text-ink">my-f-general</span>
@@ -52,11 +53,11 @@
               <span class="text-heading-sm text-ink">어젯밤 잠</span>
               <span class="text-caption text-mute" id="sleep-label">7시간</span>
             </div>
-            <div class="grid grid-cols-4 gap-2" id="sleep-chips">
-              <button type="button" class="py-2 rounded-full bg-canvas text-ink text-button hover:bg-secondary active:bg-secondary-pressed">5시간 이하</button>
-              <button type="button" class="py-2 rounded-full bg-canvas text-ink text-button hover:bg-secondary active:bg-secondary-pressed">6시간</button>
-              <button type="button" class="py-2 rounded-full bg-ink text-white text-button active:bg-dark">7시간</button>
-              <button type="button" class="py-2 rounded-full bg-canvas text-ink text-button hover:bg-secondary active:bg-secondary-pressed">8시간 이상</button>
+            <div class="grid grid-cols-4 gap-2" data-group="p1-sleep" data-keep data-label="sleep-label" data-on="bg-ink text-white active:bg-dark" data-off="bg-canvas text-ink hover:bg-secondary active:bg-secondary-pressed">
+              <button type="button" data-action="pick" aria-pressed="false" class="py-2 rounded-full bg-canvas text-ink text-button hover:bg-secondary active:bg-secondary-pressed">5시간 이하</button>
+              <button type="button" data-action="pick" aria-pressed="false" class="py-2 rounded-full bg-canvas text-ink text-button hover:bg-secondary active:bg-secondary-pressed">6시간</button>
+              <button type="button" data-action="pick" aria-pressed="true" class="py-2 rounded-full bg-ink text-white text-button active:bg-dark">7시간</button>
+              <button type="button" data-action="pick" aria-pressed="false" class="py-2 rounded-full bg-canvas text-ink text-button hover:bg-secondary active:bg-secondary-pressed">8시간 이상</button>
             </div>
           </div>
           <div class="h-px bg-hairline"></div>
@@ -65,12 +66,12 @@
               <span class="text-heading-sm text-ink">오늘 몸 상태</span>
               <span class="text-caption text-mute" id="condition-status-label">좋음 (4)</span>
             </div>
-            <div class="grid grid-cols-5 gap-2" id="condition-chips">
-              <button type="button" data-score="1" class="py-4 rounded-md bg-canvas text-ink text-heading-sm hover:bg-secondary active:bg-secondary-pressed">1</button>
-              <button type="button" data-score="2" class="py-4 rounded-md bg-canvas text-ink text-heading-sm hover:bg-secondary active:bg-secondary-pressed">2</button>
-              <button type="button" data-score="3" class="py-4 rounded-md bg-canvas text-ink text-heading-sm hover:bg-secondary active:bg-secondary-pressed">3</button>
-              <button type="button" data-score="4" class="py-4 rounded-md bg-ink text-white text-heading-sm active:bg-dark">4</button>
-              <button type="button" data-score="5" class="py-4 rounded-md bg-canvas text-ink text-heading-sm hover:bg-secondary active:bg-secondary-pressed">5</button>
+            <div class="grid grid-cols-5 gap-2" data-group="p1-body" data-keep data-label="condition-status-label" data-on="bg-ink text-white active:bg-dark" data-off="bg-canvas text-ink hover:bg-secondary active:bg-secondary-pressed">
+              <button type="button" data-action="pick" data-value="1" data-name="매우 나쁨 (1)" aria-pressed="false" class="py-4 rounded-md bg-canvas text-ink text-heading-sm hover:bg-secondary active:bg-secondary-pressed">1</button>
+              <button type="button" data-action="pick" data-value="2" data-name="나쁨 (2)" aria-pressed="false" class="py-4 rounded-md bg-canvas text-ink text-heading-sm hover:bg-secondary active:bg-secondary-pressed">2</button>
+              <button type="button" data-action="pick" data-value="3" data-name="보통 (3)" aria-pressed="false" class="py-4 rounded-md bg-canvas text-ink text-heading-sm hover:bg-secondary active:bg-secondary-pressed">3</button>
+              <button type="button" data-action="pick" data-value="4" data-name="좋음 (4)" aria-pressed="true" class="py-4 rounded-md bg-ink text-white text-heading-sm active:bg-dark">4</button>
+              <button type="button" data-action="pick" data-value="5" data-name="매우 좋음 (5)" aria-pressed="false" class="py-4 rounded-md bg-canvas text-ink text-heading-sm hover:bg-secondary active:bg-secondary-pressed">5</button>
             </div>
             <div class="flex justify-between text-caption text-mute mt-2">
               <span>매우 나쁨</span><span>보통</span><span>매우 좋음</span>
@@ -82,13 +83,13 @@
         <section class="rounded-lg bg-card p-6 flex items-center justify-between gap-6">
           <div class="min-w-0">
             <p class="text-caption text-mute font-semibold">오늘 할 운동</p>
-            <a href="#" data-path="workouts/routine-core" class="block mt-1 text-heading text-ink hover:underline active:text-body">코어·자세 루틴 · 25분</a>
+            <a href="../d7/?r=core" data-path="workouts/routine-core" class="block mt-1 text-heading text-ink hover:underline active:text-body">코어·자세 루틴 · 25분</a>
             <p class="text-body text-mute mt-1">오래 앉아 굳은 허리와 코어를 깨워요</p>
           </div>
           <img class="w-32 h-32 rounded-md object-cover shrink-0" src="../assets/img/evening-mat.jpg" alt="저녁 거실 바닥에 말아 둔 운동 매트"/>
         </section>
 
-        <a href="#" data-path="nourishment" class="w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 hover:bg-secondary-pressed active:bg-stone">
+        <a href="../d4/" data-path="nourishment" class="w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 hover:bg-secondary-pressed active:bg-stone">
           <svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-plus"/></svg>먹은 것
           <span class="text-caption text-mute font-normal">야식도 한 줄이면 돼요</span>
         </a>
@@ -105,7 +106,7 @@
         <section class="rounded-lg bg-card p-6">
           <div class="flex items-center justify-between">
             <span class="text-heading-sm text-ink">이번 주 운동</span>
-            <a href="#" data-path="workouts" class="text-caption text-mute hover:text-ink active:text-body">전체 보기</a>
+            <a href="../d5/" data-path="workouts" class="text-caption text-mute hover:text-ink active:text-body">전체 보기</a>
           </div>
           <p class="text-title-sm text-ink mt-2">1번 했어요 · 목표 3번</p>
           <div class="mt-4 grid grid-cols-7 text-center text-caption text-mute">
@@ -129,20 +130,5 @@
     </div>
   </main>
 </div>
-
-<script>
-(function () {
-  var ON = ['bg-ink', 'text-white'], OFF = ['bg-canvas', 'text-ink'];
-  function pick(list, el) {
-    list.forEach(function (b) { b.classList.remove.apply(b.classList, ON); b.classList.add.apply(b.classList, OFF); });
-    el.classList.remove.apply(el.classList, OFF); el.classList.add.apply(el.classList, ON);
-  }
-  var sleep = document.querySelectorAll('#sleep-chips button');
-  sleep.forEach(function (b) { b.addEventListener('click', function () { pick(sleep, b); document.getElementById('sleep-label').textContent = b.textContent.trim(); }); });
-  var names = { '1': '매우 나쁨 (1)', '2': '나쁨 (2)', '3': '보통 (3)', '4': '좋음 (4)', '5': '매우 좋음 (5)' };
-  var cond = document.querySelectorAll('#condition-chips button');
-  cond.forEach(function (b) { b.addEventListener('click', function () { pick(cond, b); document.getElementById('condition-status-label').textContent = names[b.dataset.score]; }); });
-})();
-</script>
 </body>
 </html>

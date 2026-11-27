@@ -8,23 +8,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="../assets/tailwind-config.js"></script>
+<script src="../assets/app.js" defer></script>
 </head>
 <body class="bg-canvas text-body font-sans">
 <div class="min-h-screen flex">
   <aside class="w-60 shrink-0 sticky top-0 h-screen bg-soft border-r border-hairline p-6 flex flex-col justify-between">
     <div>
-      <a href="#" data-path="today" class="flex items-center gap-2 active:bg-card">
+      <a href="../d1/" data-path="today" class="flex items-center gap-2 active:bg-card">
         <span role="img" aria-label="AX YOUR BODY" class="w-8 h-8 rounded-full bg-primary text-white text-caption font-bold flex items-center justify-center">AX</span>
         <span class="text-heading-sm text-ink">AX YOUR BODY</span>
       </a>
       <nav class="mt-8 flex flex-col gap-1">
-        <a href="#" data-path="today" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-home"/></svg>오늘</a>
-        <a href="#" data-path="workouts" aria-current="page" class="flex items-center gap-3 px-4 py-3 rounded-md bg-ink text-white text-button active:bg-dark"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-workout"/></svg>운동<span class="ml-auto w-2 h-2 rounded-full bg-primary"></span></a>
-        <a href="#" data-path="nourishment" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-meal"/></svg>먹은 것</a>
-        <a href="#" data-path="body-evolution" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-body"/></svg>몸 변화</a>
+        <a href="../d1/" data-path="today" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-home"/></svg>오늘</a>
+        <a href="../d5/" data-path="workouts" aria-current="page" class="flex items-center gap-3 px-4 py-3 rounded-md bg-ink text-white text-button active:bg-dark"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-workout"/></svg>운동<span class="ml-auto w-2 h-2 rounded-full bg-primary"></span></a>
+        <a href="../d10/" data-path="nourishment" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-meal"/></svg>먹은 것</a>
+        <a href="../d11/" data-path="body-evolution" class="flex items-center gap-3 px-4 py-3 rounded-md text-mute text-button hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-body"/></svg>몸 변화</a>
       </nav>
     </div>
-    <a href="#" data-path="settings-notifications" class="flex items-center gap-3 p-2 rounded-md bg-card hover:bg-secondary active:bg-secondary-pressed">
+    <a href="../d13/" data-path="settings-notifications" class="flex items-center gap-3 p-2 rounded-md bg-card hover:bg-secondary active:bg-secondary-pressed">
       <span class="w-8 h-8 rounded-full bg-canvas text-ink flex items-center justify-center shrink-0"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-settings"/></svg></span>
       <span class="min-w-0">
         <span class="block text-caption text-ink">my-f-general</span>

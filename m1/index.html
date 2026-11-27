@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="../assets/tailwind-config.js"></script>
+<script src="../assets/app.js" defer></script>
 </head>
 <body class="bg-canvas text-body font-sans min-h-screen">
 <header class="fixed top-0 inset-x-0 z-40 bg-canvas border-b border-hairline">
@@ -16,7 +17,7 @@
       <span role="img" aria-label="AX YOUR BODY" class="w-8 h-8 rounded-full bg-primary text-white text-caption font-bold flex items-center justify-center">AX</span>
       <h1 class="text-title-sm text-ink">오늘</h1>
     </div>
-    <a href="#" data-path="settings-notifications" aria-label="설정과 알림 (my-f-general)" class="w-12 h-12 rounded-full flex items-center justify-center active:bg-card">
+    <a href="../m13/" data-path="settings-notifications" aria-label="설정과 알림 (my-f-general)" class="w-12 h-12 rounded-full flex items-center justify-center active:bg-card">
       <span class="w-8 h-8 rounded-full bg-card text-ink flex items-center justify-center"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-settings"/></svg></span>
     </a>
   </div>
@@ -43,11 +44,11 @@
       <label class="text-heading-sm text-ink">어젯밤 잠</label>
       <span class="text-caption text-mute" id="sleep-label">7시간</span>
     </div>
-    <div class="grid grid-cols-4 gap-2" id="sleep-chip-group">
-      <button type="button" class="sleep-chip py-3 rounded-full text-caption bg-canvas text-ink active:bg-secondary">5시간 이하</button>
-      <button type="button" class="sleep-chip py-3 rounded-full text-caption bg-canvas text-ink active:bg-secondary">6시간</button>
-      <button type="button" class="sleep-chip is-selected py-3 rounded-full text-caption bg-ink text-white font-semibold active:bg-dark">7시간</button>
-      <button type="button" class="sleep-chip py-3 rounded-full text-caption bg-canvas text-ink active:bg-secondary">8시간 이상</button>
+    <div class="grid grid-cols-4 gap-2" data-group="p1-sleep" data-keep data-label="sleep-label" data-on="bg-ink text-white font-semibold active:bg-dark" data-off="bg-canvas text-ink active:bg-secondary">
+      <button type="button" data-action="pick" aria-pressed="false" class="py-3 rounded-full text-caption bg-canvas text-ink active:bg-secondary">5시간 이하</button>
+      <button type="button" data-action="pick" aria-pressed="false" class="py-3 rounded-full text-caption bg-canvas text-ink active:bg-secondary">6시간</button>
+      <button type="button" data-action="pick" aria-pressed="true" class="py-3 rounded-full text-caption bg-ink text-white font-semibold active:bg-dark">7시간</button>
+      <button type="button" data-action="pick" aria-pressed="false" class="py-3 rounded-full text-caption bg-canvas text-ink active:bg-secondary">8시간 이상</button>
     </div>
 
     <div class="h-px bg-hairline my-6"></div>
@@ -56,12 +57,12 @@
       <label class="text-heading-sm text-ink">오늘 몸 상태</label>
       <span class="text-caption text-mute" id="condition-rating-label">좋음 (4)</span>
     </div>
-    <div class="grid grid-cols-5 gap-2" id="condition-group">
-      <button type="button" data-val="1" class="condition-btn h-12 rounded-md text-button bg-canvas text-ink active:bg-secondary">1</button>
-      <button type="button" data-val="2" class="condition-btn h-12 rounded-md text-button bg-canvas text-ink active:bg-secondary">2</button>
-      <button type="button" data-val="3" class="condition-btn h-12 rounded-md text-button bg-canvas text-ink active:bg-secondary">3</button>
-      <button type="button" data-val="4" class="condition-btn is-active h-12 rounded-md text-button bg-ink text-white active:bg-dark">4</button>
-      <button type="button" data-val="5" class="condition-btn h-12 rounded-md text-button bg-canvas text-ink active:bg-secondary">5</button>
+    <div class="grid grid-cols-5 gap-2" data-group="p1-body" data-keep data-label="condition-rating-label" data-on="bg-ink text-white active:bg-dark" data-off="bg-canvas text-ink active:bg-secondary">
+      <button type="button" data-action="pick" data-value="1" data-name="매우 나쁨 (1)" aria-pressed="false" class="h-12 rounded-md text-button bg-canvas text-ink active:bg-secondary">1</button>
+      <button type="button" data-action="pick" data-value="2" data-name="나쁨 (2)" aria-pressed="false" class="h-12 rounded-md text-button bg-canvas text-ink active:bg-secondary">2</button>
+      <button type="button" data-action="pick" data-value="3" data-name="보통 (3)" aria-pressed="false" class="h-12 rounded-md text-button bg-canvas text-ink active:bg-secondary">3</button>
+      <button type="button" data-action="pick" data-value="4" data-name="좋음 (4)" aria-pressed="true" class="h-12 rounded-md text-button bg-ink text-white active:bg-dark">4</button>
+      <button type="button" data-action="pick" data-value="5" data-name="매우 좋음 (5)" aria-pressed="false" class="h-12 rounded-md text-button bg-canvas text-ink active:bg-secondary">5</button>
     </div>
     <div class="flex justify-between mt-2 text-caption text-mute">
       <span>매우 나쁨</span><span>보통</span><span>매우 좋음</span>
@@ -69,7 +70,7 @@
     <p class="text-caption text-mute text-center mt-4">고르면 바로 저장돼요</p>
   </section>
 
-  <a href="#" data-path="workout-detail" class="mt-4 rounded-lg bg-card p-6 flex items-center justify-between gap-4 active:bg-secondary">
+  <a href="../m7/?r=core" data-path="workout-detail" class="mt-4 rounded-lg bg-card p-6 flex items-center justify-between gap-4 active:bg-secondary">
     <div class="min-w-0">
       <p class="text-caption text-mute font-semibold">오늘 할 운동</p>
       <h3 class="text-heading text-ink truncate">코어·자세 루틴 · 25분</h3>
@@ -81,7 +82,7 @@
     </span>
   </a>
 
-  <a href="#" data-path="nourishment-log" class="mt-4 w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 active:bg-secondary-pressed">
+  <a href="../m4/" data-path="nourishment-log" class="mt-4 w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 active:bg-secondary-pressed">
     <svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-plus"/></svg>
     <span>먹은 것</span>
     <span class="text-caption text-mute font-normal">야식도 한 줄이면 돼요</span>
@@ -92,36 +93,11 @@
 
 <nav class="fixed bottom-0 inset-x-0 z-40 bg-canvas border-t border-hairline">
   <div class="h-16 max-w-[480px] mx-auto px-3 flex items-center justify-around">
-    <a href="#" data-path="today" aria-current="page" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-ink font-semibold active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-home"/></svg><span class="text-caption">오늘</span><span class="w-4 h-1 rounded-full bg-primary"></span></a>
-    <a href="#" data-path="workout" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-mute active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-workout"/></svg><span class="text-caption">운동</span></a>
-    <a href="#" data-path="nourishment" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-mute active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-meal"/></svg><span class="text-caption">먹은 것</span></a>
-    <a href="#" data-path="body-evolution" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-mute active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-body"/></svg><span class="text-caption">몸 변화</span></a>
+    <a href="../m1/" data-path="today" aria-current="page" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-ink font-semibold active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-home"/></svg><span class="text-caption">오늘</span><span class="w-4 h-1 rounded-full bg-primary"></span></a>
+    <a href="../m5/" data-path="workout" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-mute active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-workout"/></svg><span class="text-caption">운동</span></a>
+    <a href="../m10/" data-path="nourishment" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-mute active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-meal"/></svg><span class="text-caption">먹은 것</span></a>
+    <a href="../m11/" data-path="body-evolution" class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-mute active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-body"/></svg><span class="text-caption">몸 변화</span></a>
   </div>
 </nav>
-
-<script>
-(function () {
-  function pick(list, el, on, off) {
-    list.forEach(function (b) { b.classList.remove.apply(b.classList, on); b.classList.add.apply(b.classList, off); });
-    el.classList.remove.apply(el.classList, off); el.classList.add.apply(el.classList, on);
-  }
-  var ON = ['bg-ink', 'text-white', 'font-semibold'], OFF = ['bg-canvas', 'text-ink'];
-  var sleep = document.querySelectorAll('.sleep-chip');
-  sleep.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      pick(sleep, chip, ON, OFF);
-      document.getElementById('sleep-label').textContent = chip.textContent.trim();
-    });
-  });
-  var names = { '1': '매우 나쁨 (1)', '2': '나쁨 (2)', '3': '보통 (3)', '4': '좋음 (4)', '5': '매우 좋음 (5)' };
-  var cond = document.querySelectorAll('.condition-btn');
-  cond.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      pick(cond, btn, ON, OFF);
-      document.getElementById('condition-rating-label').textContent = names[btn.dataset.val];
-    });
-  });
-})();
-</script>
 </body>
 </html>

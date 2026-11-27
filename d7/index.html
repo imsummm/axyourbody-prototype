@@ -13,11 +13,11 @@
 <body class="bg-canvas text-body font-sans">
 <header class="sticky top-0 z-40 bg-canvas border-b border-hairline">
   <div class="h-16 max-w-[1280px] mx-auto px-8 flex items-center justify-between">
-    <a href="#" data-path="workout" class="flex items-center gap-2 text-button text-ink px-3 py-2 rounded-md hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-back"/></svg>따라 할 운동</a>
-    <nav class="flex items-center gap-2">
-      <a href="#" data-path="overview" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">개요</a>
-      <a href="#" data-path="routine" class="px-4 py-2 rounded-full text-caption text-mute hover:bg-card active:bg-secondary">동작 순서</a>
-      <a href="#" data-path="guide" class="px-4 py-2 rounded-full text-caption text-mute hover:bg-card active:bg-secondary">자세 안내</a>
+    <a href="../d6/" data-path="workout" class="flex items-center gap-2 text-button text-ink px-3 py-2 rounded-md hover:bg-card active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-back"/></svg>따라 할 운동</a>
+    <nav class="flex items-center gap-2" data-group="d7-tab" data-on="bg-ink text-white active:bg-dark" data-off="text-mute hover:bg-card active:bg-secondary">
+      <button type="button" data-action="pick scroll" data-target="rt-top" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption active:bg-dark">개요</button>
+      <button type="button" data-action="pick scroll" data-target="rt-order" aria-pressed="false" class="px-4 py-2 rounded-full text-caption text-mute hover:bg-card active:bg-secondary">동작 순서</button>
+      <button type="button" data-action="pick scroll" data-target="rt-guide" aria-pressed="false" class="px-4 py-2 rounded-full text-caption text-mute hover:bg-card active:bg-secondary">자세 안내</button>
     </nav>
     <a href="../d13/" data-path="settings-notifications" aria-label="설정과 알림 (my-f-general)" class="w-12 h-12 rounded-full bg-card text-ink flex items-center justify-center hover:bg-secondary active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-settings"/></svg></a>
   </div>
@@ -25,20 +25,20 @@
 
 <main class="max-w-[1280px] mx-auto p-8 grid grid-cols-12 gap-8 items-start">
   <div class="col-span-7 flex flex-col gap-6">
-    <a href="#" data-path="workout-list" class="self-start text-caption text-mute hover:text-ink active:text-body">운동 · 따라 할 운동</a>
+    <a href="../d6/" id="rt-top" data-path="workout-list" class="self-start text-caption text-mute hover:text-ink active:text-body">운동 · 따라 할 운동</a>
     <section class="relative rounded-lg overflow-hidden">
-      <img class="w-full h-96 object-cover" src="../assets/img/neck-shoulder-stretch.jpg" alt="아침 햇빛 아래 나무 바닥에서 목과 어깨를 늘리는 사람"/>
-      <button type="button" aria-label="동작 미리보기 재생" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-canvas text-ink flex items-center justify-center hover:bg-card active:bg-secondary"><svg class="w-8 h-8" aria-hidden="true"><use href="../assets/icons.svg#i-play"/></svg></button>
-      <span class="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-canvas text-caption text-ink">미리보기 1분</span>
+      <img id="rt-img" class="w-full h-96 object-cover" src="../assets/img/neck-shoulder-stretch.jpg" alt="아침 햇빛 아래 나무 바닥에서 목과 어깨를 늘리는 사람"/>
+      <button type="button" data-action="preview" aria-label="동작 미리보기 재생" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-canvas text-ink flex items-center justify-center hover:bg-card active:bg-secondary"><svg class="w-8 h-8" aria-hidden="true"><use href="../assets/icons.svg#i-play"/></svg></button>
+      <span id="rt-preview-text" class="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-canvas text-caption text-ink">미리보기 1분</span>
     </section>
 
     <section>
-      <h1 class="text-display text-ink">목·어깨 풀기 스트레칭</h1>
-      <p class="text-body text-mute mt-3">거북목·어깨 결림에 맞아요. 앉아서 굳은 목 앞쪽을 늘리고 어깨를 내려 줘요. 아프기 직전까지만 늘리고, 숨은 참지 않아요.</p>
-      <p class="text-caption text-mute mt-2">20분 · 동작 8개 · 의자·바닥·벽 하나면 돼요 · 뛰는 동작 없음</p>
+      <h1 id="rt-title" class="text-display text-ink">목·어깨 풀기 스트레칭</h1>
+      <p id="rt-desc" class="text-body text-mute mt-3">거북목·어깨 결림에 맞아요. 앉아서 굳은 목 앞쪽을 늘리고 어깨를 내려 줘요. 아프기 직전까지만 늘리고, 숨은 참지 않아요.</p>
+      <p id="rt-meta" class="text-caption text-mute mt-2">20분 · 동작 8개 · 의자·바닥·벽 하나면 돼요 · 뛰는 동작 없음</p>
     </section>
 
-    <section class="grid grid-cols-2 gap-4">
+    <section id="rt-guide" class="grid grid-cols-2 gap-4">
       <div class="rounded-lg bg-card p-6">
         <p class="text-button text-ink">숨 쉬는 법</p>
         <p class="text-heading-sm text-ink mt-2">4초 들이쉬고 · 6초 내쉬기</p>
@@ -47,18 +47,18 @@
       <div class="rounded-lg bg-card p-6 flex flex-col">
         <p class="text-button text-ink">음성 안내</p>
         <p class="text-body-sm text-mute mt-2">동작 이름과 남은 시간을 말로 알려 줘요. 운동하면서 켜고 끌 수 있어요.</p>
-        <button type="button" class="mt-4 self-start px-4 py-2 rounded-md bg-secondary text-ink text-button hover:bg-secondary-pressed active:bg-stone">소리 크기</button>
+        <button type="button" data-action="voice" data-text-on="음성 안내 켜짐" data-text-off="음성 안내 꺼짐" aria-pressed="true" class="mt-4 self-start px-4 py-2 rounded-md bg-secondary text-ink text-button hover:bg-secondary-pressed active:bg-stone">음성 안내 켜짐</button>
       </div>
     </section>
   </div>
 
   <div class="col-span-5 flex flex-col gap-4 sticky top-16">
-    <section class="rounded-lg bg-card p-6">
+    <section id="rt-order" class="rounded-lg bg-card p-6">
       <div class="flex items-center justify-between">
         <h2 class="text-heading text-ink">동작 순서</h2>
-        <span class="text-caption text-mute">8개 · 20분</span>
+        <span id="rt-count" class="text-caption text-mute">8개 · 20분</span>
       </div>
-      <ol class="mt-4 flex flex-col" id="routine-list">
+      <ol class="mt-4 flex flex-col" id="rt-moves">
         <li class="py-2 flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-canvas text-caption text-ink flex items-center justify-center shrink-0">1</span><span class="flex-1"><span class="block text-button text-ink">턱 당기기</span><span class="block text-caption text-mute">목 뒤를 길게 세워요</span></span><span class="text-caption text-mute">1분</span></li>
         <li class="py-2 flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-canvas text-caption text-ink flex items-center justify-center shrink-0">2</span><span class="flex-1"><span class="block text-button text-ink">목 옆 늘리기</span><span class="block text-caption text-mute">어깨 위 근육을 좌우로 늘려요</span></span><span class="text-caption text-mute">2분</span></li>
         <li class="py-2 flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-canvas text-caption text-ink flex items-center justify-center shrink-0">3</span><span class="flex-1"><span class="block text-button text-ink">어깨 돌리기</span><span class="block text-caption text-mute">앞뒤로 크게 원을 그려요</span></span><span class="text-caption text-mute">2분</span></li>
@@ -68,8 +68,8 @@
         <li class="py-2 flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-canvas text-caption text-ink flex items-center justify-center shrink-0">7</span><span class="flex-1"><span class="block text-button text-ink">벽 천사</span><span class="block text-caption text-mute">벽에 팔을 대고 올렸다 내려요</span></span><span class="text-caption text-mute">3분</span></li>
         <li class="py-2 flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-canvas text-caption text-ink flex items-center justify-center shrink-0">8</span><span class="flex-1"><span class="block text-button text-ink">숨 고르기</span><span class="block text-caption text-mute">눈을 감고 천천히 숨 쉬며 마쳐요</span></span><span class="text-caption text-mute">3분</span></li>
       </ol>
-      <a href="#" data-path="workout-session" class="mt-6 w-full py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-play"/></svg>바로 시작</a>
-      <button type="button" id="btn-add-routine" class="mt-2 w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 hover:bg-secondary-pressed active:bg-stone"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-plus"/></svg><span id="btn-add-routine-text">할 운동에 추가</span></button>
+      <a href="../d8/?r=neck" id="rt-start" data-path="workout-session" class="mt-6 w-full py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-play"/></svg>바로 시작</a>
+      <button type="button" data-action="add-plan" class="mt-2 w-full py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 hover:bg-secondary-pressed active:bg-stone"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-plus"/></svg><span id="rt-add-text">할 운동에 추가</span></button>
       <p class="text-caption text-mute text-center mt-4">운동 중 언제든 멈출 수 있어요</p>
     </section>
   </div>
@@ -79,11 +79,5 @@
   <p class="max-w-[1280px] mx-auto px-8 py-6 text-caption text-mute">AX YOUR BODY · 집에서 하는 짧은 운동을 기본으로 해요</p>
 </footer>
 
-<script>
-(function () {
-  var btn = document.getElementById('btn-add-routine');
-  btn.addEventListener('click', function () { document.getElementById('btn-add-routine-text').textContent = '할 운동에 넣었어요'; });
-})();
-</script>
 </body>
 </html>

@@ -129,10 +129,116 @@
       if (e) e.preventDefault();
       var t = document.getElementById(el.getAttribute('data-target'));
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    },
+
+    // 7 바로 시작(버튼일 때) → 8, 같은 루틴
+    'start': function () { go(8, '?r=' + RID); },
+    // 7 할 운동에 추가 → ax-plan. 5의 할 운동 목록에 보인다.
+    'add-plan': function () {
+      addPlan({ id: 'add-' + RID, day: '', when: '이번 주', name: ROUTINE.name, min: ROUTINE.min, r: RID });
+      text($('#rt-add-text'), '할 운동에 넣었어요');
+      toast('이번 주 할 운동에 넣었어요. 운동 탭에서 볼 수 있어요');
+    },
+    // 7 미리보기: 소리·영상 없이 동작 이름을 1.5초씩 차례로 보여 준다. 다시 누르면 멈춘다.
+    'preview': function (el) {
+      var badge = $('#rt-preview-text');
+      var icon = $('use', el);
+      if (previewTimer) {
+        clearInterval(previewTimer); previewTimer = null;
+        text(badge, '미리보기 1분'); if (icon) icon.setAttribute('href', '../assets/icons.svg#i-play');
+        el.setAttribute('aria-label', '동작 미리보기 재생');
+        return;
+      }
+      var i = 0;
+      function show() { text(badge, (i + 1) + '/' + ROUTINE.moves.length + ' · ' + ROUTINE.moves[i][0]); }
+      show();
+      if (icon) icon.setAttribute('href', '../assets/icons.svg#i-pause');
+      el.setAttribute('aria-label', '미리보기 멈춤');
+      previewTimer = setInterval(function () {
+        i += 1;
+        if (i >= ROUTINE.moves.length) { A['preview'](el); return; }
+        show();
+      }, 1500);
+    },
+    // 음성 안내 켜짐 ↔ 꺼짐 표시(소리는 내지 않음). ax-voice에 저장되어 7·8이 같이 쓴다.
+    'voice': function () {
+      store.set('voice', !voiceOn());
+      paintVoice();
+      toast(voiceOn() ? '음성 안내를 켰어요' : '음성 안내를 껐어요. 화면 글자로 안내해요');
     }
   };
 
   /* ---------- 화면별 처리 ---------- */
+  // 루틴 자료: 1·3·5·6 화면 카드에 이미 나오는 루틴 네 개. 7(루틴 자세히)·8(플레이어)·9(다 했어요)가 ?r=<id>로 읽는다.
+  var ROUTINES = {
+    neck: { name: '목·어깨 풀기 스트레칭', min: 20, img: null,
+      desc: '거북목·어깨 결림에 맞아요. 앉아서 굳은 목 앞쪽을 늘리고 어깨를 내려 줘요. 아프기 직전까지만 늘리고, 숨은 참지 않아요.',
+      meta: '20분 · 동작 8개 · 의자·바닥·벽 하나면 돼요 · 뛰는 동작 없음',
+      moves: [['턱 당기기', '목 뒤를 길게 세워요', 1], ['목 옆 늘리기', '어깨 위 근육을 좌우로 늘려요', 2], ['어깨 돌리기', '앞뒤로 크게 원을 그려요', 2],
+        ['가슴 열기', '말린 어깨를 뒤로 펴요', 3], ['날개뼈 모으기', '등 가운데를 조여 등을 펴요', 3], ['고양이 자세', '등을 둥글게 말았다 펴요', 3],
+        ['벽 천사', '벽에 팔을 대고 올렸다 내려요', 3], ['숨 고르기', '눈을 감고 천천히 숨 쉬며 마쳐요', 3]] },
+    core: { name: '코어·자세 루틴', min: 25, img: ['back-alignment.jpg', '모래색 매트 위에서 등을 곧게 펴는 동작'],
+      desc: '오래 앉아 굳은 허리와 코어를 깨워요. 구부정한 등을 세우는 힘을 길러요. 허리가 뜨지 않게 배에 힘을 주고, 숨은 참지 않아요.',
+      meta: '25분 · 동작 7개 · 매트 하나면 돼요 · 뛰는 동작 없음',
+      moves: [['고양이 자세', '등을 둥글게 말았다 펴며 몸을 데워요', 3], ['데드버그', '누워서 팔다리를 번갈아 뻗어요', 4], ['버드독', '네발 자세에서 팔과 다리를 뻗어요', 4],
+        ['무릎 대고 플랭크', '배에 힘을 주고 몸을 곧게 버텨요', 3], ['브리지', '엉덩이를 들어 허리 아래를 받쳐요', 4], ['옆으로 누워 다리 들기', '골반 옆 근육을 깨워요', 4],
+        ['숨 고르기', '누워서 천천히 숨 쉬며 마쳐요', 3]] },
+    foam: { name: '폼롤러 등 풀기', min: 15, img: ['foam-roller.jpg', '베이지 러그 위에 놓인 폼롤러'],
+      desc: '날개뼈 사이 뭉침을 풀어요. 아픈 곳에서는 멈춰서 숨을 길게 내쉬고, 뼈 위는 굴리지 않아요.',
+      meta: '15분 · 동작 5개 · 폼롤러와 매트가 있으면 돼요',
+      moves: [['등 위쪽 굴리기', '날개뼈 아래에 대고 천천히 굴려요', 3], ['날개뼈 사이 누르기', '팔을 모으고 뭉친 곳에 머물러요', 3],
+        ['옆구리 굴리기', '옆으로 누워 겨드랑이 아래를 풀어요', 3], ['종아리 굴리기', '오래 앉아 굳은 종아리를 풀어요', 3], ['숨 고르기', '폼롤러 위에 누워 가슴을 열고 마쳐요', 3]] },
+    desk: { name: '책상 앞 스트레칭', min: 10, img: ['desk-stretch.jpg', '나무 책상 앞에 앉아 손목과 어깨를 늘리는 사람'],
+      desc: '야근 중에도 자리에서 할 수 있어요. 의자에 앉은 채로 목·어깨·손목을 풀어요.',
+      meta: '10분 · 동작 6개 · 의자 하나면 돼요 · 일어서지 않아도 돼요',
+      moves: [['턱 당기기', '목 뒤를 길게 세워요', 1], ['손목 늘리기', '손바닥을 앞뒤로 젖혀요', 2], ['어깨 으쓱 내리기', '올렸다가 툭 떨어뜨려요', 2],
+        ['앉아서 몸통 돌리기', '등받이를 잡고 좌우로 돌려요', 2], ['의자 잡고 가슴 열기', '뒤로 손을 모아 가슴을 펴요', 2], ['숨 고르기', '눈을 감고 천천히 숨 쉬며 마쳐요', 1]] }
+  };
+  var RID = ROUTINES[params.get('r')] ? params.get('r') : 'neck';
+  var ROUTINE = ROUTINES[RID];
+
+  // FLOW:routine-detail — 7: ?r=로 고른 루틴의 이름·설명·동작 순서를 그린다. 바로 시작 → 8(같은 ?r=), 할 운동에 추가 → ax-plan → 5, 미리보기는 동작 이름을 차례로 보여 준다.
+  function renderRoutine() {
+    text($('#rt-title'), ROUTINE.name);
+    text($('#rt-desc'), ROUTINE.desc);
+    text($('#rt-meta'), ROUTINE.meta);
+    text($('#rt-count'), ROUTINE.moves.length + '개 · ' + ROUTINE.min + '분');
+    var img = $('#rt-img');
+    if (img && ROUTINE.img) { img.src = '../assets/img/' + ROUTINE.img[0]; img.alt = ROUTINE.img[1]; }
+    var list = $('#rt-moves');
+    if (list) {
+      var tpl = list.firstElementChild.cloneNode(true);
+      tpl.classList.add('border-b');
+      while (list.firstChild) list.removeChild(list.firstChild);
+      ROUTINE.moves.forEach(function (mv, i) {
+        var li = tpl.cloneNode(true);
+        var sp = li.querySelectorAll('span');
+        sp[0].textContent = String(i + 1);
+        sp[2].textContent = mv[0];
+        sp[3].textContent = mv[1];
+        sp[4].textContent = mv[2] + '분';
+        if (!list.hasAttribute('data-lines') || i === ROUTINE.moves.length - 1) li.classList.remove('border-b');
+        list.appendChild(li);
+      });
+    }
+    var start = $('#rt-start');
+    if (start && start.tagName === 'A') start.setAttribute('href', screenUrl(8, '?r=' + RID));
+    var planned = store.get('plan', []).some(function (p) { return p.id === 'add-' + RID; });
+    if (planned) text($('#rt-add-text'), '할 운동에 넣었어요');
+    document.title = 'AX YOUR BODY · ' + ROUTINE.name;
+  }
+
+  var previewTimer = null;
+  function voiceOn() { return store.get('voice', true); }
+  function paintVoice() {
+    $$('[data-action~="voice"]').forEach(function (b) {
+      var on = voiceOn();
+      b.setAttribute('aria-pressed', String(on));
+      var t = $('[data-voice-text]', b) || b;
+      t.textContent = on ? b.getAttribute('data-text-on') : b.getAttribute('data-text-off');
+    });
+  }
+
   // 할 운동 계획: ax-plan = [{id, day, when, name, min, r}]. 5(이번 주 운동)의 "할 운동" 목록이 이것을 보여 준다.
   function addPlan(item) {
     var plan = store.get('plan', []).filter(function (p) { return p.id !== item.id; });
@@ -152,13 +258,16 @@
   };
 
   // FLOW:busy-week — 3 "이번 주 바쁜가요?" 답을 ax-p3-busy에 저장. "예"면 오늘 할 운동을 책상 앞 스트레칭 10분(?r=desk)으로 바꾸고, "아니요"면 코어·자세 25분 그대로.
-  ON_CHANGE['p3-busy'] = function (v) {
+  ON_CHANGE['p3-busy'] = function (v, g, byUser) {
     var busy = v === '예';
     text($('#today-name'), busy ? '책상 앞 스트레칭 · 10분' : '코어·자세 루틴 · 25분');
     text($('#today-desc'), busy ? '야근 중에도 자리에서 할 수 있어요' : '오래 앉아 굳은 허리와 코어를 깨워요');
     var link = $('#today-link');
     if (link) link.setAttribute('href', screenUrl(7, busy ? '?r=desk' : '?r=core'));
     if (v) text($('#week-note'), busy ? '이번 주 남은 운동은 10분짜리로 바꿨어요' : '오늘과 금요일 할 운동은 그대로예요');
+    if (!byUser) return;
+    if (busy) addPlan({ id: 'busy-fri', day: '금', when: '금요일', name: '책상 앞 스트레칭', min: 10, r: 'desk', note: '바쁜 주라 코어·자세 20분 대신' });
+    else store.set('plan', store.get('plan', []).filter(function (p) { return p.id !== 'busy-fri'; }));
   };
 
   /* ---------- 이벤트 연결 ---------- */
@@ -184,4 +293,6 @@
   });
 
   restoreGroups();
+  paintVoice();
+  if (NUM === 7) renderRoutine();
 })();

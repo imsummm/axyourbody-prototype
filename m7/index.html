@@ -13,27 +13,27 @@
 <body class="bg-canvas text-body font-sans min-h-screen">
 <header class="sticky top-0 z-40 bg-canvas border-b border-hairline">
   <div class="h-16 max-w-[480px] mx-auto px-2 flex items-center gap-2">
-    <button type="button" id="back-btn" aria-label="뒤로" class="w-12 h-12 rounded-full text-ink flex items-center justify-center active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-back"/></svg></button>
+    <button type="button" data-action="back" data-to="6" aria-label="뒤로" class="w-12 h-12 rounded-full text-ink flex items-center justify-center active:bg-card"><svg class="w-6 h-6" aria-hidden="true"><use href="../assets/icons.svg#i-back"/></svg></button>
     <span class="text-button text-mute">운동 · 따라 할 운동</span>
   </div>
 </header>
 
 <main class="max-w-[480px] mx-auto px-4 pt-4 pb-8">
   <section class="relative rounded-lg overflow-hidden">
-    <img class="w-full h-56 object-cover" src="../assets/img/m7-bg1.jpg" alt="아침 햇빛이 드는 방에서 목과 어깨를 푸는 사람"/>
-    <button type="button" id="previewPlayBtn" aria-label="동작 미리보기 재생" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-canvas text-ink flex items-center justify-center active:bg-secondary"><svg class="w-8 h-8" aria-hidden="true"><use href="../assets/icons.svg#i-play"/></svg></button>
-    <span class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-canvas text-caption text-ink">미리보기 1분</span>
+    <img id="rt-img" class="w-full h-56 object-cover" src="../assets/img/m7-bg1.jpg" alt="아침 햇빛이 드는 방에서 목과 어깨를 푸는 사람"/>
+    <button type="button" data-action="preview" aria-label="동작 미리보기 재생" class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-canvas text-ink flex items-center justify-center active:bg-secondary"><svg class="w-8 h-8" aria-hidden="true"><use href="../assets/icons.svg#i-play"/></svg></button>
+    <span id="rt-preview-text" class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-canvas text-caption text-ink">미리보기 1분</span>
   </section>
 
   <section class="mt-6">
-    <h1 class="text-title text-ink">목·어깨 풀기 스트레칭</h1>
-    <p class="text-body text-mute mt-2">거북목·어깨 결림에 맞아요. 앉아서 굳은 목 앞쪽을 늘리고 어깨를 내려 줘요. 아프기 직전까지만 늘리고, 숨은 참지 않아요.</p>
-    <p class="text-caption text-mute mt-2">20분 · 동작 8개 · 의자·바닥·벽 하나면 돼요 · 뛰는 동작 없음</p>
+    <h1 id="rt-title" class="text-title text-ink">목·어깨 풀기 스트레칭</h1>
+    <p id="rt-desc" class="text-body text-mute mt-2">거북목·어깨 결림에 맞아요. 앉아서 굳은 목 앞쪽을 늘리고 어깨를 내려 줘요. 아프기 직전까지만 늘리고, 숨은 참지 않아요.</p>
+    <p id="rt-meta" class="text-caption text-mute mt-2">20분 · 동작 8개 · 의자·바닥·벽 하나면 돼요 · 뛰는 동작 없음</p>
   </section>
 
   <section class="mt-8">
     <h2 class="text-heading-sm text-ink">동작 순서</h2>
-    <ol class="mt-2 flex flex-col">
+    <ol id="rt-moves" data-lines class="mt-2 flex flex-col">
       <li class="py-3 border-b border-hairline flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-card text-caption text-ink flex items-center justify-center shrink-0">1</span><span class="flex-1"><span class="block text-button text-ink">턱 당기기</span><span class="block text-caption text-mute">목 뒤를 길게 세워요</span></span><span class="text-caption text-mute">1분</span></li>
       <li class="py-3 border-b border-hairline flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-card text-caption text-ink flex items-center justify-center shrink-0">2</span><span class="flex-1"><span class="block text-button text-ink">목 옆 늘리기</span><span class="block text-caption text-mute">어깨 위 근육을 좌우로 늘려요</span></span><span class="text-caption text-mute">2분</span></li>
       <li class="py-3 border-b border-hairline flex items-center gap-4"><span class="w-8 h-8 rounded-full bg-card text-caption text-ink flex items-center justify-center shrink-0">3</span><span class="flex-1"><span class="block text-button text-ink">어깨 돌리기</span><span class="block text-caption text-mute">앞뒤로 크게 원을 그려요</span></span><span class="text-caption text-mute">2분</span></li>
@@ -48,25 +48,10 @@
 
 <div class="sticky bottom-0 z-40 bg-canvas border-t border-hairline">
   <div class="max-w-[480px] mx-auto p-4 grid grid-cols-2 gap-2">
-    <button type="button" id="addToRoutineBtn" class="py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-plus"/></svg><span id="addText">할 운동에 추가</span></button>
-    <button type="button" id="startRoutineBtn" class="py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-play"/></svg>바로 시작</button>
+    <button type="button" data-action="add-plan" class="py-4 rounded-md bg-secondary text-ink text-button flex items-center justify-center gap-2 active:bg-secondary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-plus"/></svg><span id="rt-add-text">할 운동에 추가</span></button>
+    <button type="button" id="rt-start" data-action="start" class="py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-play"/></svg>바로 시작</button>
   </div>
 </div>
 
-<div id="toastMessage" role="status" class="hidden fixed bottom-16 inset-x-0 z-50 max-w-[480px] mx-auto px-4">
-  <p class="rounded-md bg-dark text-white text-body-sm p-4">이번 주 할 운동에 넣었어요.</p>
-</div>
-
-<script>
-(function () {
-  document.getElementById('back-btn').addEventListener('click', function () { history.back(); });
-  var toast = document.getElementById('toastMessage');
-  document.getElementById('addToRoutineBtn').addEventListener('click', function () {
-    document.getElementById('addText').textContent = '할 운동에 넣었어요';
-    toast.classList.remove('hidden');
-    setTimeout(function () { toast.classList.add('hidden'); }, 2000);
-  });
-})();
-</script>
 </body>
 </html>

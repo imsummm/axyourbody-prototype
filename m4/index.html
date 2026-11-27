@@ -41,76 +41,53 @@
 </nav>
 
 <div class="fixed inset-0 z-50">
-  <a href="#" data-path="today" aria-label="닫기" class="absolute inset-0 bg-black/50"></a>
-  <section class="absolute bottom-0 inset-x-0 max-w-[480px] mx-auto bg-canvas rounded-t-lg p-6 flex flex-col gap-6">
+  <div data-action="back" data-to="1" class="absolute inset-0 bg-black/50"></div>
+  <section data-meal-form class="absolute bottom-0 inset-x-0 max-w-[480px] mx-auto bg-canvas rounded-t-lg p-6 flex flex-col gap-6">
     <div class="flex items-center justify-between">
       <h2 class="text-heading text-ink">먹은 것 · 밤 11:10</h2>
-      <a href="#" data-path="today" aria-label="닫기" class="w-12 h-12 rounded-full bg-card text-ink flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-close"/></svg></a>
+      <button type="button" data-action="back" data-to="1" aria-label="닫기" class="w-12 h-12 rounded-full bg-card text-ink flex items-center justify-center active:bg-secondary"><svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-close"/></svg></button>
     </div>
 
     <div>
       <p class="text-button text-ink">먹은 때</p>
       <p class="text-caption text-mute mt-1">지금 시각 기준으로 골라 뒀어요</p>
-      <div class="mt-2 flex flex-wrap gap-2" id="meal-time-group">
-        <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">아침</button>
-        <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">점심</button>
-        <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">저녁</button>
-        <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">간식</button>
-        <button type="button" data-selected="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption font-semibold active:bg-dark">야식</button>
+      <div class="mt-2 flex flex-wrap gap-2" data-group="fq-when" data-on="bg-ink text-white font-semibold active:bg-dark" data-off="bg-card text-ink active:bg-secondary">
+        <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">아침</button>
+        <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">점심</button>
+        <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">저녁</button>
+        <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">간식</button>
+        <button type="button" data-action="pick" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption font-semibold active:bg-dark">야식</button>
       </div>
     </div>
 
     <div>
       <p class="text-button text-ink">어떻게 먹었나요</p>
-      <div class="mt-2 grid grid-cols-3 gap-2" id="meal-type-group">
-        <button type="button" class="py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">집밥</button>
-        <button type="button" class="py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">외식</button>
-        <button type="button" data-selected="true" class="py-2 rounded-full bg-ink text-white text-caption font-semibold active:bg-dark">배달</button>
+      <div class="mt-2 grid grid-cols-3 gap-2" data-group="fq-how" data-on="bg-ink text-white font-semibold active:bg-dark" data-off="bg-card text-ink active:bg-secondary">
+        <button type="button" data-action="pick" aria-pressed="false" class="py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">집밥</button>
+        <button type="button" data-action="pick" aria-pressed="false" class="py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">외식</button>
+        <button type="button" data-action="pick" aria-pressed="true" class="py-2 rounded-full bg-ink text-white text-caption font-semibold active:bg-dark">배달</button>
       </div>
     </div>
 
     <div>
       <p class="text-button text-ink">최근 · 자주 먹은 메뉴</p>
       <p class="text-caption text-mute mt-1">여러 개를 고를 수 있어요</p>
-      <div class="mt-2 flex flex-wrap gap-2" id="recent-food-group">
-        <button type="button" data-selected="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption font-semibold active:bg-dark">떡볶이</button>
-        <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">치킨</button>
-        <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">편의점 컵라면</button>
-        <button type="button" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">김밥</button>
+      <div class="mt-2 flex flex-wrap gap-2" data-group="fq-menu" data-multi data-on="bg-ink text-white font-semibold active:bg-dark" data-off="bg-card text-ink active:bg-secondary">
+        <button type="button" data-action="pick" aria-pressed="true" class="px-4 py-2 rounded-full bg-ink text-white text-caption font-semibold active:bg-dark">떡볶이</button>
+        <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">치킨</button>
+        <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">편의점 컵라면</button>
+        <button type="button" data-action="pick" aria-pressed="false" class="px-4 py-2 rounded-full bg-card text-ink text-caption active:bg-secondary">김밥</button>
       </div>
       <label class="mt-3 h-12 rounded-full bg-card px-4 flex items-center gap-2 text-mute">
         <svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-search"/></svg>
-        <input type="text" placeholder="메뉴 검색 또는 직접 입력" class="flex-1 bg-transparent text-body-sm text-ink outline-none"/>
+        <input type="text" data-action="food-search" data-meal-text aria-label="메뉴 검색 또는 직접 입력" placeholder="메뉴 검색 또는 직접 입력" class="flex-1 bg-transparent text-body-sm text-ink outline-none"/>
       </label>
     </div>
 
     <p class="text-caption text-mute">칼로리나 무게 없이 메뉴만 남겨요.</p>
-    <a href="#" data-path="today" class="w-full py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed">저장<svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-check"/></svg></a>
+    <button type="button" data-action="save-meal" class="w-full py-4 rounded-md bg-primary text-white text-button flex items-center justify-center gap-2 active:bg-primary-pressed">저장<svg class="w-5 h-5" aria-hidden="true"><use href="../assets/icons.svg#i-check"/></svg></button>
   </section>
 </div>
 
-<script>
-(function () {
-  var ON = ['bg-ink', 'text-white', 'font-semibold'], OFF = ['bg-card', 'text-ink'];
-  function single(id) {
-    var list = document.querySelectorAll('#' + id + ' button');
-    list.forEach(function (b) {
-      b.addEventListener('click', function () {
-        list.forEach(function (x) { x.classList.remove.apply(x.classList, ON); x.classList.add.apply(x.classList, OFF); x.removeAttribute('data-selected'); });
-        b.classList.remove.apply(b.classList, OFF); b.classList.add.apply(b.classList, ON); b.setAttribute('data-selected', 'true');
-      });
-    });
-  }
-  single('meal-time-group');
-  single('meal-type-group');
-  document.querySelectorAll('#recent-food-group button').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var on = b.getAttribute('data-selected') !== 'true';
-      if (on) { b.setAttribute('data-selected', 'true'); b.classList.remove.apply(b.classList, OFF); b.classList.add.apply(b.classList, ON); }
-      else { b.removeAttribute('data-selected'); b.classList.remove.apply(b.classList, ON); b.classList.add.apply(b.classList, OFF); }
-    });
-  });
-})();
-</script>
 </body>
 </html>

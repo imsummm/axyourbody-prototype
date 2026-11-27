@@ -162,6 +162,38 @@
         show();
       }, 1500);
     },
+    // 4·10 먹은 것
+    'save-meal': function (el) {
+      var meal = saveMeal(el);
+      if (!meal) return;
+      var msg = '먹은 것을 남겼어요 · ' + meal.when + ' ' + meal.menu;
+      if (NUM === 10) {
+        var sheet = el.closest('[data-sheet]');
+        if (sheet) sheet.classList.add('hidden');
+        mealDay = '10/28';
+        renderMeals();
+        var f = mealForm(el);
+        $$('input[data-meal-text],input[data-meal-memo]', f).forEach(function (i) { i.value = ''; });
+        toast(msg);
+      } else {
+        store.set('flash', msg);
+        leaveTo(10);
+      }
+    },
+    'food-search': function (el) {
+      var q = el.value.trim().toLowerCase();
+      var g = $('[data-group="fq-menu"]', mealForm(el));
+      if (!g) return;
+      $$('[data-action~="pick"]', g).forEach(function (b) {
+        var on = b.getAttribute('aria-pressed') === 'true';
+        b.classList.toggle('hidden', !!q && !on && b.textContent.toLowerCase().indexOf(q) < 0);
+      });
+    },
+    // 값만 담는 입력칸(저장 버튼이 읽는다). 입력 중에는 할 일이 없다.
+    'field': function () {},
+    'meal-find': function (el) { FL.q = el.value.trim().toLowerCase(); filterMeals(); },
+    'prev-day': function () { var i = MEAL_DAYS.indexOf(mealDay); if (i > 0) { mealDay = MEAL_DAYS[i - 1]; renderMeals(); } },
+    'next-day': function () { var i = MEAL_DAYS.indexOf(mealDay); if (i < MEAL_DAYS.length - 1) { mealDay = MEAL_DAYS[i + 1]; renderMeals(); } },
     // 6 저장 표시 켜고 끄기
     'bookmark': function (el, e) {
       if (e) e.preventDefault();
@@ -582,6 +614,105 @@
     applyLibrary();
   }
 
+
+  // 먹은 것 기록: ax-meals = [{day:'10/28', when, how, menu, memo, time}]. 시나리오의 오늘은 수요일 10/28(1·4·10 화면).
+  var MEAL_DAYS = ['10/26', '10/27', '10/28'];
+  var DAY_LABEL = { '10/26': '10/26 월요일', '10/27': '10/27 화요일', '10/28': '오늘 · 수요일' };
+  var MEAL_SEED = {
+    '10/26': [{ when: '점심', time: '12:20', how: '외식', menu: '제육볶음 정식', memo: '회사 앞 백반집에서' },
+      { when: '저녁', time: '20:10', how: '집밥', menu: '계란말이와 현미밥', memo: '퇴근 후 집에서' }],
+    '10/27': [{ when: '아침', time: '08:10', how: '외식', menu: '편의점 삼각김밥과 두유', memo: '출근길에' },
+      { when: '점심', time: '12:40', how: '외식', menu: '쌀국수', memo: '동료들과' },
+      { when: '야식', time: '22:50', how: '배달', menu: '치킨 반 마리', memo: '야근 끝나고 집에서' }],
+    '10/28': null // 10 화면의 G1 세 줄을 그대로 읽어 쓴다
+  };
+  var mealDay = '10/28';
+
+  // FLOW:food-quick — 4: 먹은 때·어떻게 먹었나요·메뉴 칩을 고르고(메뉴는 여러 개), 검색 글자가 메뉴 칩을 거른다.
+  // 저장 → ax-meals에 한 줄 → 10(먹은 것)으로 가서 "남겼어요" 알림. 닫기·바깥 → 이전 화면(없으면 1).
+  function mealForm(el) { return el.closest('[data-meal-form]') || document; }
+  function saveMeal(el) {
+    var f = mealForm(el);
+    var whenG = $('[data-group="fq-when"]', f), howG = $('[data-group="fq-how"]', f), menuG = $('[data-group="fq-menu"]', f);
+    var menus = menuG ? groupValue(menuG).slice() : [];
+    var typed = $('[data-meal-text]', f);
+    var t = typed ? typed.value.trim() : '';
+    if (t && menus.indexOf(t) < 0) menus.push(t);
+    if (!menus.length) { toast('메뉴를 하나 고르거나 적어 주세요'); if (typed) typed.focus(); return null; }
+    var memo = $('[data-meal-memo]', f);
+    var meal = { day: '10/28', when: whenG ? groupValue(whenG) || '야식' : '야식', how: howG ? groupValue(howG) || '집밥' : '집밥',
+      menu: menus.join(', '), memo: memo ? memo.value.trim() : '', time: '방금' };
+    var meals = store.get('meals', []);
+    meals.push(meal);
+    store.set('meals', meals);
+    return meal;
+  }
+
+  // FLOW:food-list — 10: 고른 날의 먹은 것을 시간 순으로 보여 준다(G1 예시 줄 + 4·서랍에서 남긴 줄은 맨 아래 "방금").
+  // 이전 날·다음 날로 월~수를 오가고, 데스크톱은 기록 찾기·먹은 때·어떻게 먹었나요가 줄을 거른다. "먹은 것 남기기" → 4(모바일) / 서랍(데스크톱).
+  var FL = { q: '', when: '전체', how: '전체' };
+  var mealTpl = null;
+  function mealsOf(day) {
+    var seed = MEAL_SEED[day] || [];
+    var saved = store.get('meals', []).filter(function (x) { return x.day === day; });
+    return seed.concat(saved);
+  }
+  function renderMeals() {
+    var list = $('#fl-list');
+    if (!list || !mealTpl) return;
+    while (list.firstChild) list.removeChild(list.firstChild);
+    var rows = mealsOf(mealDay);
+    rows.forEach(function (x, k) {
+      var r = mealTpl.cloneNode(true);
+      r.setAttribute('data-when', x.when); r.setAttribute('data-how', x.how);
+      text($('[data-f="cap"]', r), x.when + ' · ' + x.time + ' · ' + x.how);
+      text($('[data-f="when"]', r), x.when);
+      text($('[data-f="time"]', r), x.time);
+      text($('[data-f="menu"]', r), x.menu);
+      text($('[data-f="memo"]', r), $('[data-f="when"]', r) ? x.how + (x.memo ? ' · ' + x.memo : '') : (x.memo || '메모 없음'));
+      r.classList.toggle('border-b', k < rows.length - 1);
+      list.appendChild(r);
+    });
+    text($('#fl-day'), DAY_LABEL[mealDay]);
+    var idx = MEAL_DAYS.indexOf(mealDay);
+    $$('[data-action~="prev-day"]').forEach(function (b) { b.disabled = idx === 0; });
+    $$('[data-action~="next-day"]').forEach(function (b) { b.disabled = idx === MEAL_DAYS.length - 1; });
+    var extra = store.get('meals', []).length;
+    text($('#fl-week'), (8 + extra) + '개 · 월요일부터 오늘(수)까지');
+    filterMeals();
+  }
+  function filterMeals() {
+    var shown = 0;
+    $$('#fl-list > [data-when]').forEach(function (r) {
+      var ok = (FL.when === '전체' || r.getAttribute('data-when') === FL.when) && (FL.how === '전체' || r.getAttribute('data-how') === FL.how) &&
+        (!FL.q || r.textContent.toLowerCase().indexOf(FL.q) > -1);
+      r.classList.toggle('hidden', !ok);
+      if (ok) shown += 1;
+    });
+    var empty = $('#fl-empty');
+    if (empty) {
+      empty.textContent = mealsOf(mealDay).length ? '이 조건에 맞는 기록이 없어요.' : '이날 남긴 먹은 것이 없어요. 생각나면 한 줄만 남겨요.';
+      empty.classList.toggle('hidden', shown > 0);
+    }
+  }
+  ON_CHANGE['fl-when'] = function (v) { FL.when = v || '전체'; filterMeals(); };
+  ON_CHANGE['fl-how'] = function (v) { FL.how = v || '전체'; filterMeals(); };
+  function initMeals() {
+    var list = $('#fl-list');
+    if (!list) return;
+    // G1 화면의 수요일 세 줄을 자료로 읽는다.
+    MEAL_SEED['10/28'] = $$('[data-when]', list).map(function (r) {
+      var cap = $('[data-f="cap"]', r);
+      var parts = cap ? cap.textContent.split(' · ') : [];
+      return { when: r.getAttribute('data-when'), how: r.getAttribute('data-how'),
+        time: cap ? parts[1] : $('[data-f="time"]', r).textContent,
+        menu: $('[data-f="menu"]', r).textContent,
+        memo: cap ? $('[data-f="memo"]', r).textContent : $('[data-f="memo"]', r).textContent.split(' · ').slice(1).join(' · ') };
+    });
+    mealTpl = list.firstElementChild.cloneNode(true);
+    renderMeals();
+  }
+
   /* ---------- 이벤트 연결 ---------- */
   function run(el, e) {
     words(el.getAttribute('data-action')).forEach(function (n) { if (A[n]) A[n](el, e); });
@@ -611,4 +742,7 @@
   if (NUM === 9) initDone();
   if (NUM === 5) initWeekly();
   if (NUM === 6) initLibrary();
+  if (NUM === 10) initMeals();
+  var flash = store.get('flash', null);
+  if (flash) { store.set('flash', null); toast(flash); }
 })();
